@@ -12,7 +12,6 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-    <link rel="icon" href="img/sobraquanto.png" >
+    <link rel="icon" href="img/sobraquanto.png">
 
 @stop
-
