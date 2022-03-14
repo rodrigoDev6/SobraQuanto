@@ -26,32 +26,42 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
+//--------------- HOME ------------//
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('teste', [SiteController::class, 'teste']);
 
-Route::get('permissoes', [PermissionController::class, 'index'])->name('permissoes');
-
-Route::get('cargos', [CargosController::class, 'index'])->name('cargos');
-
-Route::get('clientes', [ClientesController::class,'index'])->name('clientes');
-
-Route::get('categorias/servicos', [CategoriaServicoController::class, 'index'])->name('categorias/servicos');
-
-Route::get('categorias/produtos', [CategoriaProdutoController::class, 'index'])->name('categorias/produtos');
-
-Route::get('financeiro', [FinanceiroController::class, 'index'])->name('financeiro');
-
-Route::get('produtos',[ProdutosController::class, 'index'])->name('produtos');
-
-Route::get('ordens/servicos', [OrdensServicosController::class, 'index'])->name('ordens/servicos');
-
-Route::get('pdv', [PdvController::class, 'index'])->name('pdv');
-
+//--------------- USUAIROS ------------//
 Route::get('usuarios', [UsuariosController::class, 'index'])->name('usuarios');
 
+//--------------- PERMISSOES ---------------//
+Route::get('permissoes', [PermissionController::class, 'index'])->name('permissoes');
+
+//--------------- CARGOS ---------------//
+Route::get('cargos', [CargosController::class, 'index'])->name('cargos');
+
+//--------------- CLIENTES ---------------//
+Route::get('clientes', [ClientesController::class,'index'])->name('clientes');
+
+//--------------- SERVICOS ---------------//
+Route::get('categorias/servicos', [CategoriaServicoController::class, 'index'])->name('categorias/servicos');
+
+//--------------- PRODUTOS ---------------//
+Route::get('categorias/produtos', [CategoriaProdutoController::class, 'index'])->name('categorias/produtos');
+
+//--------------- FINANCEIRO ---------------//
+Route::get('financeiro', [FinanceiroController::class, 'index'])->name('financeiro');
+
+//--------------- PRODUTOS ---------------//
+Route::get('produtos',[ProdutosController::class, 'index'])->name('produtos');
+
+//--------------- SERVICOS ---------------//
+Route::get('ordens/servicos', [OrdensServicosController::class, 'index'])->name('ordens/servicos');
+
+//--------------- PDV ---------------//
+Route::get('pdv', [PdvController::class, 'index'])->name('pdv');
