@@ -16,12 +16,13 @@ class ClientesSeeder extends Seeder
     {
         Clientes::create([
             'nome' => 'Rodrigo de Lima Alves',
-            'cpf' => 12345678911,
-            'telefone' => 21975021234,
+            'cpf_cnpj' => '12345678911',
+            'telefoneFixo' => '(21)975021234',
+            'telefoneCelular' => '(21)975021234',
             'cidade' => 'Rio de Janeiro',
-            'estado' => 'Rio de Janeiro' ,
             'uf' => 'RJ',
-            'endereco' => 'Estrada da barra da tijuca - 3222',
+            'endereco' => 'Estrada da barra da tijuca',
+            'numero' => '3222',
             'bairro' => 'Itanhangá',
             'complemento' => 'Rua Pau brasil',
         ]);

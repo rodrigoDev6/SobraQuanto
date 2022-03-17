@@ -14,21 +14,22 @@ class CreateTableClientes extends Migration
     public function up()
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome', 70);
-            $table->integer('cpf')->unique();
-            $table->integer('telefone');
-            $table->string('cidade', 120);
-            $table->string('estado', 75);
-            $table->string('uf', 5);
-            $table->string('endereco', 80);
-            $table->string('bairro', 80);
-            $table->string('complemento', 80);
+            $table->increments('id');
+            $table->string('nome', 200);
+            $table->char('cpf_cnpj', 14)->unique();
+            $table->char('telefoneFixo', 20)->nullable();
+            $table->char('telefoneCelular', 20);
+            $table->string('cidade', 120)->nullable();
+            $table->string('uf', 5)->nullable();
+            $table->string('endereco', 80)->nullable();
+            $table->char('numero', 11)->nullable();
+            $table->string('bairro', 80)->nullable();
+            $table->string('complemento', 80)->nullable();
             $table->timestamps();
         });
     }
 
-    /**21975028324
+    /**
      * Reverse the migrations.
      *
      * @return void

@@ -36,7 +36,7 @@ Digite
 
 
 
-**php artisan migrate:fresh** <br>
+**php artisan migrate:refresh** <br>
 
 Para iniciar o sistema:<br>
 
