@@ -7,7 +7,33 @@
 @stop
 
 @section('content')
-    <p>Tela onde será apresentado as informações dos clientes. Tela 36/43</p>
+
+    <table class="table no-margin">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nome</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($clientes as $value)
+                <tr>
+                    <td>{{ $value->id }}</td>
+                    <td>{{ $value->nome }}</td>
+                    <td>{{ $value->cpf_cnpj }}</td>
+                    <td>{{ $value->telefoneCelular }}</td>
+                    <td><a href="{{ url('cliente/' . $value->id) }}" class="btn btn-block btn-primary">Visualizar</a>
+                    </td>
+            @endforeach
+
+        </tbody>
+
+    </table>
+
 @stop
 
 @section('css')
