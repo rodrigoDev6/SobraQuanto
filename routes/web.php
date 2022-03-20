@@ -48,6 +48,12 @@ Route::get('cargos', [CargosController::class, 'index'])->name('cargos');
 //--------------- CLIENTES ---------------//
 Route::get('clientes', [ClientesController::class,'index'])->name('clientes');
 
+Route::get('/cliente/{id}', [ClientesController::class,'show'])->name('clientes.show');
+
+Route::get('/cliente/{id}/edit', [ClientesController::class,'edit'])->name('clientes.edit');
+Route::put('cliente/{id}', [ClientesController::class,'update'])->name('clientes.update');
+
+
 //--------------- SERVICOS ---------------//
 Route::get('categorias/servicos', [CategoriaServicoController::class, 'index'])->name('categorias/servicos');
 

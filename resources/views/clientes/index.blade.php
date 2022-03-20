@@ -8,6 +8,10 @@
 
 @section('content')
 
+    <button class="btn btn-outline-success mb-3">
+        <i class="fas fa-plus"></i>
+        Adicionar cliente
+    </button>
     <table class="table no-margin">
         <thead>
             <tr>
@@ -15,7 +19,7 @@
                 <th>nome</th>
                 <th>CPF</th>
                 <th>Telefone</th>
-                <th></th>
+                <th><b>AÇÕES</b></th>
                 <th></th>
             </tr>
         </thead>
@@ -26,7 +30,23 @@
                     <td>{{ $value->nome }}</td>
                     <td>{{ $value->cpf_cnpj }}</td>
                     <td>{{ $value->telefoneCelular }}</td>
-                    <td><a href="{{ url('cliente/' . $value->id) }}" class="btn btn-block btn-primary">Visualizar</a>
+                    <td>
+                        {{--  --}}
+                        <a href="{{ url('cliente/' . $value->id) }}" class="btn btn-primary">
+                            <i class="fas fa-eye"></i>
+                            Visualizar
+                        </a>
+                        {{--  --}}
+                        <a href="{{ url('cliente/' . $value->id . '/edit') }}" class="btn btn-info mx-5">
+                            <i class="fas fa-edit"></i>
+                            Editar
+
+                            {{-- Esse botão deveria ser para mudar status de inativo para ativo ou vice versa --}}
+
+                            <a href="{{ url('cliente/' . $value->id) }}" class="btn btn-danger ">
+                                <i class="fas fa-trash"></i>
+                                Excluir
+                            </a>
                     </td>
             @endforeach
 

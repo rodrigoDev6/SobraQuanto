@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clientes;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
-class ClientesController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,9 @@ class ClientesController extends Controller
     public function index()
     {
         //listando
-        $clientes = Clientes::orderby('nome', 'ASC')->get();
-        return view('clientes.index',['clientes'=>$clientes]);
+
+        $categoria = Categoria::orderby('Nome', 'ASC')->get();
+        return view('categoria.index',['categorias'=>$categoria]);
     }
 
     /**
@@ -56,33 +57,34 @@ class ClientesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Clientes $cliente
+     * @param \App\Models\Categoria $categoria
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $cliente = Clientes::findOrFail($id);
-        return view('clientes.show',['clientes' => $cliente]);
+        $categoria = Categoria::findOrFail($id);
+        return view('categoria.show',['categoria' => $categoria]);
         
     }
 
+    //aqui estou
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $cliente
+     * @param  int  $categoria
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $cliente = Clientes::findOrFail($id);
-        return view('clientes.edit', ['clientes' => $cliente]);
+        $categoria = Categoria::findOrFail($id);
+        return view('categoria.edit', ['categoria' => $categoria]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param \App\Models\Clientes $cliente
+     * @param \App\Models\Categoria $categoria
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -95,12 +97,23 @@ class ClientesController extends Controller
             'nome' => 'required|min:2'
         ], $messages);
         
-        $cliente = Clientes::findOrFail($request->id);
-        $cliente->nome = $request -> nome;
-        $cliente->save();
+        $categoria = Categoria::findOrFail($request->id);
+        $categoria->nome = $request -> nome;
+        $categoria->save();
     
-        return redirect('/cliente')->with('status', 'Categoria alterada com sucess!!');
+        return redirect('/categoria')->with('status', 'Categoria alterada com sucess!!');
     }
 
-    
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Categoria $categoria
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $categoria = Categoria::findOrFail($id);
+        $categoria->delete();
+        return redirect('/categoria')->with('status', 'categoria excluida com sucesso');
+    }
 }
