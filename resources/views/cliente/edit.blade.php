@@ -19,7 +19,7 @@
     @endif
 
     {{-- procurando cliente --}}
-    {{ Form::model($cliente, array('route' => array('clientes.update', $cliente->id), 'method' => 'PUT')) }}
+    {{ Form::model($cliente, ['route' => ['cliente.update', $cliente->id], 'method' => 'PUT']) }}
 
 
 

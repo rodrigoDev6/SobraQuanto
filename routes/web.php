@@ -3,7 +3,7 @@
 use App\Http\Controllers\CargosController;
 use App\Http\Controllers\CategoriaProdutoController;
 use App\Http\Controllers\CategoriaServicoController;
-use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\financeiroController;
 use App\Http\Controllers\OrdensServicosController;
 use App\Http\Controllers\OrdensServiçoController;
@@ -45,13 +45,13 @@ Route::get('permissoes', [PermissionController::class, 'index'])->name('permisso
 //--------------- CARGOS ---------------//
 Route::get('cargos', [CargosController::class, 'index'])->name('cargos');
 
-//--------------- CLIENTES ---------------//
-Route::get('clientes', [ClientesController::class,'index'])->name('clientes');
+//--------------- CLIENTE ---------------//
+Route::get('/cliente', [ClienteController::class,'index'])->name('cliente');
 
-Route::get('/cliente/{id}', [ClientesController::class,'show'])->name('clientes.show');
+Route::get('/cliente/{id}', [ClienteController::class,'show'])->name('cliente.show');
 
-Route::get('/cliente/{id}/edit', [ClientesController::class,'edit'])->name('clientes.edit');
-Route::put('cliente/{id}', [ClientesController::class,'update'])->name('clientes.update');
+Route::get('/cliente/{id}/edit', [ClienteController::class,'edit'])->name('cliente.edit');
+Route::put('/cliente/{id}', [ClienteController::class,'update'])->name('cliente.update');
 
 
 //--------------- SERVICOS ---------------//

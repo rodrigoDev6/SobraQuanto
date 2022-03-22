@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clientes;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
-class ClientesController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ClientesController extends Controller
     public function index()
     {
         //listando
-        $clientes = Clientes::orderby('nome', 'ASC')->get();
-        return view('clientes.index',['clientes'=>$clientes]);
+        $clientes = Cliente::orderby('nome', 'ASC')->get();
+        return view('cliente.index',['clientes'=>$clientes]);
     }
 
     /**
@@ -26,7 +26,7 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        return view('categoria.create');
+        // return view('categoria.create');
     }
 
     /**
@@ -56,13 +56,13 @@ class ClientesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Clientes $cliente
+     * @param \App\Models\Cliente $cliente
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $cliente = Clientes::findOrFail($id);
-        return view('clientes.show',['clientes' => $cliente]);
+        $cliente = Cliente::findOrFail($id);
+        return view('cliente.show',['cliente' => $cliente]);
         
     }
 
@@ -74,15 +74,15 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
-        $cliente = Clientes::findOrFail($id);
-        return view('clientes.edit', ['clientes' => $cliente]);
+        $cliente = Cliente::findOrFail($id);
+        return view('cliente.edit', ['cliente' => $cliente]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param \App\Models\Clientes $cliente
+     * @param \App\Models\Cliente $cliente
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -95,7 +95,7 @@ class ClientesController extends Controller
             'nome' => 'required|min:2'
         ], $messages);
         
-        $cliente = Clientes::findOrFail($request->id);
+        $cliente = Cliente::findOrFail($request->id);
         $cliente->nome = $request -> nome;
         $cliente->save();
     

@@ -41,12 +41,11 @@
                             <i class="fas fa-edit"></i>
                             Editar
 
-                            {{-- Esse botão deveria ser para mudar status de inativo para ativo ou vice versa --}}
-
+                            {{-- Esse botão deveria ser para mudar status de inativo para ativo ou vice versa
                             <a href="{{ url('cliente/' . $value->id) }}" class="btn btn-danger ">
                                 <i class="fas fa-trash"></i>
                                 Excluir
-                            </a>
+                            </a> --}}
                     </td>
             @endforeach
 
