@@ -264,7 +264,7 @@ return [
         ],
         [
             'text'        => 'Clientes',
-            'url'         => 'clientes',
+            'url'         => 'cliente',
             'icon'        => 'fas fa-user-plus',
         ],
         [
