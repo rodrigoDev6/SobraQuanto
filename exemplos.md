@@ -232,7 +232,7 @@ where Funcionario.codFunc = 20
 
 -- L) O nome e o total de horas dos projetos em que a Lia trabalha.
 select f.nome,
-	p.totalHoras
+	sum(p.totalHoras) as total
 from Funcionario f
 inner join trabalhaEm t on t.codFunc = f.codFunc
 inner join Projeto p on p.codProjeto = t.codProjeto
