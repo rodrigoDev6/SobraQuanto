@@ -48,6 +48,9 @@ Route::get('cargos', [CargosController::class, 'index'])->name('cargos');
 //--------------- CLIENTE ---------------//
 Route::get('/cliente', [ClienteController::class,'index'])->name('cliente');
 
+Route::get('/cliente/create', [ClienteController::class,'create'])->name('cliente.create');
+Route::post('/cliente/create', [ClienteController::class,'store'])->name('cliente.store');
+
 Route::get('/cliente/{id}', [ClienteController::class,'show'])->name('cliente.show');
 
 Route::get('/cliente/{id}/edit', [ClienteController::class,'edit'])->name('cliente.edit');
