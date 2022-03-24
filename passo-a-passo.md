@@ -41,3 +41,8 @@ Digite
 Para iniciar o sistema:<br>
 
 **php artisan serve**<br>
+
+
+anotação senha cripto:
+$hash = Hash:make('digiteAquiASenha');
+dd($hash);
