@@ -9,14 +9,10 @@
 @section('content')
     <button class="btn btn-outline-success mb-3">
         <i class="fas fa-plus"></i>
-        Adicionar Categoria de Produto
+        Editar categoria de produto
     </button>
-    <table class="table no-margin">
-        <thead>
-            <tr>
-            <th>id</th>
-                <th>Nome</th>
-                <th><b>Ações</b></th>
+
+
     
 @stop
 
