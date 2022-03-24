@@ -7,11 +7,13 @@
 @stop
 
 @section('content')
+    <a href="{{ URL::to('cliente/create') }}">
+        <button class="btn btn-outline-success mb-3">
+            <i class="fas fa-plus"></i>
+            Adicionar cliente
+        </button>
+    </a>
 
-    <button class="btn btn-outline-success mb-3">
-        <i class="fas fa-plus"></i>
-        Adicionar cliente
-    </button>
     <table class="table no-margin">
         <thead>
             <tr>
