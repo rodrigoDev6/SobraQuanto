@@ -8,6 +8,7 @@
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
 
+                    {!! Form::open(['url' => '/cliente/create']) !!}
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -27,33 +28,41 @@
 
 
 
-                        {!! Form::open(['url' => '/cliente/create']) !!}
 
+                        <div class="form-group">
+                            {{ Form::label('nome', 'Nome:') }}
+                            {{ Form::text('nome'), ['class' => 'form-control'] }}
+                        </div>
 
-                        {{ Form::label('nome', 'Nome:') }}
-                        {{ Form::text('nome') }}
+                        <div class="form-group">
+                            {{ Form::label('cpf_cnpj', 'CPF ou CNPJ:') }}
+                            {{ Form::text('cpf_cnpj'), ['class' => 'form-control'] }}
+                        </div>
 
+                        <div class="form-group">
+                            {{ Form::label('telefone', 'Telefone:') }}
+                            {{ Form::text('telefoneCelular'), ['class' => 'form-control'] }}
+                        </div>
 
-                        {{ Form::label('cpf_cnpj', 'CPF ou CNPJ:') }}
-                        {{ Form::text('cpf_cnpj') }}
+                        <div class="form-group">
+                            {{ Form::label('cidade', 'Cidade:') }}
+                            {{ Form::text('cidade'), ['class' => 'form-control'] }}
+                        </div>
 
+                        <div class="form-group">
+                            {{ Form::label('uf', 'UF:') }}
+                            {{ Form::text('uf'), ['class' => 'form-control'] }}
+                        </div>
 
+                        <div class="form-group">
+                            {{ Form::label('bairro', 'Bairro:') }}
+                            {{ Form::text('bairro') }}
+                        </div>
 
-                        {{ Form::label('telefone', 'Telefone:') }}
-                        {{ Form::text('telefoneCelular') }}
-
-                        {{ Form::label('cidade', 'Cidade:') }}
-                        {{ Form::text('cidade') }}
-
-                        {{ Form::label('uf', 'UF:') }}
-                        {{ Form::text('uf') }}
-
-                        {{ Form::label('bairro', 'Bairro:') }}
-                        {{ Form::text('bairro') }}
-
-                        {{ Form::label('complemento', 'Complemento') }}
-                        {{ Form::text('complemento') }}
-                        <br>
+                        <div class="form-group">
+                            {{ Form::label('complemento', 'Complemento') }}
+                            {{ Form::text('complemento'), ['class' => 'form-control'] }}
+                        </div>
                         {{ Form::submit('Enviar') }}
 
                         {!! Form::close() !!}
