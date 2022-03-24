@@ -4,8 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card card-primary">
                     <div class="card-header">{{ __('Dashboard') }}</div>
+
 
                     <div class="card-body">
                         @if (session('status'))
@@ -24,39 +25,43 @@
                             </div>
                         @endif
 
+
+
                         {!! Form::open(['url' => '/cliente/create']) !!}
+
 
                         {{ Form::label('nome', 'Nome:') }}
                         {{ Form::text('nome') }}
-                        <br>
+
+
                         {{ Form::label('cpf_cnpj', 'CPF ou CNPJ:') }}
                         {{ Form::text('cpf_cnpj') }}
-                        <br>
+
+
+
                         {{ Form::label('telefone', 'Telefone:') }}
                         {{ Form::text('telefoneCelular') }}
-                        <br>
+
                         {{ Form::label('cidade', 'Cidade:') }}
                         {{ Form::text('cidade') }}
-                        <br>
+
                         {{ Form::label('uf', 'UF:') }}
                         {{ Form::text('uf') }}
-                        <br>
+
                         {{ Form::label('bairro', 'Bairro:') }}
                         {{ Form::text('bairro') }}
-                        <br>
+
                         {{ Form::label('complemento', 'Complemento') }}
                         {{ Form::text('complemento') }}
-
-
-
-
                         <br>
                         {{ Form::submit('Enviar') }}
 
                         {!! Form::close() !!}
 
+
                     </div>
                 </div>
+                {{-- card card-primary --}}
             </div>
         </div>
     </div>

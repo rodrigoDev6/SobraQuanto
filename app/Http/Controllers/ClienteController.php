@@ -56,7 +56,6 @@ class ClienteController extends Controller
         $cliente->save();
     
         return redirect('/cliente')->with('status', 'Cliente criado com sucesso!!');
-    
     }
 
     /**
