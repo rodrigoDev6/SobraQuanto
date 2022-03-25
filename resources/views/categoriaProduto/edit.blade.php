@@ -10,8 +10,8 @@
     <button class="btn btn-outline-success mb-3">
         <i class="fas fa-plus"></i>
         Editar categoria de produto
-    </button>
 
+        
 
     
 @stop
