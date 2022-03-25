@@ -15,7 +15,7 @@ class ClienteController extends Controller
     public function index()
     {
         //listando
-        $clientes = Cliente::orderby('nome', 'ASC')->get();
+        $clientes = Cliente::orderby('id', 'ASC')->get();
         return view('cliente.index',['clientes'=>$clientes]);
     }
 
@@ -26,7 +26,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        // return view('categoria.create');
+        return view('cliente.create');
     }
 
     /**
@@ -45,12 +45,17 @@ class ClienteController extends Controller
             'nome' => 'required|min:2'
         ], $messages);
         
-        $categoria = new Categoria;
-        $categoria->nome = $request -> nome;
-        $categoria->save();
+        $cliente = new Cliente;
+        $cliente -> nome = $request -> nome;
+        $cliente -> cpf_cnpj = $request -> cpf_cnpj;
+        $cliente -> telefoneFixo = $request -> telefoneFixo;
+        $cliente -> telefoneCelular = $request -> telefoneCelular;
+        $cliente -> cidade = $request -> cidade;
+        $cliente -> uf = $request -> uf;
+        $cliente -> complemento = $request -> complemento;
+        $cliente->save();
     
-        return redirect('/categoria')->with('status', 'Categoria criada com sucess!!');
-    
+        return redirect('/cliente')->with('status', 'Cliente criado com sucesso!!');
     }
 
     /**
