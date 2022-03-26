@@ -7,10 +7,13 @@
 @stop
 
 @section('content')
-    <button class="btn btn-outline-success mb-3">
-        <i class="fas fa-plus"></i>
-        Adicionar Categoria de Produto
-    </button>
+<a href="#">
+        <button class="btn btn-outline-success mb-3">
+            <i class="fas fa-plus"></i>
+            Adicionar categoria de produto
+        </button>
+    </a>
+
     <table class="table no-margin">
         <thead>
             <tr>
