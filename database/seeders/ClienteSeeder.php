@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Cliente;
 
-class ClientesSeeder extends Seeder
+class ClienteSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class ClientesSeeder extends Seeder
      */
     public function run()
     {
-        Clientes::create([
+        Cliente::create([
             'nome' => 'Rodrigo de Lima Alves',
             'cpf_cnpj' => '12345678911',
             'telefoneFixo' => '(21)975021234',
