@@ -8,7 +8,7 @@ use App\Http\Controllers\financeiroController;
 use App\Http\Controllers\OrdensServicoController;
 use App\Http\Controllers\PdvController;
 use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
@@ -60,7 +60,7 @@ Route::put('/cliente/{id}', [ClienteController::class,'update'])->name('cliente.
 Route::get('categorias/servicos', [CategoriaServicoController::class, 'index'])->name('categorias.servicos');
 
 //--------------- PRODUTOS ---------------//
-
+Route::get('produto',[ProdutoController::class, 'index'])->name('produto');
 
 Route::get('/produto/create',[ProdutoController::class,'create'])->name('produto.create');
 Route::post('/produto/create',[ProdutoController::class,'store'])->name('produto.store');
@@ -75,8 +75,7 @@ Route::delete('/produto/{id}',[ProdutoController::class, 'destroy'])->name('prod
 //--------------- FINANCEIRO ---------------//
 Route::get('financeiro', [FinanceiroController::class, 'index'])->name('financeiro');
 
-//--------------- PRODUTOS ---------------//
-Route::get('produto',[ProdutosController::class, 'index'])->name('produto');
+
 
 //--------------- SERVICOS ---------------//
 Route::get('ordens/servicos', [OrdensServicosController::class, 'index'])->name('ordens/servicos');

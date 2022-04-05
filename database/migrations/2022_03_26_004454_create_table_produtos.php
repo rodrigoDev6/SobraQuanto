@@ -13,8 +13,8 @@ class CreateTableProdutos extends Migration
      */
     public function up()
     {
-        Schema::create('table_produtos', function (Blueprint $table) {
-            $table->id();
+        Schema::create('produtos', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('nome');
             $table->float('valor',8,2);
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateTableProdutos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_produtos');
+        Schema::dropIfExists('produtos');
     }
 }

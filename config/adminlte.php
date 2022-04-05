@@ -254,7 +254,7 @@ return [
         ],
         [
             'text'        => 'Produtos',
-            'url'         => 'produtos',
+            'url'         => 'produto',
             'icon'        => 'fas fa-box-open',
         ],
         [

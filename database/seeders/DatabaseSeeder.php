@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\ClienteSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\CategoriaServicoSeeder;
+use Database\Seeders\ProdutoSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ClienteSeeder::class,
             UserSeeder::class,
             CategoriaServicoSeeder::class,
+            ProdutoSeeder::class
         ]);
     }
 }
