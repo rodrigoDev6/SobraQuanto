@@ -13,6 +13,9 @@ class ProdutoSeeder extends Seeder
      */
     public function run()
     {
-        
+        Produto::create([
+            'nome' => 'SSD',
+            'valor' => 120,32
+        ]);
     }
 }
