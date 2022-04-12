@@ -1,43 +1,72 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produto</title>
-</head>
-<body>
+@extends('adminlte::page')
 
-  @if ($errors->any())
-  <div class="alert alert-danger">
-    <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-    </ul>
-  </div>
-  @endif
+@section('title', 'Sobra Quanto')
 
 
-  {{ Form::model($produto, array('route' => array('produto.update', $produto->id), 'method' => 'PUT')) }}
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="mb-3">produto selecionado:</h1>
+
+                <div class="card card-primary ">
+                    <div class="card-header">{{ __('Dashboard') }}</div>
+
+                    {{-- procurando produto --}}
+                    {{ Form::model($produto, ['route' => ['produto.update', $produto->id], 'method' => 'PUT']) }}
+                    <div class="card-body col-12">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
 
 
-  {{ Form::label('categoria', 'Categoria')}}
-  {{ Form::select('categoria_id', $categorias, $produto->categoria_id)}}
-  <br>
+                        <div class="row col-12">
+                            <div class="form-group col">
+                                {{ Form::label('nome', 'Nome:') }}
+                                {{ Form::text('nome', $produto->nome, ['class' => 'form-control']) }}
+                            </div>
 
-  {{ Form::label('nome', 'Nome')}}
-  {{ Form::text('nome', $produto->nome);}}
-  <br>
+                            <div class="form-group col">
+                                {{ Form::label('valor', 'Valor:') }}
+                                {{ Form::number('valor', $produto->valor, ['class' => 'form-control']) }}
+                            </div>
+                        </div>
 
-  {{ Form::label('valor', 'Valor')}}
-  {{ Form::text('valor', $produto->valor) }}
-  <br>
-  {{ Form::submit('Enviar') }}
-
-  {!! Form::close() !!}
+                       
 
 
-</body>
-</html>
+
+                        <div class="row col-12">
+                            <div class="form-group col">
+                                {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
+
+                                <a class="btn btn-default float-right" href="{{ route('produto') }}">Cancelar</a>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            {{-- card card-primary --}}
+        </div>
+    </div>
+
+
+
+
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="icon" href="img/sobraquanto.png">
+
+@stop

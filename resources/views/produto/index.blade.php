@@ -1,89 +1,63 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+@extends('adminlte::page')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produto</title>
-</head>
+@section('title', 'Sobra Quanto')
 
-<body>
-    @extends('adminlte::page')
+@section('content_header')
+    <h1>Produto</h1>
+@stop
 
-    @section('content')
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">{{ __('Dashboard') }}</div>
+@section('content')
+    <a href="{{ URL::to('produto/create') }}">
+        <button class="btn btn-outline-success mb-3">
+            <i class="fas fa-plus"></i>
+            Adicionar produto
+        </button>
+    </a>
 
-                        <div class="card-body">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
+    <table class="table no-margin">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th><b>AÇÕES</b></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($produtos as $value)
+                <tr>
+                    <td>{{ $value->id }}</td>
+                    <td>{{ $value->nome }}</td>
+                    <td>{{ $value->valor }}</td>
 
+                    <td>
+                        {{--  --}}
+                        <a href="{{ url('produto/' . $value->id) }}" class="btn btn-primary">
+                            <i class="fas fa-eye"></i>
+                            Visualizar
+                        </a>
+                        {{--  --}}
+                        <a href="{{ url('produto/' . $value->id . '/edit') }}" class="btn btn-info mx-5">
+                            <i class="fas fa-edit"></i>
+                            Editar
 
+                            {{-- Esse botão deveria ser para mudar status de inativo para ativo ou vice versa
+                            <a href="{{ url('produto/' . $value->id) }}" class="btn btn-danger ">
+                                <i class="fas fa-trash"></i>
+                                Excluir
+                            </a> --}}
+                    </td>
+            @endforeach
 
-                            <script>
-                                function ConfirmDelete() {
-                                    return confirm('Tem certeza que deseja excluir este registro?');
-                                }
-                            </script>
+        </tbody>
 
-                            <a href="{{ URL::to('produto/create') }}"><button type="button"
-                                    class="btn btn-block btn-success btn-sm">Criar</button></a>
+    </table>
 
-                            <table class="table no-margin">
-                                <thead>
-                                    <tr>
-                                        <th>id</th>
-                                        {{-- <th>categoria</th> --}}
-                                        <th>nome</th>
-                                        <th>valor</th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+@stop
 
-                                    @foreach ($produtos as $value)
-                                        <tr>
-                                            <td>{{ $value->id }}</td>
-                                            {{-- <td>{{ $value->categoria->nome }}</td> --}}
-                                            <td>{{ $value->nome }}</td>
-                                            <td>{{ $value->valor }}</td>
-                                            <td><a href="{{ url('produto/' . $value->id) }}"><button type="button"
-                                                        class="btn btn-block btn-primary btn-sm">Visualizar</button></a></td>
-                                            <td><a href="{{ url('produto/' . $value->id . '/edit') }}"><button
-                                                        type="button"
-                                                        class="btn btn-block btn-warning btn-sm">Editar</button></a></td>
-                                            <td>
-                                                {{ Form::open(['url' => 'produto/' . $value->id, 'onsubmit' => 'return ConfirmDelete()']) }}
-                                                {{ Form::hidden('_method', 'DELETE') }}
-                                                {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
-                                                {{ Form::close() }}
-                                            </td>
-                                        </tr>
-                                    @endforeach
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="icon" href="img/sobraquanto.png">
 
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endsection
-
-
-
-
-
-</body>
-
-</html>
+@stop

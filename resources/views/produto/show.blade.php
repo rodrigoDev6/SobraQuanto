@@ -1,28 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produto</title>
-</head>
-<body>
+@extends('adminlte::page')
 
-<h2>Produto</h2>
-<p>
-  <b>Nome:</b> {{ $produto->nome }}
-</p>
+@section('title', 'Sobra Quanto')
 
-<p>
-  <b>Categoria:</b> {{ $produto->categoria->Nome }}
-</p>
+@section('content_header')
+    <h1 class="text-center">Dados do produto:</h1>
+@stop
 
-<p>
-  <b>Valor:</b> R$ {{ $produto->valor }}
-</p>
+@section('content')
 
-<p>
-  <b>Criação:</b> {{ $produto->created_at }}
-</p>
-</body>
-</html>
+
+    <ul class="list-unstyled">
+        <li><b>ID:</b> {{ $produto->id }}</li>
+        <li><b>Nome:</b> {{ $produto->nome }}</li>
+   
+        <li><b>Valor:</b> {{ $produto->valor }}</li>
+  
+    </ul>
+
+    <a href="{{ url('produto') }}" class="btn btn-primary">Voltar</a>
+
+
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="icon" href="img/sobraquanto.png">
+
+@stop
