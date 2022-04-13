@@ -7,16 +7,18 @@
 @stop
 
 @section('content')
+<a href="{{ URL::to('CategoriaServico/create') }}">
     <button class="btn btn-outline-success mb-3">
         <i class="fas fa-plus"></i>
         Adicionar categoria de serviço
     </button>
+</a>
+
     <table class="table no-margin">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th><b>AÇÕES</b></th>
                 <th></th>
             </tr>
         </thead>
