@@ -17,7 +17,6 @@ class CreateTableClientes extends Migration
             $table->increments('id');
             $table->string('nome', 200);
             $table->char('cpf_cnpj', 14)->unique();
-            $table->char('telefoneFixo', 20)->nullable();
             $table->char('telefoneCelular', 20);
             $table->string('cidade', 120)->nullable();
             $table->string('uf', 5)->nullable();

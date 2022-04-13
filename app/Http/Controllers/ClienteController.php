@@ -54,7 +54,6 @@ class ClienteController extends Controller
         $validate = $request->validate([
             'nome' => 'required|min:5',
             'cpf_cnpj' => 'required|min:11' ,
-            'telefoneFixo' => 'required|min:8',
             'telefoneCelular' => 'required|min:9',
             'cidade' => 'required|min:4',
             'uf' =>  'required|min:2',
@@ -65,7 +64,6 @@ class ClienteController extends Controller
         $cliente = new Cliente;
         $cliente -> nome = $request -> nome;
         $cliente -> cpf_cnpj = $request -> cpf_cnpj;
-        $cliente -> telefoneFixo = $request -> telefoneFixo;
         $cliente -> telefoneCelular = $request -> telefoneCelular;
         $cliente -> cidade = $request -> cidade;
         $cliente -> uf = $request -> uf;
@@ -137,7 +135,6 @@ class ClienteController extends Controller
         $cliente = Cliente::findOrFail($request->id);
         $cliente->nome = $request -> nome;
         $cliente -> cpf_cnpj = $request -> cpf_cnpj;
-        $cliente -> telefoneFixo = $request -> telefoneFixo;
         $cliente -> telefoneCelular = $request -> telefoneCelular;
         $cliente -> cidade = $request -> cidade;
         $cliente -> uf = $request -> uf;

@@ -17,7 +17,6 @@ class ClienteSeeder extends Seeder
         Cliente::create([
             'nome' => 'Rodrigo de Lima Alves',
             'cpf_cnpj' => '12345678911',
-            'telefoneFixo' => '(21)975021234',
             'telefoneCelular' => '(21)975021234',
             'cidade' => 'Rio de Janeiro',
             'uf' => 'RJ',
