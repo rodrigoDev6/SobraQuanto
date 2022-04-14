@@ -27,6 +27,6 @@ class CreateTableCategoriaServico extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_categoria_servico');
+        Schema::dropIfExists('categoria_servico');
     }
 }

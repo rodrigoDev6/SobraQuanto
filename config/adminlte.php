@@ -269,7 +269,7 @@ return [
         ],
         [
             'text'        => 'Categoria de serviço',
-            'url'         => 'categorias/servicos',
+            'url'         => 'categoriaServico',
             'icon'        => 'fas fa-border-all',
         ],
         [

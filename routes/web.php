@@ -57,15 +57,15 @@ Route::put('/cliente/{id}', [ClienteController::class,'update'])->name('cliente.
 
 
 //--------------- SERVICOS ---------------//
-Route::get('categorias/servicos', [CategoriaServicoController::class, 'index'])->name('categorias.servico');
+Route::get('categoriaServico', [CategoriaServicoController::class, 'index'])->name('categoriaServico');
 
-Route::get('/CategoriaServico/create', [ClienteController::class,'create'])->name('categorias.servicos.create');
-Route::post('/CategoriaServico/create', [ClienteController::class,'store'])->name('categorias.servicos.store');
+Route::get('/categoriaServico/create', [CategoriaServicoController::class,'create'])->name('categoriaServico.create');
+Route::post('/categoriaServico/create', [CategoriaServicoController::class,'store'])->name('categoriaServico.store');
 
-Route::get('/CategoriaServico/{id}', [ClienteController::class,'show'])->name('categorias.servicos.show');
+Route::get('/categoriaServico/{id}', [CategoriaServicoController::class,'show'])->name('categoriaServico.show');
 
-Route::get('/CategoriaServico/{id}/edit', [ClienteController::class,'edit'])->name('categorias.servicos.edit');
-Route::put('/CategoriaServico/{id}', [ClienteController::class,'update'])->name('categorias.servicos.update');
+Route::get('/categoriaServico/{id}/edit', [CategoriaServicoController::class,'edit'])->name('categoriaServico.edit');
+Route::put('/categoriaServico/{id}', [CategoriaServicoController::class,'update'])->name('categoriaServico.update');
 
 
 //--------------- PRODUTOS ---------------//

@@ -10,7 +10,7 @@
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
 
-                    {!! Form::open(['url' => '/CategoriaServico/create']) !!}
+                    {!! Form::open(['url' => '/categoriaServico/create']) !!}
                     <div class="card-body col-12">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -42,7 +42,7 @@
                             <div class="form-group col">
                                 {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
 
-                                <a class="btn btn-default float-right" href="{{ route('CategoriaServico') }}">Cancelar</a>
+                                <a class="btn btn-default float-right" href="{{ route('categoriaServico') }}">Cancelar</a>
                             </div>
                         </div>
 

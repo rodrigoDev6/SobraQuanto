@@ -19,12 +19,12 @@
     @endif
 
     {{-- procurando categoria de serviço --}}
-    {{ Form::model($CategoriaServico, ['route' => ['CategoriaServico.update', $CategoriaServico->id], 'method' => 'PUT']) }}
+    {{ Form::model($categoriaServico, ['route' => ['categoriaServico.update', $categoriaServico->id], 'method' => 'PUT']) }}
 
 
 
     {{ Form::label('nome', 'nome') }}
-    {{ Form::text('nome', $CategoriaServico->nome) }}
+    {{ Form::text('nome', $categoriaServico->nome) }}
     <br>
     {{ Form::submit('Enviar') }}
 

@@ -10,11 +10,11 @@
 
 
     <ul class="list-unstyled">
-        <li><b>ID:</b> {{ $CategoriaServico->id }}</li>
-        <li><b>Nome:</b> {{ $CategoriaServico->nome }}</li>
+        <li><b>ID:</b> {{ $categoriaServico->id }}</li>
+        <li><b>Nome:</b> {{ $categoriaServico->nome }}</li>
     </ul>
 
-    <a href="{{ url('CategoriaServico') }}" class="btn btn-primary">Voltar</a>
+    <a href="{{ url('categoriaServico') }}" class="btn btn-primary">Voltar</a>
 
 
 @stop
