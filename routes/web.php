@@ -68,6 +68,18 @@ Route::get('/categoriaServico/{id}/edit', [CategoriaServicoController::class,'ed
 Route::put('/categoriaServico/{id}', [CategoriaServicoController::class,'update'])->name('categoriaServico.update');
 
 
+//--------------- Categoria Produtos ---------------//
+Route::get('categoriaProduto', [CategoriaProdutoController::class, 'index'])->name('categoriaProduto');
+
+Route::get('/categoriaProduto/create', [CategoriaProdutoController::class,'create'])->name('categoriaProduto.create');
+Route::post('/categoriaProduto/create', [CategoriaProdutoController::class,'store'])->name('categoriaProduto.store');
+
+Route::get('/categoriaProduto/{id}', [CategoriaProdutoController::class,'show'])->name('categoriaProduto.show');
+
+Route::get('/categoriaProduto/{id}/edit', [CategoriaProdutoController::class,'edit'])->name('categoriaProduto.edit');
+Route::put('/categoriaProduto/{id}', [CategoriaProdutoController::class,'update'])->name('categoriaProduto.update');
+
+
 //--------------- PRODUTOS ---------------//
 Route::get('produto',[ProdutoController::class, 'index'])->name('produto');
 

@@ -274,7 +274,7 @@ return [
         ],
         [
             'text'        => 'Categoria de produto',
-            'url'         => 'categorias/produtos',
+            'url'         => 'categoriaProduto',
             'icon'        => 'fas fa-border-all',
         ],
         [
