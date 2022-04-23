@@ -39,7 +39,7 @@ class CategoriaProdutoController extends Controller
         ];
 
         $validate = $request->validate([
-            'nome' => 'required|min:4',
+            'nome' => 'required|min:3',
 
         ], $messages);
         
@@ -94,7 +94,7 @@ class CategoriaProdutoController extends Controller
         ];
 
         $validate = $request->validate([
-            'nome' => 'required|min:4',
+            'nome' => 'required|min:3',
 
         ], $messages);
         
