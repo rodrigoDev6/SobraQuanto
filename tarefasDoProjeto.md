@@ -1,6 +1,6 @@
 # Telas para criar
 
-Categoria de serviços e Cargos - Erick
+Categoria de serviços - Erick
 Categoria de produtos - Luiz
 Clientes - Rodrigo 
 Produtos - John
