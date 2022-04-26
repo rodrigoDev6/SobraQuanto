@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Produto;
 
 class ProdutoSeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class ProdutoSeeder extends Seeder
     {
         Produto::create([
             'nome' => 'SSD',
-            'valor' => 120,32
+            'valor' => 120.32
         ]);
     }
 }
