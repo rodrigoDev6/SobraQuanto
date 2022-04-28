@@ -17,7 +17,7 @@ class CategoriaProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+   
     public function create()
     {
         return view('categoriaProduto.create');
@@ -104,7 +104,9 @@ class CategoriaProdutoController extends Controller
         $CategoriaProduto->save();
     
         return redirect('/categoriaProduto')->with('status', 'Categoria alterada com sucesso!!');
+
     }
+   
 
     
 }

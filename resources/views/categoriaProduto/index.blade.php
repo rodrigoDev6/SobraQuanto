@@ -38,6 +38,11 @@
                         <i class="fas fa-edit"></i>
                         Editar
 
+                        <a href="{{ url('categoriaProduto/' . $value->id . '/delete') }}" class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                        Deletar
+                    </a>
+
                 </td>
         @endforeach
 
