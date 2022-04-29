@@ -106,7 +106,21 @@ class CategoriaProdutoController extends Controller
         return redirect('/categoriaProduto')->with('status', 'Categoria alterada com sucesso!!');
 
     }
-   
 
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Models\CategoriaProduto $CategoriaProduto
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $CategoriaProduto = CategoriaProduto::findOrFail($id);
+        $CategoriaProduto->delete();
+
+        return redirect('/categoriaProduto')->with('status', 'Categoria excluida com sucesso!');
+
+    }
+   
     
 }

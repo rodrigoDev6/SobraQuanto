@@ -14,6 +14,7 @@
     </button>
 </a>
 
+
 <table class="table no-margin">
     <thead>
         <tr>
@@ -38,16 +39,49 @@
                         <i class="fas fa-edit"></i>
                         Editar
 
-                        <a href="{{ url('categoriaProduto/' . $value->id . '/delete') }}" class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        Deletar
-                    </a>
-
+                      
                 </td>
+                
+                <td>
+                 {{ Form::open(array('url' => 'categoriaProduto/' . $value->id, 'onsubmit' => 'return ConfirmDelete()')) }}
+                 {{ Form::hidden('_method', 'DELETE') }}
+                  {{ Form::submit('Excluir', array('class' => 'btn btn-danger')) }}
+                                {{ Form::close() }}
+                </td>
+        
         @endforeach
 
     </tbody>
 </table>        
+
+foreach ($categoriaProduto as $value)
+<!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">Confirma a exclusão do registro?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-danger">Excluir permanentemente</button>
+      </div>
+      {{ Form::open(array('url' => 'categoriaProduto/' . $value->id, 'onsubmit' => 'return ConfirmDelete()')) }}
+                 {{ Form::hidden('_method', 'DELETE') }}
+                  {{ Form::submit('Excluir', array('class' => 'btn btn-danger')) }}
+                                {{ Form::close() }}
+    </div>
+  </div>
+</div>
+@endforeach
+
+
 @stop
 
 @section('css')

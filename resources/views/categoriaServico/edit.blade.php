@@ -42,12 +42,34 @@
                             <div class="form-group col">
                                 {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
 
+                                <a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" href="">Excluir</a>
+
                                 <a class="btn btn-default float" href="{{ route('categoriaServico') }}">Cancelar</a>
                             </div>
                         </div>
 
                     </div>
                 </div>
+                <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Confirmar</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p class="text-center">Confirma a exclusão do registro?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-danger">Excluir permanentemente</button>    
+                          </div>
+                        </div>
+                      </div>
+                    </div>
             @endsection
             @section('css')
                 <link rel="stylesheet" href="/css/admin_custom.css">

@@ -43,7 +43,6 @@
                             <div class="row col-12">
                                 <div class="form-group col">
                                     {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
-
                                     <a class="btn btn-default float-right"
                                         href="{{ route('categoriaProduto') }}">Cancelar</a>
                                 </div>

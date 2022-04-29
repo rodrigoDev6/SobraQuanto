@@ -79,6 +79,7 @@ Route::get('/categoriaProduto/{id}', [CategoriaProdutoController::class,'show'])
 Route::get('/categoriaProduto/{id}/edit', [CategoriaProdutoController::class,'edit'])->name('categoriaProduto.edit');
 Route::put('/categoriaProduto/{id}', [CategoriaProdutoController::class,'update'])->name('categoriaProduto.update');
 
+Route::delete('/categoriaProduto/{id}', [CategoriaProdutoController::class, 'destroy'])->name('categoriaProduto.destroy');
 
 //--------------- PRODUTOS ---------------//
 Route::get('produto',[ProdutoController::class, 'index'])->name('produto');
