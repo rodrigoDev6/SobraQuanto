@@ -92,7 +92,6 @@
                         </div>
 
 
-
                         <div class="row col-12">
                             <div class="form-group col">
                                 {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
