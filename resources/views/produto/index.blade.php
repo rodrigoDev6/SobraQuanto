@@ -19,6 +19,7 @@
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
+                <th>Categoria</th>
                 <th>Valor</th>
                 <th><b>AÇÕES</b></th>
                 <th></th>
@@ -29,8 +30,9 @@
                 <tr>
                     <td>{{ $value->id }}</td>
                     <td>{{ $value->nome }}</td>
+                    <td>{{ $value->categoria->nome }}</td>
+                    {{-- Precisa trazer nome da categoria --}}
                     <td>{{ $value->valor }}</td>
-
                     <td>
                         {{--  --}}
                         <a href="{{ url('produto/' . $value->id) }}" class="btn btn-primary">

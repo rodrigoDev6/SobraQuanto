@@ -41,7 +41,7 @@
                             <div class="form-group col-12">
                                 {{ Form::label('categoria', 'Selecione categoria:') }}
                                 {{ Form::select('categoria_id', $categoriaProduto ,['class' => 'form-select']) }}
-                                </div>
+                            </div>
 
                             <div class="form-group col">
                                 {{ Form::label('valor', 'Valor:') }}
@@ -49,7 +49,7 @@
                             </div>
                         </div>
 
-                      
+
 
 
                         <div class="row col-12">

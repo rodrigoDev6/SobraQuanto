@@ -16,7 +16,7 @@ class ProdutoController extends Controller
     public function index(){
         $produtos = Produto::orderby('id', 'ASC')->get();
         return view('produto.index',['produtos'=>$produtos]);
-        
+
     }
 
 
@@ -42,9 +42,9 @@ class ProdutoController extends Controller
         $messages = [
             'nome.required' => 'O campo :attribute é obrigatório!',
             'valor.required' => 'O campo :attribute é obrigatório!',
-           
+
             // 'complemento.required' => 'O campo Complemento é obrigatório!',
-            
+
             'nome.min' => 'O :attribute precisa ter no mínimo :min.',
             'valor.min' => 'O :attribute precisa ter no mínimo :min.'
         ];
@@ -52,19 +52,20 @@ class ProdutoController extends Controller
         $validate = $request->validate([
             'nome' => 'required|min:2',
             'valor' => 'required|min:1' ,
-           
+
             // 'complemento' => 'required|min:3'
         ], $messages);
-        
+
         $produto = new Produto;
-        
+
         $produto -> nome = $request -> nome;
+        $produto -> categoria_id = $request -> categoria_id;
         $produto -> valor = $request -> valor;
-        
+
 
         $produto->save();
-        
-    
+
+
         return redirect('/produto')->with('status', 'Produto criado com sucesso!!');
     }
 
@@ -78,7 +79,7 @@ class ProdutoController extends Controller
     {
         $produto = Produto::findOrFail($id);
         return view('produto.show',['produto' => $produto]);
-        
+
     }
 
     /**
@@ -106,9 +107,9 @@ class ProdutoController extends Controller
         $messages = [
             'nome.required' => 'O campo :attribute é obrigatório!',
             'valor.required' => 'O campo :attribute é obrigatório!',
-           
+
             // 'complemento.required' => 'O campo Complemento é obrigatório!',
-            
+
             'nome.min' => 'O :attribute precisa ter no mínimo :min.',
             'valor.min' => 'O :attribute precisa ter no mínimo :min.'
         ];
@@ -116,17 +117,18 @@ class ProdutoController extends Controller
         $validate = $request->validate([
             'nome' => 'required|min:2',
             'valor' => 'required|min:1' ,
-           
+
             // 'complemento' => 'required|min:3'
         ], $messages);
         $produto = Produto::findOrFail($request->id);
         $produto->nome = $request -> nome;
+        $produto -> categoria_id = $request -> categoria_id;
         $produto -> valor = $request -> valor;
         $produto->save();
-    
+
         return redirect('/produto')->with('status', 'Produto alterado com sucesso!!');
-    }   
- 
+    }
+
 
 
 
