@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoriaProduto;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produto.create');
+        $categoriaProduto = CategoriaProduto::orderBy('Nome', 'ASC')->pluck('Nome','id');
+        return view('produto.create',['categoriaProduto'=>$categoriaProduto]);
     }
 
   /**
@@ -88,7 +90,8 @@ class ProdutoController extends Controller
     public function edit($id)
     {
         $produto = Produto::findOrFail($id);
-        return view('produto.edit', ['produto' => $produto]);
+        $categoriaProduto = CategoriaProduto::orderBy('Nome', 'ASC')->pluck('Nome','id');
+        return view('produto.edit', ['produto' => $produto,'categoriaProduto'=>$categoriaProduto]);
     }
 
     /**

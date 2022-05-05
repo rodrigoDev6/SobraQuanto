@@ -33,6 +33,11 @@
                                 {{ Form::text('nome', $produto->nome, ['class' => 'form-control']) }}
                             </div>
 
+                            <div class="form-group col-12"> 
+                                {{ Form::label('categoria', 'Selecione categoria:') }} 
+                                {{ Form::select('categoria_id', $categoriaProduto, $produto->categoria_id, ['class' => 'form-select']) }} 
+                                </div>
+
                             <div class="form-group col">
                                 {{ Form::label('valor', 'Valor:') }}
                                 {{ Form::number('valor', $produto->valor, ['class' => 'form-control']) }}
