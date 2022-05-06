@@ -27,8 +27,8 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        $categoriaProduto = CategoriaProduto::orderBy('Nome', 'ASC')->pluck('Nome','id');
-        return view('produto.create',['categoriaProduto'=>$categoriaProduto]);
+        $produto = CategoriaProduto::orderBy('Nome', 'ASC')->pluck('Nome','id');
+        return view('produto.create',['categoriaProduto'=>$produto]);
     }
 
   /**
@@ -91,8 +91,8 @@ class ProdutoController extends Controller
     public function edit($id)
     {
         $produto = Produto::findOrFail($id);
-        $categoriaProduto = CategoriaProduto::orderBy('Nome', 'ASC')->pluck('Nome','id');
-        return view('produto.edit', ['produto' => $produto,'categoriaProduto'=>$categoriaProduto]);
+        $produto = CategoriaProduto::orderBy('Nome', 'ASC')->pluck('Nome','id');
+        return view('produto.edit', ['produto' => $produto,'categoriaProduto'=>$produto]);
     }
 
     /**
@@ -130,7 +130,20 @@ class ProdutoController extends Controller
     }
 
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Models\Produto $produto
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $produto = Produto::findOrFail($id);
+        $produto->delete();
 
+        return redirect('/produto')->with('status', 'Produto excluido com sucesso!');
+
+    }
 
 
 
