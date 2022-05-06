@@ -38,13 +38,10 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'nome.required' => 'O campo :attribute é obrigatório!',
+            'nome.required' => 'O campo Nome é obrigatório!',
             'cpf_cnpj.required' => 'O campo CPF ou CNPJ é obrigatório!',
-            'telefoneCelular.required' => 'O campo Telefone é obrigatório!',
-            'cidade.required' => 'O campo Cidade obrigatório!',
-            'uf.required' => 'O campo UF é obrigatório!',
-            'bairro.required' => 'O campo Bairro é obrigatório!',
-            // 'complemento.required' => 'O campo Complemento é obrigatório!',
+            'celular.required' => 'O campo Celular é obrigatório!',
+
             
             'nome.min' => 'O :attribute precisa ter no mínimo :min.',
             'cpf_cnpj.min' => 'O CPF precisa ter 11 números e caso seja CNPJ 14.',
@@ -54,20 +51,19 @@ class ClienteController extends Controller
         $validate = $request->validate([
             'nome' => 'required|min:5',
             'cpf_cnpj' => 'required|min:11' ,
-            'telefoneCelular' => 'required|min:9',
-            'cidade' => 'required|min:4',
-            'uf' =>  'required|min:2',
-            'bairro' => 'required|min:4',
-            // 'complemento' => 'required|min:3'
+            'celular' => 'required|min:9',
         ], $messages);
         
         $cliente = new Cliente;
         $cliente -> nome = $request -> nome;
         $cliente -> cpf_cnpj = $request -> cpf_cnpj;
-        $cliente -> telefoneCelular = $request -> telefoneCelular;
+        $cliente -> celular = $request -> celular;
         $cliente -> cidade = $request -> cidade;
         $cliente -> uf = $request -> uf;
+        $cliente -> cep = $request -> cep;
         $cliente -> bairro = $request -> bairro;
+        $cliente -> endereco = $request -> endereco;
+        $cliente -> numero = $request -> numero;
         $cliente -> complemento = $request -> complemento;
         $cliente->save();
         
@@ -113,10 +109,7 @@ class ClienteController extends Controller
             'nome.required' => 'O campo :attribute é obrigatório',
             'cpf_cnpj.required' => 'O campo CPF ou CNPJ é obrigatório!',
             'telefoneCelular.required' => 'O campo Telefone é obrigatório!',
-            'cidade.required' => 'O campo Cidade obrigatório!',
-            'uf.required' => 'O campo UF é obrigatório!',
-            'bairro.required' => 'O campo Bairro é obrigatório!',
-            // 'complemento.required' => 'O campo Complemento é obrigatório!',
+            
             
             'nome.min' => 'O :attribute precisa ter no mínimo :min.',
             'cpf_cnpj.min' => 'O CPF precisa ter 11 números e caso seja CNPJ 14.',
@@ -133,16 +126,19 @@ class ClienteController extends Controller
         ], $messages);
         
         $cliente = Cliente::findOrFail($request->id);
-        $cliente->nome = $request -> nome;
+        $cliente -> nome = $request -> nome;
         $cliente -> cpf_cnpj = $request -> cpf_cnpj;
-        $cliente -> telefoneCelular = $request -> telefoneCelular;
+        $cliente -> celular = $request -> celular;
         $cliente -> cidade = $request -> cidade;
         $cliente -> uf = $request -> uf;
+        $cliente -> cep = $request -> cep;
         $cliente -> bairro = $request -> bairro;
+        $cliente -> endereco = $request -> endereco;
+        $cliente -> numero = $request -> numero;
         $cliente -> complemento = $request -> complemento;
         $cliente->save();
     
-        return redirect('/cliente')->with('status', 'Categoria alterada com sucess!!');
+        return redirect('/cliente')->with('status', 'Categoria alterada com sucesso!!');
     }
 
     
