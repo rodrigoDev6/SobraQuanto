@@ -49,6 +49,13 @@
                                 <i class="fas fa-trash"></i>
                                 Excluir
                             </a> --}}
+
+                            <td>
+                                {{ Form::open(['url' => 'produto/' . $value->id, 'onsubmit' => 'return ConfirmDelete()']) }}
+                                {{ Form::hidden('_method', 'DELETE') }}
+                                {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
+                                {{ Form::close() }}
+                            </td>
                     </td>
             @endforeach
 

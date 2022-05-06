@@ -34,6 +34,7 @@ class CategoriaProdutoController extends Controller
         $messages = [
             'nome.required' => 'O campo :attribute é obrigatório!',
             
+            
             'nome.min' => 'O :attribute precisa ter no mínimo :min.',
             
         ];
