@@ -52,7 +52,7 @@ class ProdutoController extends Controller
         $validate = $request->validate([
             'nome' => 'required|min:2',
             'valor' => 'required|min:1' ,
-            'valor' => 'required|between:0,99.99' ,
+            'valor' => 'required',
             'quantidade' => 'required|min:1' ,
             
         ], $messages);

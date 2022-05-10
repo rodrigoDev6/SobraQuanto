@@ -35,19 +35,19 @@
 
 
                         <div class="row col-12">
-                            <div class="form-group col">
+                            <div class="form-group col-6">
                                 {{ Form::label('nome', 'Nome:') }}
                                 {{ Form::text('nome', '', ['class' => 'form-control']) }}
                             </div>
 
-                            <div class="form-group col-12">
+                            <div class="form-group col-6">
                                 {{ Form::label('categoria', 'Selecione categoria:') }}
-                                {{ Form::select('categoria_id', $categoriaProduto, ['class' => 'form-control select']) }}
+                                {{ Form::select('categoria_id', $categoriaProduto, null, ['class' => 'form-control']) }}
                             </div>
 
                             <div class="form-group col">
                                 {{ Form::label('valor', 'Valor:') }}
-                                {{ Form::number('valor', '', ['class' => 'form-control', 'step' => '0.11']) }}
+                                {{ Form::text('valor', '', ['class' => 'form-control']) }}
                             </div>
 
                             <div class="form-group col">
@@ -71,7 +71,6 @@
 
                     </div>
                 </div>
-                {{-- card card-primary --}}
             </div>
         </div>
     </div>

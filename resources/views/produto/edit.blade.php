@@ -11,7 +11,6 @@
                 <div class="card card-primary mt-5">
                     <div class="card-header">{{ __('Produto Selecionado:') }}</div>
 
-                    {{-- procurando produto --}}
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -39,7 +38,7 @@
 
                             <div class="form-group col">
                                 {{ Form::label('valor', 'Valor:') }}
-                                {{ Form::number('valor', $produto->valor, ['class' => 'form-control', 'step' => '0.1']) }}
+                                {{ Form::number('valor', $produto->valor, ['class' => 'form-control']) }}
                             </div>
 
                             <div class="form-group col">
