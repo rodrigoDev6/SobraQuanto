@@ -99,7 +99,7 @@ class CategoriaProdutoController extends Controller
 
         ], $messages);
         
-        $CategoriaProduto = new CategoriaProduto;
+        $CategoriaProduto = CategoriaProduto::findOrFail($id);
         $CategoriaProduto -> nome = $request -> nome;
 
         $CategoriaProduto->save();

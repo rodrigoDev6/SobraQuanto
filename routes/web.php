@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CargosController;
 use App\Http\Controllers\CategoriaProdutoController;
 use App\Http\Controllers\CategoriaServicoController;
@@ -10,7 +11,6 @@ use App\Http\Controllers\PdvController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
-use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,7 +36,18 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('teste', [SiteController::class, 'teste']);
 
 //--------------- USUAIROS ------------//
-Route::get('usuarios', [UsuariosController::class, 'index'])->name('usuarios');
+Route::get('usuarios', [UserController::class, 'index'])->name('usuarios');
+
+Route::get('usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
+Route::post('usuarios/store', [UserController::class, 'store'])->name('usuarios.store');
+
+Route::get('/usarios/{id}', [UserController::class, 'show'])->name('usuarios.show');
+
+Route::get('usuarios/{id}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
+Route::put('usuarios/{id}/update', [UserController::class, 'update'])->name('usuarios.update');
+
+Route::delete('usuarios/{id}/destroy', [UserController::class, 'destroy'])->name('usuarios.destroy');
+
 
 //--------------- PERMISSOES ---------------//
 Route::get('permissoes', [PermissionController::class, 'index'])->name('permissoes');

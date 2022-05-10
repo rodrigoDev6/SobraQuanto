@@ -16,18 +16,18 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([ 
-            'name'      => 'Rodrigo',
-            'email'     => 'lima.rodrigo@educsi.com.br',
-            'password'  => Hash::make('123456789'),
+            'name'      => 'admin',
+            'email'     => 'rodrigodev6@gmail.com',
+            'password'  => Hash::make('123456'),
             'perfil'    => 'admin'
 
         ]);
 
         User::create([
-            'name'      => 'admin',
-            'email'     => 'lima2.rodrigo@educsi.com.br',
-            'password'  => Hash::make('123456789'),
-            'perfil'    => 'admin'
+            'name'      => 'rodrigo',
+            'email'     => 'lima.rodrigo@educsi.com.br',
+            'password'  => Hash::make('123456'),
+            'perfil'    => 'padrao'
         ]);
     }
 }

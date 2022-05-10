@@ -25,6 +25,7 @@
                 <th></th>
             </tr>
         </thead>
+
         <tbody>
             @foreach ($clientes as $value)
                 <tr>
@@ -49,11 +50,11 @@
                                 Excluir
                             </a> --}}
                     </td>
+                </tr>
             @endforeach
-
         </tbody>
-
     </table>
+
 
 @stop
 

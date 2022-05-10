@@ -15,15 +15,13 @@ class ClienteSeeder extends Seeder
     public function run()
     {
         Cliente::create([
-            'nome' => 'Lima Default',
+            'nome' => 'Rodrigo de Lima Alves',
             'cpf_cnpj' => '12345678909',
-            'celular' => '(21)975021234',
-            'cidade' => 'Rio de Janeiro',
-            'uf' => 'RJ',
-            'endereco' => 'Estrada da barra da tijuca',
-            'complemento' => 'Rua Pau brasil',
-            'numero' => '3222',
+            'telefone_1' => '21975021234',
+            'estado_id' => 1,
+            'logradouro' => 'Rua B',
             'bairro' => 'Itanhangá',
+            'complemento' => 'Rua da chacara',
         ]);
     }
 }

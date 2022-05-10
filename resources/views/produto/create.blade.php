@@ -1,13 +1,15 @@
 @extends('adminlte::page')
 
+@section('title', 'Sobra Quanto')
+
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="mb-3">Novo produto:</h1>
 
-                <div class="card card-primary ">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card card-primary mt-5">
+                    <div class="card-header mt">{{ __('Novo Produto:') }}</div>
 
 
                     {!! Form::open(['url' => '/produto/create']) !!}
@@ -40,12 +42,17 @@
 
                             <div class="form-group col-12">
                                 {{ Form::label('categoria', 'Selecione categoria:') }}
-                                {{ Form::select('categoria_id', $categoriaProduto ,['class' => 'form-select']) }}
+                                {{ Form::select('categoria_id', $categoriaProduto, ['class' => 'form-control select']) }}
                             </div>
 
                             <div class="form-group col">
                                 {{ Form::label('valor', 'Valor:') }}
-                                {{ Form::number('valor', '', ['class' => 'form-control']) }}
+                                {{ Form::number('valor', '', ['class' => 'form-control', 'step' => '0.11']) }}
+                            </div>
+
+                            <div class="form-group col">
+                                {{ Form::label('quantidade', 'Quantidade:') }}
+                                {{ Form::number('quantidade', '', ['class' => 'form-control']) }}
                             </div>
                         </div>
 
@@ -69,3 +76,8 @@
         </div>
     </div>
 @endsection
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="icon" href="img/sobraquanto.png">
+@stop

@@ -14,30 +14,11 @@ class ProdutoSeeder extends Seeder
      */
     public function run()
     {
-
         Produto::create([
             'nome' => 'SSD',
             'categoria_id' => 1,
-            'valor' => 120.32
+            'valor' => 120,
+            'quantidade' => 1,
         ]);
-
-        Produto::create([
-            'nome' => 'Teclado Gamer',
-            'categoria_id' => 1,
-            'valor' => 120.32
-        ]);
-
-        Produto::create([
-            'nome' => 'Headset HyperEx',
-            'categoria_id' => 1,
-            'valor' => 120.32
-        ]);
-
-        Produto::create([
-            'nome' => 'SSD Kingston',
-            'categoria_id' => 1,
-            'valor' => 120.32
-        ]);
-
     }
 }

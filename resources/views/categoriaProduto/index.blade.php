@@ -38,16 +38,12 @@
                         <a href="{{ url('categoriaProduto/' . $value->id . '/edit') }}" class="btn btn-info mx-5">
                             <i class="fas fa-edit"></i>
                             Editar
+                        </a>
+                        <a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" href="">Excluir</a>
 
 
                     </td>
-
-                    <td>
-                        {{ Form::open(['url' => 'categoriaProduto/' . $value->id, 'onsubmit' => 'return ConfirmDelete()']) }}
-                        {{ Form::hidden('_method', 'DELETE') }}
-                        {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
-                        {{ Form::close() }}
-                    </td>
+                </tr>
             @endforeach
 
         </tbody>
@@ -70,12 +66,11 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="submit" class="btn btn-danger">Excluir permanentemente</button>
+                        {{ Form::open(['url' => 'categoriaProduto/' . $value->id, 'onsubmit' => 'return ConfirmDelete()']) }}
+                        {{ Form::hidden('_method', 'DELETE') }}
+                        {{ Form::submit('Excluir Permanentetemente', ['class' => 'btn btn-danger']) }}
+                        {{ Form::close() }}
                     </div>
-                    {{ Form::open(['url' => 'categoriaProduto/' . $value->id, 'onsubmit' => 'return ConfirmDelete()']) }}
-                    {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
-                    {{ Form::close() }}
                 </div>
             </div>
         </div>

@@ -7,44 +7,48 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="mb-3">produto selecionado:</h1>
 
-                <div class="card card-primary ">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card card-primary mt-5">
+                    <div class="card-header">{{ __('Produto Selecionado:') }}</div>
 
                     {{-- procurando produto --}}
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+
                     {{ Form::model($produto, ['route' => ['produto.update', $produto->id], 'method' => 'PUT']) }}
                     <div class="card-body col-12">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
-
 
                         <div class="row col-12">
-                            <div class="form-group col">
+                            <div class="form-group col-6">
                                 {{ Form::label('nome', 'Nome:') }}
                                 {{ Form::text('nome', $produto->nome, ['class' => 'form-control']) }}
                             </div>
 
-                            <div class="form-group col-12"> 
-                                {{ Form::label('categoria', 'Selecione categoria:') }} 
-                                {{ Form::select('categoria_id', $categoriaProduto, $produto->categoria_id, ['class' => 'form-select']) }} 
-                                </div>
+                            <div class="form-group col-6">
+                                {{ Form::label('categoria', 'Selecione categoria:') }}
+                                {{ Form::select('categoria_id', $categoria, $produto->categoria_id, ['class' => 'form-control select']) }}
+                            </div>
 
                             <div class="form-group col">
                                 {{ Form::label('valor', 'Valor:') }}
-                                {{ Form::number('valor', $produto->valor, ['class' => 'form-control']) }}
+                                {{ Form::number('valor', $produto->valor, ['class' => 'form-control', 'step' => '0.1']) }}
+                            </div>
+
+                            <div class="form-group col">
+                                {{ Form::label('quantidade', 'Quantidade:') }}
+                                {{ Form::number('quantidade', $produto->quantidade, ['class' => 'form-control']) }}
                             </div>
                         </div>
 
-                       
+
 
 
 
@@ -61,7 +65,6 @@
                     </div>
                 </div>
             </div>
-            {{-- card card-primary --}}
         </div>
     </div>
 
@@ -73,5 +76,4 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link rel="icon" href="img/sobraquanto.png">
-
 @stop

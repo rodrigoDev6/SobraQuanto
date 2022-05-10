@@ -243,19 +243,14 @@ return [
             'icon'        => 'fas fa-user',
         ],
         [
+            'text'        => 'Clientes',
+            'url'         => 'cliente',
+            'icon'        => 'fas fa-user-plus',
+        ],
+        [
             'text'        => 'Painel de Venda',
             'url'         => 'pdv',
             'icon'        => 'fas fa-dollar-sign',
-        ],
-        [
-            'text'        => 'Ordens de Serviços',
-            'url'         => 'ordens/servicos',
-            'icon'        => 'fas fa-clipboard-list',
-        ],
-        [
-            'text'        => 'Produtos',
-            'url'         => 'produto',
-            'icon'        => 'fas fa-box-open',
         ],
         [
             'text'        => 'Financeiro',
@@ -263,14 +258,19 @@ return [
             'icon'        => 'fas fa-chart-line',
         ],
         [
-            'text'        => 'Clientes',
-            'url'         => 'cliente',
-            'icon'        => 'fas fa-user-plus',
+            'text'        => 'Ordens de Serviços',
+            'url'         => 'ordens/servicos',
+            'icon'        => 'fas fa-clipboard-list',
         ],
         [
             'text'        => 'Categoria de serviço',
             'url'         => 'categoriaServico',
             'icon'        => 'fas fa-border-all',
+        ],
+        [
+            'text'        => 'Produtos',
+            'url'         => 'produto',
+            'icon'        => 'fas fa-box-open',
         ],
         [
             'text'        => 'Categoria de produto',

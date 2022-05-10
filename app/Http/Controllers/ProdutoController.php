@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CategoriaProduto;
 use App\Models\Produto;
+use App\Models\CategoriaProduto;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -42,18 +42,19 @@ class ProdutoController extends Controller
         $messages = [
             'nome.required' => 'O campo :attribute é obrigatório!',
             'valor.required' => 'O campo :attribute é obrigatório!',
-
-            // 'complemento.required' => 'O campo Complemento é obrigatório!',
+            'quantidade.required' => 'O campo :attribute é obrigatório!',
 
             'nome.min' => 'O :attribute precisa ter no mínimo :min.',
-            'valor.min' => 'O :attribute precisa ter no mínimo :min.'
+            'valor.min' => 'O :attribute precisa ter no mínimo :min.',
+            'quantidade.min' => 'O :attribute precisa ter no mínimo :min.'
         ];
 
         $validate = $request->validate([
             'nome' => 'required|min:2',
             'valor' => 'required|min:1' ,
-
-            // 'complemento' => 'required|min:3'
+            'valor' => 'required|between:0,99.99' ,
+            'quantidade' => 'required|min:1' ,
+            
         ], $messages);
 
         $produto = new Produto;
@@ -61,6 +62,7 @@ class ProdutoController extends Controller
         $produto -> nome = $request -> nome;
         $produto -> categoria_id = $request -> categoria_id;
         $produto -> valor = $request -> valor;
+        $produto -> quantidade = $request -> quantidade;
 
 
         $produto->save();
@@ -85,14 +87,14 @@ class ProdutoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $produto
+     * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
+        $categoria = CategoriaProduto::orderBy('Nome', 'ASC')->pluck('Nome','id');
         $produto = Produto::findOrFail($id);
-        $produto = CategoriaProduto::orderBy('Nome', 'ASC')->pluck('Nome','id');
-        return view('produto.edit', ['produto' => $produto,'categoriaProduto'=>$produto]);
+        return view('produto.edit', ['produto' => $produto, 'categoria' => $categoria]);
     }
 
     /**
@@ -107,23 +109,26 @@ class ProdutoController extends Controller
         $messages = [
             'nome.required' => 'O campo :attribute é obrigatório!',
             'valor.required' => 'O campo :attribute é obrigatório!',
-
-            // 'complemento.required' => 'O campo Complemento é obrigatório!',
+            'quantidade.required' => 'O campo :attribute é obrigatório!',
 
             'nome.min' => 'O :attribute precisa ter no mínimo :min.',
-            'valor.min' => 'O :attribute precisa ter no mínimo :min.'
+            'valor.min' => 'O :attribute precisa ter no mínimo :min.',
+            'quantidade.min' => 'O :attribute precisa ter no mínimo :min.'
         ];
 
         $validate = $request->validate([
             'nome' => 'required|min:2',
             'valor' => 'required|min:1' ,
-
-            // 'complemento' => 'required|min:3'
+            'quantidade' => 'required|min:1' ,
+            
         ], $messages);
+
+
         $produto = Produto::findOrFail($request->id);
-        $produto->nome = $request -> nome;
+        $produto -> nome = $request -> nome;
         $produto -> categoria_id = $request -> categoria_id;
         $produto -> valor = $request -> valor;
+        $produto -> quantidade = $request -> quantidade;
         $produto->save();
 
         return redirect('/produto')->with('status', 'Produto alterado com sucesso!!');
@@ -139,7 +144,7 @@ class ProdutoController extends Controller
     public function destroy($id)
     {
         $produto = Produto::findOrFail($id);
-        $produto->delete();
+        $produto -> delete();
 
         return redirect('/produto')->with('status', 'Produto excluido com sucesso!');
 

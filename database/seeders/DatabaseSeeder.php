@@ -4,10 +4,11 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-use Database\Seeders\ClienteSeeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\EstadoSeeder;
+use Database\Seeders\ClienteSeeder;
 use Database\Seeders\CategoriaServicoSeeder;
-use Database\Seeders\CategegoriaProdutoSeeder;
+use Database\Seeders\CategoriaProdutoSeeder;
 use Database\Seeders\ProdutoSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,8 +21,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            ClienteSeeder::class,
             UserSeeder::class,
+            EstadoSeeder::class,
+            ClienteSeeder::class,
             CategoriaServicoSeeder::class,
             CategoriaProdutoSeeder::class,
             ProdutoSeeder::class

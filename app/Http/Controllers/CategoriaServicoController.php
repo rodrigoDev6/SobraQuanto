@@ -98,7 +98,7 @@ class CategoriaServicoController extends Controller
 
         ], $messages);
         
-        $categoriaServico = new CategoriaServico;
+        $categoriaServico = CategoriaServico::findOrFail($request -> $id);
         $categoriaServico -> nome = $request -> nome;
 
         $categoriaServico->save();

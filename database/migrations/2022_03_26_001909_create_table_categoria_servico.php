@@ -14,7 +14,7 @@ class CreateTableCategoriaServico extends Migration
     public function up()
     {
         Schema::create('categoria_servico', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('nome', 200);
             $table->timestamps();
         });

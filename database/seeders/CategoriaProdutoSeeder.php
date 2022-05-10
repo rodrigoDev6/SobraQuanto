@@ -15,7 +15,15 @@ class CategoriaProdutoSeeder extends Seeder
     public function run()
     {
         CategoriaProduto::create([
-            'nome' => 'memória'
+            'nome' => 'Notebook',
+        ]);
+
+        CategoriaProduto::create([
+            'nome' => 'Doces',
+        ]);
+        
+        CategoriaProduto::create([
+            'nome' => 'impressão',
         ]);
     }
 }
