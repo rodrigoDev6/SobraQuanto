@@ -37,7 +37,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'nome.required' => 'O campo Nome é obrigatório!',
+            'name.required' => 'O campo Nome é obrigatório!',
             'email.required' => 'O campo E-mail é obrigatório!',
             'perfil.required' => 'O campo Perfil é obrigatório!',
             'password.required' => 'O campo Senha é obrigatório!',
@@ -50,6 +50,17 @@ class UserController extends Controller
             'password' => 'required|min:5',
         ], $messages);
 
+        $user = new User;
+
+        $user -> name = $request->nome;
+        $user -> email = $request->email;
+        $user -> perfil = $request->perfil;
+        $user -> password = $request->password;
+
+        $user -> save();
+
         return redirect('/usuarios')->with('status', 'Usuário criado com sucesso!!');
     }
+
+
 }

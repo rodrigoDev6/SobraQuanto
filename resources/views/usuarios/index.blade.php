@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <a href="{{ URL::to('usuario/create') }}">
+    <a href="{{ URL::to('usuarios/create') }}">
         <button class="btn btn-outline-success mb-3">
             <i class="fas fa-plus"></i>
             Adicionar usuário
@@ -36,18 +36,21 @@
                     <td>
 
                         {{-- btn-visualizar --}}
-                        <a href="{{ url('usuario/' . $usuario->id) }}" class="btn btn-primary">
+                        <a href="{{ url('usuarios/' . $usuario->id) }}" class="btn btn-primary">
                             <i class="fas fa-eye"></i>
                             Visualizar
                         </a>
                         {{-- Btn editar --}}
-                        <a href="{{ url('usuario/' . $usuario->id . '/edit') }}" class="btn btn-info mx-5">
+                        <a href="{{ url('usuarios/' . $usuario->id . '/edit') }}" class="btn btn-info mx-5">
                             <i class="fas fa-edit"></i>
                             Editar
                         </a>
 
                         {{-- Btn excluir --}}
-                        <a class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete" href="">Excluir</a>
+                        <a class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete" href="">
+                            <i class="fas fa-trash">
+                            </i>
+                            Excluir</a>
                     </td>
 
                 </tr>

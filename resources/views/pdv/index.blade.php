@@ -8,6 +8,20 @@
 
 @section('content')
     <p>PDV onde as vendas do caixa serão realizadas. Tela 10/43</p>
+
+    <div class="container">
+        <div class="col-6">
+            <p>
+                lado esquerdo com itens
+            </p>
+        </div>
+
+        <div class="col-6">
+            <p>
+                lado direito com os itens selecionados
+            </p>
+        </div>
+    </div>
 @stop
 
 @section('css')

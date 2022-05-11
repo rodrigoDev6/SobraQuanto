@@ -39,7 +39,7 @@ Route::get('teste', [SiteController::class, 'teste']);
 Route::get('usuarios', [UserController::class, 'index'])->name('usuarios');
 
 Route::get('usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
-Route::post('usuarios/store', [UserController::class, 'store'])->name('usuarios.store');
+Route::post('usuarios/create', [UserController::class, 'store'])->name('usuarios.store');
 
 Route::get('/usarios/{id}', [UserController::class, 'show'])->name('usuarios.show');
 
