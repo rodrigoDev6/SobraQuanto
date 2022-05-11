@@ -98,13 +98,26 @@ class CategoriaServicoController extends Controller
 
         ], $messages);
         
-        $categoriaServico = CategoriaServico::findOrFail($request -> $id);
+        $categoriaServico = CategoriaServico::findOrFail($id);
         $categoriaServico -> nome = $request -> nome;
 
         $categoriaServico->save();
     
         return redirect('/categoriaServico')->with('status', 'Categoria alterada com sucesso!!');
     }
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Models\CategoriaServico $categoriaServico
+     * @return \Illuminate\Http\Response
+     */
+   public function destroy($id)
+   {
+       $categoriaServico = CategoriaServico::findOrFail($id);
+       $CategoriaServico->delete();
 
+       return redirect('/categoriaServico')->with('status', 'Categoria excluida com sucesso!');
+
+   }
     
 }
