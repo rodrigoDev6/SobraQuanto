@@ -80,6 +80,7 @@ Route::put('/categoriaServico/{id}', [CategoriaServicoController::class,'update'
 
 Route::delete('/categoriaServico/{id}', [CategoriaServicoController::class, 'destroy'])->name('categoriaServico.destroy');
 
+
 //--------------- Categoria Produtos ---------------//
 Route::get('categoriaProduto', [CategoriaProdutoController::class, 'index'])->name('categoriaProduto');
 

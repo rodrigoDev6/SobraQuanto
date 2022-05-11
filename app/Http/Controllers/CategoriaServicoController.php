@@ -105,20 +105,20 @@ class CategoriaServicoController extends Controller
     
         return redirect('/categoriaServico')->with('status', 'Categoria alterada com sucesso!!');
     }
-        /**
+    /**
      * Remove the specified resource from storage.
      *
      * @param \App\Models\CategoriaServico $categoriaServico
      * @return \Illuminate\Http\Response
      */
-   public function destroy($id)
-   {
-       $categoriaServico = CategoriaServico::findOrFail($id);
-       $categoriaServico->delete();
+    public function destroy($id)
+    {
+        $categoriaServico = CategoriaServico::findOrFail($id);
+        $categoriaServico -> delete();
 
-       return redirect('/categoriaServico')->with('status', 'Categoria excluida com sucesso!');
-
-   }
+        return redirect('/categoriaServico')->with('status', 'Serviço excluido com sucesso!');
     
     
+}
+
 }
