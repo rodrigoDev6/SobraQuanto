@@ -114,7 +114,7 @@ class CategoriaServicoController extends Controller
    public function destroy($id)
    {
        $categoriaServico = CategoriaServico::findOrFail($id);
-       $CategoriaServico->delete();
+       $categoriaServico->delete();
 
        return redirect('/categoriaServico')->with('status', 'Categoria excluida com sucesso!');
 
