@@ -21,7 +21,7 @@
                 <th>Nome</th>
                 <th>Categoria</th>
                 <th>Valor</th>
-                <th><b>AÇÕES</b></th>
+                <th>Quantidade</th>
                 <th></th>
             </tr>
         </thead>
@@ -32,6 +32,7 @@
                     <td>{{ $value->nome }}</td>
                     <td>{{ $value->categoria->nome }}</td>
                     <td>R$ {{ $value->valor }}</td>
+                    <td>{{ $value->quantidade }}</td>
                     <td>
                         {{--  --}}
                         <a href="{{ url('produto/' . $value->id) }}" class="btn btn-primary">
