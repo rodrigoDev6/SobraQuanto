@@ -35,7 +35,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('teste', [SiteController::class, 'teste']);
 
-//--------------- USUAIROS ------------//
+//--------------- USUARIOS ------------//
 Route::get('usuarios', [UserController::class, 'index'])->name('usuarios');
 
 Route::get('usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
@@ -113,7 +113,9 @@ Route::get('financeiro', [FinanceiroController::class, 'index'])->name('financei
 
 
 //--------------- SERVICOS ---------------//
-Route::get('ordens/servicos', [OrdensServicosController::class, 'index'])->name('ordens/servicos');
+Route::get('OrdensServico', [OrdensServicosController::class, 'index'])->name('OrdensServico');
 
 //--------------- PDV ---------------//
 Route::get('pdv', [PdvController::class, 'index'])->name('pdv');
+
+
