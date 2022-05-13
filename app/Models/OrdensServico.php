@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\CategoriaProduto;
+use App\Models\CategoriaServico;
 use Illuminate\Http\Request;
 
 class Ordensservico extends Model
@@ -13,7 +13,7 @@ class Ordensservico extends Model
     protected $table = 'ordensServico';
 
     public function OrdensServico(){
-        return $this->hasOne(Ordensservico::class, 'id', 'ordensServico_id');
+        return $this->hasOne(CategoriaServico::class, 'id', 'categoria_id');
     }
   
 }
