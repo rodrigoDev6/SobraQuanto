@@ -6,7 +6,7 @@ use App\Http\Controllers\CategoriaProdutoController;
 use App\Http\Controllers\CategoriaServicoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\financeiroController;
-use App\Http\Controllers\OrdensServicoController;
+use App\Http\Controllers\ordensServicoController;
 use App\Http\Controllers\PdvController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProdutoController;
@@ -113,7 +113,18 @@ Route::get('financeiro', [FinanceiroController::class, 'index'])->name('financei
 
 
 //--------------- SERVICOS ---------------//
-Route::get('OrdensServico', [OrdensServicosController::class, 'index'])->name('OrdensServico');
+Route::get('ordensServico', [OrdenServicoController::class, 'index'])->name('ordensServico');
+
+Route::get('/ordensServico/create',[OrdensServicoController::class,'create'])->name('ordensServico.create');
+Route::post('/ordensServico/create',[OrdensServicoController::class,'store'])->name('ordensServico.store');
+
+Route::get('/ordensServico/{id}',[OrdensServicoController::class,'show'])->name('ordensServico.show');
+
+Route::get('/ordensServico/{id}/edit',[OrdensServicoController::class,'edit'])->name('ordensServico.edit');
+Route::put('/ordensServico/{id}',[OrdensServicoController::class, 'update'])->name('ordensServico.update');
+
+Route::delete('/ordensServico/{id}',[OrdensServicoController::class, 'destroy'])->name('ordensServico.destroy');
+
 
 //--------------- PDV ---------------//
 Route::get('pdv', [PdvController::class, 'index'])->name('pdv');
