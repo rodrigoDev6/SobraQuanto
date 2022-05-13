@@ -113,7 +113,7 @@ Route::get('financeiro', [FinanceiroController::class, 'index'])->name('financei
 
 
 //--------------- SERVICOS ---------------//
-Route::get('ordensServico', [OrdenServicoController::class, 'index'])->name('ordensServico');
+Route::get('ordensServico', [OrdensServicoController::class, 'index'])->name('ordensServico');
 
 Route::get('/ordensServico/create',[OrdensServicoController::class,'create'])->name('ordensServico.create');
 Route::post('/ordensServico/create',[OrdensServicoController::class,'store'])->name('ordensServico.store');
