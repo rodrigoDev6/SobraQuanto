@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
-class OrdensServicosController extends Controller
+class OrdensservicoController extends Controller
 {
     public function index(){
-        return view('OrdensServico.index');
+        return view('ordensServico.index');
     }
 }
