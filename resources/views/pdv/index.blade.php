@@ -2,6 +2,15 @@
 
 @section('title', 'Sobra Quanto')
 
+<head>
+    <style>
+        .card-title {
+            float: none !important;
+        }
+
+    </style>
+</head>
+
 @section('content_header')
     <h1>Painel de venda</h1>
 @stop
@@ -11,7 +20,7 @@
 
 
     {{-- container principal --}}
-    <div class="row row-cols-2">
+    <div class="row row-cols-1">
 
         {{-- container de produtos listados --}}
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 p-4 bg-light">
@@ -30,16 +39,15 @@
 
 
         {{-- container de carrinho de compras --}}
-        <div class="row justify-content-center">
-            <div class="col-sm-6">
+        <div class="row row-cols-1 p-4 justify-content-start">
+            <div class="card">
+                <h5 class="card-header bg-black">Caixa de Vendas</h5>
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center">Seu caixa está vazio</h5>
 
-                <div class="card text-center">
-                    <h5 class="card-header bg-black">Caixa de Vendas</h5>
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-center">Seu caixa está vazio</h5>
-                        <p class="card-text">Adicione Itens</p>
+                    <hr>
 
-                    </div>
+                    <span>Total:</span>
                 </div>
             </div>
         </div>
