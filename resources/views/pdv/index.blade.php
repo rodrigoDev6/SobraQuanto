@@ -9,19 +9,45 @@
 @section('content')
     <p>PDV onde as vendas do caixa serão realizadas. Tela 10/43</p>
 
-    <div class="container">
-        <div class="col-6">
-            <p>
-                lado esquerdo com itens
-            </p>
+
+    {{-- container principal --}}
+    <div class="row row-cols-2">
+
+        {{-- container de produtos listados --}}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 p-4 bg-light">
+            @foreach ($produtoLista as $produtoItem)
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $produtoItem->nome }}</h5>
+                            <p class="card-text">{{ $produtoItem->valor }}</p>
+                            <a href="#" class="btn btn-primary">Adicionar</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
 
-        <div class="col-6">
-            <p>
-                lado direito com os itens selecionados
-            </p>
+
+        {{-- container de carrinho de compras --}}
+        <div class="row justify-content-center">
+            <div class="col-sm-6">
+
+                <div class="card text-center">
+                    <h5 class="card-header bg-black">Caixa de Vendas</h5>
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-center">Seu caixa está vazio</h5>
+                        <p class="card-text">Adicione Itens</p>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
+
+
 @stop
 
 @section('css')
