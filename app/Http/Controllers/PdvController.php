@@ -12,6 +12,6 @@ class PdvController extends Controller
 {
     public function index(){
         $produtos = Produto::orderby('id', 'ASC')->get();
-        return view('pdv.index',['produtoLista' => $produtos]);
+        return view('pdv.index',['produtos' => $produtos]);
     }
 }

@@ -24,13 +24,22 @@
 
         {{-- container de produtos listados --}}
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 p-4 bg-light">
-            @foreach ($produtoLista as $produtoItem)
+            @foreach ($produtos as $key => $produtoItem)
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
+                            {{ Form::open(['class' => 'addProduto']) }}
+                            {{ Form::hidden('produto_id', $produtoItem->id) }}
+                            {{ Form::hidden('nome', $produtoItem->nome) }}
+                            {{ Form::hidden('quantidade', 1) }}
                             <h5 class="card-title">{{ $produtoItem->nome }}</h5>
                             <p class="card-text">{{ $produtoItem->valor }}</p>
-                            <a href="#" class="btn btn-primary">Adicionar</a>
+
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-cart-plus"></i>
+                                Adicionar
+                            </button>
+
                         </div>
                     </div>
                 </div>

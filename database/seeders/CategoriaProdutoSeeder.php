@@ -21,9 +21,33 @@ class CategoriaProdutoSeeder extends Seeder
         CategoriaProduto::create([
             'nome' => 'Doces',
         ]);
+
+        CategoriaProduto::create([
+            'nome' => 'HD Mecanico',
+        ]);
+
+        CategoriaProduto::create([
+            'nome' => 'HD SSD',
+        ]);
         
         CategoriaProduto::create([
-            'nome' => 'impressão',
+            'nome' => 'Carregador',
+        ]);
+
+        CategoriaProduto::create([
+            'nome' => 'Fone de com Fio',
+        ]);
+
+        CategoriaProduto::create([
+            'nome' => 'Fone sem Fio',
+        ]);
+
+        CategoriaProduto::create([
+            'nome' => 'Fontes',
+        ]);
+
+        CategoriaProduto::create([
+            'nome' => 'Cabos',
         ]);
     }
 }
