@@ -15,38 +15,45 @@ class ProdutoSeeder extends Seeder
     public function run()
     {
         Produto::create([
-            'nome' => 'SSD Kingston',
+            'nome' => 'SSD Kingston A400',
             'categoria_id' => 4,
-            'valor' => 120,
-            'quantidade' => 1,
+            'valor' => 120.00,
+            'quantidade' => 3
         ]);
 
         Produto::create([
-            'nome' => 'HD Barracuda',
-            'categoria_id' => 3,
-            'valor' => 5,
-            'quantidade' => 1,
-        ]);
-
-        Produto::create([
-            'nome' => 'Paçoquita',
-            'categoria_id' => 2,
-            'valor' => 0.50,
-            'quantidade' => 1,
+            'nome' => 'Fone Inova',
+            'categoria_id' => 9,
+            'valor' => 18.00,
+            'quantidade' => 10
         ]);
 
         Produto::create([
             'nome' => 'Cabo HDMI',
-            'categoria_id' => 3,
-            'valor' => 18.50,
-            'quantidade' => 1,
+            'categoria_id' => 4,
+            'valor' => 18.00,
+            'quantidade' => 4
         ]);
 
         Produto::create([
-            'nome' => 'Redmin Airdots',
+            'nome' => 'Cabo VGA',
+            'categoria_id' => 4,
+            'valor' => 18.00,
+            'quantidade' => 4
+        ]);
+
+        Produto::create([
+            'nome' => 'Carregador Inova',
             'categoria_id' => 5,
-            'valor' => 80,
-            'quantidade' => 1,
+            'valor' => 25,
+            'quantidade' => 8
+        ]);
+
+        Produto::create([
+            'nome' => 'Pendrive 16GB',
+            'categoria_id' => 6,
+            'valor' => 30,
+            'quantidade' => 10
         ]);
     }
 }

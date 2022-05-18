@@ -34,12 +34,13 @@
                             {{ Form::hidden('quantidade', 1) }}
                             <h5 class="card-title">{{ $produtoItem->nome }}</h5>
                             <p class="card-text">{{ $produtoItem->valor }}</p>
-
+                            <p>{{ $produtoItem->quantidade }}</p>
+                            <hr>
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-cart-plus"></i>
                                 Adicionar
                             </button>
-
+                            {{ Form::close() }}
                         </div>
                     </div>
                 </div>
@@ -48,7 +49,7 @@
 
 
         {{-- container de carrinho de compras --}}
-        <div class="row row-cols-1 p-4 justify-content-start">
+        <div class="row row-cols-2 p-4 justify-content-start">
             <div class="card">
                 <h5 class="card-header bg-black">Caixa de Vendas</h5>
                 <div class="card-body text-center">
