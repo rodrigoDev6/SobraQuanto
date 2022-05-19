@@ -13,10 +13,10 @@ class PdvController extends Controller
     public function index(){
         $produtos = Produto::orderby('id', 'ASC')->get();
         return view('pdv.index',['produtos' => $produtos]);
+        
     }
-
     
-         /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
