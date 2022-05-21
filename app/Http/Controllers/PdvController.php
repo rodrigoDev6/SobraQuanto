@@ -62,7 +62,7 @@ class PdvController extends Controller
                 }
 
                 //3 recoloca o carrinho com uma nova quantidade
-                $request->sesion()->push('cart', $collection);
+                $request->session()->push('cart', $collection);
 
                 $cart = (array) $request->session()->get('cart');
 
@@ -72,11 +72,8 @@ class PdvController extends Controller
             $produto['message'] = $request->quantidade.  ' Produto Adicionado ao Carrinho';   
             echo json_encode($produto);
  
-    }
+            return redirect('/pdv')->with('status', 'Produto adicionado ao carrinho com sucesso!');
 
-    public function carrinho(Request $request){
-        $cart = (array) $request->session()->get('cart');
-        return view('pdv.carrinho',['cart' => $cart]);
     }
 
     public function removeProduto(Request $request, $key){
@@ -88,4 +85,22 @@ class PdvController extends Controller
         return redirect()->back()->with('message', 'Produto excluido com sucesso'); 
 
     }
+
+    public function carrinho(Request $request){
+
+        $cart = (array) $request->session()->get('cart');
+        return view('pdv.carrinho', ['cart' => $cart]);
+        /*foreach ($cart as $key => $value) {
+            //echo($value[$key]['nome']);
+            //echo $key . ' - ' . gettype($value), "\n";
+            foreach ($value as $key2 => $value2) {
+                //echo gettype($value2), "\n";
+                echo($value2['id'] . ' - ' . $value2['nome'] . ' - ' . $value2['quantidade'] . ' - ' . $value2['valor']);
+                //echo($value[$key]->nome);
+                echo('<br>');
+            }
+        }*/
+        }
+
+    
 }

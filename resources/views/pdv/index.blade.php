@@ -28,22 +28,14 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            {{ Form::open(['class' => 'addProduto']) }}
+                            {{ Form::open(['url' => '/addProduto', 'class' => 'addProduto']) }}
                             {{ Form::hidden('produto_id', $produtoItem->id) }}
                             {{ Form::hidden('nome', $produtoItem->nome) }}
                             <h5 class="card-title">{{ $produtoItem->nome }}</h5>
                             <p class="card-text">{{ $produtoItem->valor }}</p>
+
+
                             <hr>
-                            <div class="quantity">
-                                {{ Form::number('quantidade', 1, ['min' => '1']) }}
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <div class="btn btn-items btn-items-decrease">-</div>
-                                <input class="form-control text-center input-items" type="text" value="0">
-                                <div class="btn btn-items btn-items-increase">+</div>
-                            </div>
-
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-cart-plus"></i>
                                 Adicionar
@@ -60,11 +52,66 @@
 
 
         {{-- container de carrinho de compras --}}
-        <div class="row row-cols-2 p-4 justify-content-start">
+        <div class="row row-cols-1 p-4 justify-content-start">
             <div class="card">
                 <h5 class="card-header bg-black">Caixa de Vendas</h5>
                 <div class="card-body text-center">
-                    <h5 class="card-title text-center">Seu caixa está vazio</h5>
+
+                    @if (\Session::has('message'))
+                        <div class="alert alert-success">
+                            <ul>
+                                <li>{!! \Session::get('message') !!}</li>
+                            </ul>
+                        </div>
+                    @endif
+                    <dl class="dl-horizontal" style="width: 80%; margin: 0 auto;">
+
+                        <dt>Total:</dt>
+                        @if ($cart)
+
+                            <table class="table" style="width:100%;">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">id</th>
+                                        <th scope="col">nome</th>
+                                        <th scope="col">quantidade</th>
+                                        <th scope="col">valor</th>
+                                        <th scope="col">total</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                @php($totaGeral = 0)
+
+                                @foreach ($cart as $key => $value)
+                                    @foreach ($value as $key2 => $value2)
+                                        <tr>
+                                            <td>{{ $value2['id'] }}</td>
+                                            <td>{{ $value2['nome'] }}</td>
+                                            <td>{{ $value2['quantidade'] }}</td>
+                                            <td>{{ $value2['valor'] }}</td>
+                                            <td>{{ $value2['quantidade'] * $value2['valor'] }}</td>
+                                            <td>
+                                                {{ Form::open(['url' => 'removeProduto/' . $key]) }}
+                                                {{ Form::hidden('_method', 'DELETE') }}
+                                                {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
+                                                {{ Form::close() }}</td>
+                                        </tr>
+                                        @php($totaGeral += $value2['quantidade'] * $value2['valor'])
+                                    @endforeach
+                                @endforeach
+                                </tr>
+                            </table>
+                            <b>Total geral = R$
+                                {{ $totaGeral }} </b> <br>
+
+
+                            <a class="btn btn-lg btn-success mb-2" href="{{ URL::to('/checkout') }}">Realizar pedido</a>
+                        @else
+                            Carrinho vazio!
+                        @endif
+
+                    </dl>
 
                     <hr>
 
