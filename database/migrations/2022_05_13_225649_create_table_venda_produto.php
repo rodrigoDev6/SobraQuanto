@@ -1,10 +1,10 @@
-<?php
+ <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableProduto extends Migration
+class CreateTableVendaProduto extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateTableProduto extends Migration
      */
     public function up()
     {
-        Schema::create('produto', function (Blueprint $table) {
+        Schema::create('venda_produto', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->integer('categoria_id');
-            $table->decimal('valor',8,2);
+            $table->integer('venda_id');
+            $table->integer('produto_id');
             $table->integer('quantidade');
+            $table->float('valor', 8, 2);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateTableProduto extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produto');
+        Schema::dropIfExists('venda_produto');
     }
 }

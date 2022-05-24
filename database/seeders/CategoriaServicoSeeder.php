@@ -15,19 +15,16 @@ class CategoriaServicoSeeder extends Seeder
     public function run()
     {
         CategoriaServico::create([
-            'nome' => 'Banner'
+            'nome' => 'Manutenção de computadores'
         ]);
         CategoriaServico::create([
-            'nome' => 'Arte'	
+            'nome' => 'Formatação'	
         ]);
         CategoriaServico::create([
-            'nome' => 'Limpeza'
+            'nome' => 'Gráfica'
         ]);
         CategoriaServico::create([
-            'nome' => 'Formatação'
-        ]);
-        CategoriaServico::create([
-            'nome' => 'Instalação'
+            'nome' => 'Instalação de câmeras'
         ]);
     }
 }
