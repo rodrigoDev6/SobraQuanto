@@ -12,7 +12,7 @@
                     <div class="card-header mt">{{ __('Novo Produto:') }}</div>
 
 
-                    {!! Form::open(['url' => '/usuarios/create']) !!}
+                    {!! Form::open(['url' => '/usuario/create']) !!}
                     <div class="card-body col-12">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">

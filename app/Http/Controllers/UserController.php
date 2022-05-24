@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index(){
         $user = User::orderBy('id', 'ASC')->get();
-        return view('usuarios.index', ['user' => $user]);
+        return view('usuario.index', ['user' => $user]);
     }
 
     /**
@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('usuarios.create');
+        return view('usuario.create');
     }
 
 
@@ -37,7 +37,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'name.required' => 'O campo Nome é obrigatório!',
+            'nome.required' => 'O campo Nome é obrigatório!',
             'email.required' => 'O campo E-mail é obrigatório!',
             'perfil.required' => 'O campo Perfil é obrigatório!',
             'password.required' => 'O campo Senha é obrigatório!',
@@ -52,15 +52,73 @@ class UserController extends Controller
 
         $user = new User;
 
-        $user -> name = $request->nome;
+        $user -> nome = $request->nome;
         $user -> email = $request->email;
         $user -> perfil = $request->perfil;
         $user -> password = $request->password;
-
         $user -> save();
 
-        return redirect('/usuarios')->with('status', 'Usuário criado com sucesso!!');
+        return redirect('/usuario')->with('status', 'Usuário criado com sucesso!!');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param \App\Models\Usuario $usuario
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $usuario = Usuario::findOrFail($id);
+        return view('usuario.show',['usuario' => $usuario]);
+        
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $usuario
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $usuario = Usuario::findOrFail($id);
+        return view('usuario.edit', ['usuario' => $usuario]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Models\Usuario $usuario
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $messages = [
+            'id.required' => 'O campo :attribute é obrigatório',
+            'nome.required' => 'O campo nome é obrigatório!',
+            'email.required' => 'O campo email é obrigatório!',
+            'perfil.required' => 'O campo perfil obrigatório!',
+            
+        ];
+
+        $validate = $request->validate([
+            'id' => 'required|min:5',
+            'nome' => 'required|min:11' ,
+            'email' => 'required|min:9',
+            'perfil' => 'required|min:4',
+        ], $messages);
+        
+        $usuario = Usuario::findOrFail($request->id);
+        $usuario -> nome = $request -> nome;
+        $usuario -> id = $request -> id;
+        $usuario -> email = $request -> email;
+        $usuario -> perfil = $request -> perfil;
+        $usuario->save();
+    
+        return redirect('/usuario')->with('status', 'Usuário alterado com sucess!!');
+    }
+
+    
 }

@@ -31,7 +31,7 @@
                 <tr>
                     <td>{{ $usuario->id }}</td>
                     <td>{{ $usuario->email }}</td>
-                    <td>{{ $usuario->name }}</td>
+                    <td>{{ $usuario->nome }}</td>
                     <td>{{ $usuario->perfil }}</td>
                     <td>
 
