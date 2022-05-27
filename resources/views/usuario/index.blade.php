@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <a href="{{ URL::to('usuarios/create') }}">
+    <a href="{{ URL::to('usuario/create') }}">
         <button class="btn btn-outline-success mb-3">
             <i class="fas fa-plus"></i>
             Adicionar usuário
@@ -36,12 +36,12 @@
                     <td>
 
                         {{-- btn-visualizar --}}
-                        <a href="{{ url('usuarios/' . $usuario->id) }}" class="btn btn-primary">
+                        <a href="{{ url('usuario/' . $usuario->id) }}" class="btn btn-primary">
                             <i class="fas fa-eye"></i>
                             Visualizar
                         </a>
                         {{-- Btn editar --}}
-                        <a href="{{ url('usuarios/' . $usuario->id . '/edit') }}" class="btn btn-info mx-5">
+                        <a href="{{ url('usuario/' . $usuario->id . '/edit') }}" class="btn btn-info mx-5">
                             <i class="fas fa-edit"></i>
                             Editar
                         </a>
@@ -50,7 +50,8 @@
                         <a class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete" href="">
                             <i class="fas fa-trash">
                             </i>
-                            Excluir</a>
+                            Excluir
+                        </a>
                     </td>
 
                 </tr>
@@ -75,7 +76,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        {{ Form::open(['url' => 'usuarios/' . $value->id, 'onsubmit' => 'return ConfirmDelete()']) }}
+                        {{ Form::open(['url' => 'usuario/' . $value->id, 'onsubmit' => 'return ConfirmDelete()']) }}
                         {{ Form::hidden('_method', 'DELETE') }}
                         {{ Form::submit('Excluir Permanentetemente', ['class' => 'btn btn-danger']) }}
                         {{ Form::close() }}

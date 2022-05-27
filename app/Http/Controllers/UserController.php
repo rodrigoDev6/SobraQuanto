@@ -64,12 +64,12 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Usuario $usuario
+     * @param \App\Models\User $usuario
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $usuario = Usuario::findOrFail($id);
+        $usuario = User::findOrFail($id);
         return view('usuario.show',['usuario' => $usuario]);
         
     }
@@ -82,7 +82,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $usuario = Usuario::findOrFail($id);
+        $usuario = User::findOrFail($id);
         return view('usuario.edit', ['usuario' => $usuario]);
     }
 
@@ -90,7 +90,7 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param \App\Models\Usuario $usuario
+     * @param \App\Models\User $usuario
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -110,14 +110,14 @@ class UserController extends Controller
             'perfil' => 'required|min:4',
         ], $messages);
         
-        $usuario = Usuario::findOrFail($request->id);
+        $usuario = User::findOrFail($request->id);
         $usuario -> nome = $request -> nome;
         $usuario -> id = $request -> id;
         $usuario -> email = $request -> email;
         $usuario -> perfil = $request -> perfil;
         $usuario->save();
     
-        return redirect('/usuario')->with('status', 'Usuário alterado com sucess!!');
+        return redirect('/usuario')->with('status', 'Usuário alterado com sucesso!!');
     }
 
     

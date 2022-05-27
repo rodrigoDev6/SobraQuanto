@@ -239,7 +239,7 @@ return [
         ],
         [
             'text'        => 'Usuários',
-            'url'         => 'usuarios',
+            'url'         => 'usuario',
             'icon'        => 'fas fa-user',
         ],
         [

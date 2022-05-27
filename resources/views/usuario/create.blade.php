@@ -66,7 +66,7 @@
                             <div class="form-group col">
                                 {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
 
-                                <a class="btn btn-default float-right" href="{{ route('usuarios') }}">Cancelar</a>
+                                <a class="btn btn-default float-right" href="{{ route('usuario') }}">Cancelar</a>
                             </div>
                         </div>
                     </div>
