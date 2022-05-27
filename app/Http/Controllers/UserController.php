@@ -103,10 +103,11 @@ class UserController extends Controller
         ];
 
         $validate = $request->validate([
-            'nome' => 'required|min:11' ,
+            'nome' => 'required|min:5' ,
             'email' => 'required|min:9',
             'perfil' => 'required|min:4',
             'senha' => 'required|min:6'
+
         ], $messages);
         
         $usuario = User::findOrFail($request->id);

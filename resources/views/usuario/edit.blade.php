@@ -37,20 +37,21 @@
                                 {{ Form::label('email', 'Email:') }}
                                 {{ Form::text('email', $usuario->email, ['class' => 'form-control']) }}
                             </div>
-                            
+
                             <div class="form-group col-6">
                                 {{ Form::label('perfil', 'Selecione o perfil de usuário:') }}
                                 {{ Form::select('perfil', ['admin' => 'Administrador', 'padrao' => 'Padrão  '], null, [
                                     'class' => 'form-control',
                                 ]) }}
                             </div>
-                            
+
                             <div class="form-group col-6">
                                 {{ Form::label('password', 'Senha:') }}
                                 {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Senha']) }}
                             </div>
                         </div>
-                   <div class="row col-12">
+                        
+                        <div class="row col-12">
                             <div class="form-group col">
                                 {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
 
