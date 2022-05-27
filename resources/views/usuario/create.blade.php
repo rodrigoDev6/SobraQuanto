@@ -9,7 +9,7 @@
             <div class="col-md-8">
 
                 <div class="card card-primary mt-5">
-                    <div class="card-header mt">{{ __('Novo Produto:') }}</div>
+                    <div class="card-header mt">{{ __('Novo Usuario:') }}</div>
 
 
                     {!! Form::open(['url' => '/usuario/create']) !!}
@@ -37,12 +37,12 @@
                         <div class="row col-12">
                             <div class="form-group col-6">
                                 {{ Form::label('nome', 'Nome:') }}
-                                {{ Form::text('nome', '', ['class' => 'form-control', 'placeholder' => 'Nome']) }}
+                                {{ Form::text('nome', $usuario->nome, ['class' => 'form-control', 'placeholder' => 'Nome']) }}
                             </div>
 
                             <div class="form-group col-6">
-                                {{ Form::label('email', 'E-mail:') }}
-                                {{ Form::email('email', '', ['class' => 'form-control', 'placeholder' => 'E-mail']) }}
+                                {{ Form::label('email', 'Email:') }}
+                                {{ Form::email('email', $usario->email, ['class' => 'form-control', 'placeholder' => 'Email']) }}
                             </div>
 
                             <div class="form-group col-6">
