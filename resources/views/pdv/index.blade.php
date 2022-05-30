@@ -31,16 +31,32 @@
                             {{ Form::open(['url' => '/addProduto', 'class' => 'addProduto']) }}
                             {{ Form::hidden('produto_id', $produtoItem->id) }}
                             {{ Form::hidden('nome', $produtoItem->nome) }}
+                            {{ Form::hidden('valor', $produtoItem->valor) }}
                             <h5 class="card-title">{{ $produtoItem->nome }}</h5>
                             <p class="card-text">{{ $produtoItem->valor }}</p>
 
+                            <div class="input-group mb-3">
+                                <span class="input-group-btn">
+                                    <button type="button" class="quantity-left-minus btn btn-danger btn-number"
+                                        data-type="minus" data-field="">
+                                        <i class="fas fa-solid fa-minus"></i>
+                                    </button>
+                                </span>
+                                <input type="text" id="quantity" name="quantity" class="form-control input-number"
+                                    value="10" min="1" max="100">
+                                <span class="input-group-btn">
+                                    <button type="button" class="quantity-right-plus btn btn-success btn-number"
+                                        data-type="plus" data-field="">
+                                        <i class="fas fa-solid fa-plus"></i>
+                                    </button>
+                                </span>
 
+                            </div>
                             <hr>
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-cart-plus"></i>
                                 Adicionar
                             </button>
-
 
                             {{ Form::close() }}
                         </div>
@@ -67,7 +83,10 @@
                     <dl class="dl-horizontal" style="width: 80%; margin: 0 auto;">
 
                         <dt>Total:</dt>
-                        @if ($cart)
+                        @foreach ($produtos as $key => $cart)
+                            <dd>{{ $cart->id }} | {{ $cart->nome }}</dd>
+                        @endforeach
+                        {{-- @if ($cart)
 
                             <table class="table" style="width:100%;">
                                 <thead>
@@ -107,10 +126,9 @@
 
 
                             <a class="btn btn-lg btn-success mb-2" href="{{ URL::to('/checkout') }}">Realizar pedido</a>
-                        @else
-                            Carrinho vazio!
-                        @endif
-
+                        @else 
+                        Carrinho vazio!
+                        @endif --}}
                     </dl>
 
                     <hr>

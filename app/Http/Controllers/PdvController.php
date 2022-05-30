@@ -25,12 +25,13 @@ class PdvController extends Controller
     {
         //echo getttype($cart), "\n";
 
+       
         $collection = collect(
             [
             [
                 'id' => $request->id,
                 'nome' => $request->nome,
-                'preco' => $request->preco,
+                'valor' => $request->valor,
                 'quantidade' => $request->quantidade,
                 'total' => $request->total,
             ]
@@ -65,7 +66,6 @@ class PdvController extends Controller
                 $request->session()->push('cart', $collection);
 
                 $cart = (array) $request->session()->get('cart');
-
             }
 
             $produto['success'] = false;
