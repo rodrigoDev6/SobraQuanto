@@ -8,6 +8,14 @@
 
 @section('content')
     <p>PDV onde as vendas do caixa serão realizadas. Tela 10/43</p>
+    @if (\Session::has('message'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {!! \Session::get('message') !!}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 
     {{-- container principal --}}
     <div class="row row-cols-1">
@@ -73,19 +81,7 @@
                                         </div>
                                         {{-- coluna com quantidade --}}
                                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <button class="btn btn-link px-2"
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-
-                                            <input id="form1" min="0" name="quantidade"
-                                                value="{{ $value['quantidade'] }}" type="number"
-                                                class="form-control form-control-sm" />
-
-                                            <button class="btn btn-link px-2"
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
+                                            <p class="lead fw-normal mb-2">{{ $value['quantidade'] }}</p>
                                         </div>
 
                                         {{-- coluna com valor total --}}
@@ -110,7 +106,8 @@
                         @endforeach
                     @else
                         <div>
-                            <p class="h4" style="font-family: Open Sans; font-weight: 700">Seu caixa está
+                            <p class="h4" style="font-family: Open Sans; font-weight: 700">Seu caixa
+                                está
                                 vazio!</p>
                             <span
                                 style="font-family: 'Open Sans';font-style: normal;font-weight: 800; font-size: 14px; color: #485673;">Adicione
@@ -129,7 +126,7 @@
                 <div class="card-body text-center">
 
                     @if (\Session::has('message'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-success" id="removeProduto">
                             <ul>
                                 <li>{!! \Session::get('message') !!}</li>
                             </ul>
@@ -190,7 +187,8 @@
                             </button>
                         @else
                             <div>
-                                <p class="h4" style="font-family: Open Sans; font-weight: 700">Seu caixa está
+                                <p class="h4" style="font-family: Open Sans; font-weight: 700">Seu caixa
+                                    está
                                     vazio!</p>
                                 <span
                                     style="font-family: 'Open Sans';font-style: normal;font-weight: 800; font-size: 14px; color: #485673;">Adicione
@@ -236,6 +234,12 @@
                 });
             });
         });
+
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove();
+            });
+        }, 2000);
     </script>
 
 

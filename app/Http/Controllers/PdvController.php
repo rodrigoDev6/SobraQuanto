@@ -84,7 +84,7 @@ class PdvController extends Controller
         unset($cart[$key]);
         $request->session()->forget('cart');
         $request->session()->put('cart', $cart);
-        return redirect()->back()->with('message', 'Produto excluido com sucesso'); 
+        return redirect()->back()->with('message', 'Produto removido com sucesso'); 
 
     }
 

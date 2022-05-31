@@ -27,6 +27,7 @@
         </thead>
 
         <tbody>
+            {{-- correto --}}
             @foreach ($user as $usuario)
                 <tr>
                     <td>{{ $usuario->id }}</td>
