@@ -31,8 +31,8 @@
                             </tr>
                         </thead>
 
-                        @php($totaGeral = 0)
 
+                        @php($totalGeral = 0)
                         @foreach ($cart as $key => $value)
                             @foreach ($value as $key2 => $value2)
                                 <tr>
