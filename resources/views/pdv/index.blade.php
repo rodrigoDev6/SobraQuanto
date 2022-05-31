@@ -29,9 +29,10 @@
                     <div class="card">
                         <div class="card-body">
                             {{ Form::open(['url' => '/addProduto', 'class' => 'addProduto']) }}
-                            {{ Form::hidden('produto_id', $produtoItem->id) }}
+                            {{ Form::hidden('id', $produtoItem->id) }}
                             {{ Form::hidden('nome', $produtoItem->nome) }}
                             {{ Form::hidden('valor', $produtoItem->valor) }}
+                            {{-- {{ Form::hidden('quantidade', $produtoItem->quantidade) }} --}}
                             <h5 class="card-title">{{ $produtoItem->nome }}</h5>
                             <p class="card-text">{{ $produtoItem->valor }}</p>
 
@@ -42,8 +43,8 @@
                                         <i class="fas fa-solid fa-minus"></i>
                                     </button>
                                 </span>
-                                <input type="text" id="quantity" name="quantity" class="form-control input-number"
-                                    value="10" min="1" max="100">
+                                <input type="text" id="quantity" name="quantidade" class="form-control input-number"
+                                    value="1" min="1" max="100">
                                 <span class="input-group-btn">
                                     <button type="button" class="quantity-right-plus btn btn-success btn-number"
                                         data-type="plus" data-field="">
