@@ -2,15 +2,6 @@
 
 @section('title', 'Sobra Quanto')
 
-<head>
-    <style>
-        .card-title {
-            float: none !important;
-        }
-
-    </style>
-</head>
-
 @section('content_header')
     <h1>Painel de venda</h1>
 @stop
@@ -32,27 +23,10 @@
                             {{ Form::hidden('id', $produtoItem->id) }}
                             {{ Form::hidden('nome', $produtoItem->nome) }}
                             {{ Form::hidden('valor', $produtoItem->valor) }}
-                            {{-- {{ Form::hidden('quantidade', $produtoItem->quantidade) }} --}}
                             <h5 class="card-title">{{ $produtoItem->nome }}</h5>
                             <p class="card-text">{{ $produtoItem->valor }}</p>
-
-                            <div class="input-group mb-3">
-                                <span class="input-group-btn">
-                                    <button type="button" class="quantity-left-minus btn btn-danger btn-number"
-                                        data-type="minus" data-field="">
-                                        <i class="fas fa-solid fa-minus"></i>
-                                    </button>
-                                </span>
-                                <input type="text" id="quantity" name="quantidade" class="form-control input-number"
-                                    value="1" min="1" max="100">
-                                <span class="input-group-btn">
-                                    <button type="button" class="quantity-right-plus btn btn-success btn-number"
-                                        data-type="plus" data-field="">
-                                        <i class="fas fa-solid fa-plus"></i>
-                                    </button>
-                                </span>
-
-                            </div>
+                            <span> Estoque: {{ $produtoItem->quantidade }}</span>
+                            {{ Form::number('quantidade', 1, ['min' => 1, 'class' => 'text-center form-control col-4']) }}
                             <hr>
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-cart-plus"></i>
@@ -67,6 +41,63 @@
         </div>
 
 
+        {{-- container de carrinho de compras-2-novo --}}
+        <div class="row row-cols-1 p-4 justify-content-start">
+            <div class="card">
+                <div class="card-header" style="background-color: #485673">
+                    <p class="h3" style="color: #f3f3f3">Caixa de Vendas</p>
+                </div>
+                <div class="card-body text-center">
+
+                    @if (\Session::has('message'))
+                        <div class="alert alert-success">
+                            <ul>
+                                <li>{!! \Session::get('message') !!}</li>
+                            </ul>
+                        </div>
+                    @endif
+                    <dl class="dl-horizontal" style="width: 80%; margin: 0 auto;">
+
+                        {{-- @foreach ($produtos as $key => $cart) --}}
+                        {{-- <dd>{{ $cart->id }} | {{ $cart->nome }}</dd> --}}
+                        {{-- @endforeach --}}
+
+                        @if ($cart)
+
+
+                            @php($totaGeral = 0)
+
+                            @foreach ($cart as $key => $value)
+                                @foreach ($value as $key2 => $value2)
+                                    @php($totaGeral += $value2['quantidade'] * $value2['valor'])
+                                @endforeach
+                            @endforeach
+
+
+                            <hr>
+                            <span>
+                                Total = R$
+                                {{ $totaGeral }}
+                            </span>
+
+                            <br>
+                            <button class="btn btn-success" type="submit">
+                                <i class="fas fa-cart-plus"></i>
+                                Finalizar Venda
+                            </button>
+                        @else
+                            <div>
+                                <p class="h4" style="font-family: Open Sans; font-weight: 700">Seu caixa está
+                                    vazio!</p>
+                                <span
+                                    style="font-family: 'Open Sans';font-style: normal;font-weight: 800; font-size: 14px; color: #485673;">Adicione
+                                    itens</span>
+                            </div>
+                        @endif
+                    </dl>
+                </div>
+            </div>
+        </div>
 
         {{-- container de carrinho de compras --}}
         <div class="row row-cols-1 p-4 justify-content-start">
@@ -83,7 +114,6 @@
                     @endif
                     <dl class="dl-horizontal" style="width: 80%; margin: 0 auto;">
 
-                        <dt>Total:</dt>
                         {{-- @foreach ($produtos as $key => $cart) --}}
                         {{-- <dd>{{ $cart->id }} | {{ $cart->nome }}</dd> --}}
                         {{-- @endforeach --}}
@@ -123,22 +153,27 @@
                                 @endforeach
                                 </tr>
                             </table>
-                            <b>Total geral = R$
-                                {{ $totaGeral }} </b> <br>
 
+                            <hr>
+                            <span>
+                                Total = R$
+                                {{ $totaGeral }}
+                            </span>
 
-                            <a class="btn btn-lg btn-success mb-2" href="{{ URL::to('/checkout') }}">Realizar pedido</a>
+                            <br>
+                            <button class="btn btn-success" type="submit">
+                                <i class="fas fa-cart-plus"></i>
+                                Finalizar Venda
+                            </button>
                         @else
                             Carrinho vazio!
                         @endif
                     </dl>
-
-                    <hr>
-
-                    <span>Total:</span>
                 </div>
             </div>
         </div>
+
+
     </div>
 
 
