@@ -9,7 +9,6 @@
 @section('content')
     <p>PDV onde as vendas do caixa serão realizadas. Tela 10/43</p>
 
-
     {{-- container principal --}}
     <div class="row row-cols-1">
 
@@ -50,51 +49,75 @@
                 <div class="card-body text-center">
 
                     @if (\Session::has('message'))
-                        <div class="alert alert-success">
-                            <ul>
-                                <li>{!! \Session::get('message') !!}</li>
-                            </ul>
+                        <div class="alert alert-success" role="alert">
+                            {!! \Session::get('message') !!}
                         </div>
                     @endif
-                    <dl class="dl-horizontal" style="width: 80%; margin: 0 auto;">
-
-                        {{-- @foreach ($produtos as $key => $cart) --}}
-                        {{-- <dd>{{ $cart->id }} | {{ $cart->nome }}</dd> --}}
-                        {{-- @endforeach --}}
-
-                        @if ($cart)
 
 
-                            @php($totaGeral = 0)
+                    {{-- produtos no carrinho --}}
+                    @if ($cart)
 
-                            @foreach ($cart as $key => $value)
-                                @foreach ($value as $key2 => $value2)
-                                    @php($totaGeral += $value2['quantidade'] * $value2['valor'])
-                                @endforeach
+                        @php($totalGeral = 0)
+
+
+
+                        @foreach ($cart as $key => $cartItem)
+                            @foreach ($cartItem as $key => $value)
+                                <div class="card-body p-4">
+                                    <div class="row d-flex justify-content-between align-items-center">
+
+                                        {{-- Coluna com nome do produto --}}
+                                        <div class="col-md-3 col-lg-3 col-xl-3">
+                                            <p class="lead fw-normal mb-2">{{ $value['nome'] }}</p>
+                                        </div>
+                                        {{-- coluna com quantidade --}}
+                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                            <button class="btn btn-link px-2"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+
+                                            <input id="form1" min="0" name="quantidade"
+                                                value="{{ $value['quantidade'] }}" type="number"
+                                                class="form-control form-control-sm" />
+
+                                            <button class="btn btn-link px-2"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+
+                                        {{-- coluna com valor total --}}
+                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                            {{-- multiplica o valor unitário com a quantidade --}}
+                                            <h5 class="mb-0">R$ {{ $value['valor'] }}</h5>
+                                        </div>
+
+                                        {{-- coluna para remover produto --}}
+                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+
+                                            {{ Form::open(['url' => 'removeProduto/' . $key]) }}
+                                            {{ Form::hidden('_method', 'DELETE') }}
+                                            {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
+                                            {{ Form::close() }}
+                                        </div>
+
+                                        @php($totalGeral += $value['quantidade'] * $value['valor'])
+                                    </div>
+                                </div>
                             @endforeach
+                        @endforeach
+                    @else
+                        <div>
+                            <p class="h4" style="font-family: Open Sans; font-weight: 700">Seu caixa está
+                                vazio!</p>
+                            <span
+                                style="font-family: 'Open Sans';font-style: normal;font-weight: 800; font-size: 14px; color: #485673;">Adicione
+                                itens</span>
+                        </div>
+                    @endif
 
-
-                            <hr>
-                            <span>
-                                Total = R$
-                                {{ $totaGeral }}
-                            </span>
-
-                            <br>
-                            <button class="btn btn-success" type="submit">
-                                <i class="fas fa-cart-plus"></i>
-                                Finalizar Venda
-                            </button>
-                        @else
-                            <div>
-                                <p class="h4" style="font-family: Open Sans; font-weight: 700">Seu caixa está
-                                    vazio!</p>
-                                <span
-                                    style="font-family: 'Open Sans';font-style: normal;font-weight: 800; font-size: 14px; color: #485673;">Adicione
-                                    itens</span>
-                            </div>
-                        @endif
-                    </dl>
                 </div>
             </div>
         </div>
@@ -166,7 +189,13 @@
                                 Finalizar Venda
                             </button>
                         @else
-                            Carrinho vazio!
+                            <div>
+                                <p class="h4" style="font-family: Open Sans; font-weight: 700">Seu caixa está
+                                    vazio!</p>
+                                <span
+                                    style="font-family: 'Open Sans';font-style: normal;font-weight: 800; font-size: 14px; color: #485673;">Adicione
+                                    itens</span>
+                            </div>
                         @endif
                     </dl>
                 </div>
