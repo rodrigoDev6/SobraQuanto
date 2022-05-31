@@ -10,9 +10,11 @@ use App\Models\VendaProduto;
 
 class PdvController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $produtos = Produto::orderby('id', 'ASC')->get();
-        return view('pdv.index',['produtos' => $produtos]);
+        $cart = (array) $request->session()->get('cart');
+        //dd($cart);
+        return view('pdv.index',['produtos' => $produtos, 'cart' => $cart]);
         
     }
     

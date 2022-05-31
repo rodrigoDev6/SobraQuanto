@@ -83,10 +83,11 @@
                     <dl class="dl-horizontal" style="width: 80%; margin: 0 auto;">
 
                         <dt>Total:</dt>
-                        @foreach ($produtos as $key => $cart)
-                            <dd>{{ $cart->id }} | {{ $cart->nome }}</dd>
-                        @endforeach
-                        {{-- @if ($cart)
+                        {{-- @foreach ($produtos as $key => $cart) --}}
+                        {{-- <dd>{{ $cart->id }} | {{ $cart->nome }}</dd> --}}
+                        {{-- @endforeach --}}
+
+                        @if ($cart)
 
                             <table class="table" style="width:100%;">
                                 <thead>
@@ -126,9 +127,9 @@
 
 
                             <a class="btn btn-lg btn-success mb-2" href="{{ URL::to('/checkout') }}">Realizar pedido</a>
-                        @else 
-                        Carrinho vazio!
-                        @endif --}}
+                        @else
+                            Carrinho vazio!
+                        @endif
                     </dl>
 
                     <hr>
