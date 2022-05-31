@@ -27,12 +27,12 @@
         </thead>
 
         <tbody>
-            @foreach ($user as $usuario)
+            @foreach ($usuario as $value)
                 <tr>
-                    <td>{{ $usuario->id }}</td>
-                    <td>{{ $usuario->email }}</td>
-                    <td>{{ $usuario->nome }}</td>
-                    <td>{{ $usuario->perfil }}</td>
+                    <td>{{ $value->id }}</td>
+                    <td>{{ $value->email }}</td>
+                    <td>{{ $value->nome }}</td>
+                    <td>{{ $value->perfil }}</td>
                     <td>
 
                         {{-- btn-visualizar --}}
@@ -59,7 +59,7 @@
         </tbody>
 
     </table>
-    @foreach ($user as $value)
+    @foreach ($usuario as $value)
         <!-- Modal -->
         <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
