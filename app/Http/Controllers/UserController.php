@@ -40,14 +40,14 @@ class UserController extends Controller
             'nome.required' => 'O campo Nome é obrigatório!',
             'email.required' => 'O campo E-mail é obrigatório!',
             'perfil.required' => 'O campo Perfil é obrigatório!',
-            'password.required' => 'O campo Senha é obrigatório!',
+            'senha.required' => 'O campo Senha é obrigatório!',
         ];
 
         $validate = $request->validate([
             'nome' => 'required|min:5',
             'email' => 'required|email',
             'perfil' => 'required',
-            'password' => 'required|min:5',
+            'senha' => 'required|min:5',
         ], $messages);
 
         $user = new User;
@@ -55,7 +55,7 @@ class UserController extends Controller
         $user -> nome = $request->nome;
         $user -> email = $request->email;
         $user -> perfil = $request->perfil;
-        $user -> password = $request->password;
+        $user -> senha = $request->senha;
         $user -> save();
 
         return redirect('/usuario')->with('status', 'Usuário criado com sucesso!!');

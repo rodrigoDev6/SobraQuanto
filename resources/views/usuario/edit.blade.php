@@ -7,10 +7,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="mb-3">Usuario selecionado:</h1>
 
                 <div class="card card-primary ">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header">{{ __('Editar Usuário') }}</div>
 
                     {{-- procurando usuario --}}
                     {{ Form::model($usuario, ['route' => ['usuario.update', $usuario->id], 'method' => 'PUT']) }}
@@ -40,17 +39,15 @@
 
                             <div class="form-group col-6">
                                 {{ Form::label('perfil', 'Selecione o perfil de usuário:') }}
-                                {{ Form::select('perfil', ['admin' => 'Administrador', 'padrao' => 'Padrão  '], null, [
-                                    'class' => 'form-control',
-                                ]) }}
+                                {{ Form::select('perfil', ['admin' => 'Administrador', 'padrao' => 'Padrão  '], null, ['class' => 'form-control']) }}
                             </div>
 
                             <div class="form-group col-6">
                                 {{ Form::label('password', 'Senha:') }}
-                                {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Senha']) }}
+                                {{ Form::password('senha', ['class' => 'form-control', 'placeholder' => 'Senha']) }}
                             </div>
                         </div>
-                        
+
                         <div class="row col-12">
                             <div class="form-group col">
                                 {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}

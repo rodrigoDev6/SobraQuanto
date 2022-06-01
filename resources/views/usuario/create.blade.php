@@ -45,44 +45,44 @@
                             <div class="form-group col-6">
                                 {!! Form::label('email', 'E-mail:') !!}
                                 {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Digite seu email']) !!}
-                                {{-- {!! Form::label('email', 'Email:') !!}
-                                {{ Form::email('email', ['class' => 'form-control', 'placeholder' => 'Email']) }}
+
                             </div>
                             <div class="form-group col-6">
-                                {{ Form::label('perfil', 'Selecione o perfil de usuário:') }}
-                                {{ Form::select('perfil', ['class' => 'form-control', 'admin' => 'Administrador', 'padrao' => 'Padrão']) }}
+                                {!! Form::label('perfil', 'Selecione o perfil de usuário:') !!}
+                                {!! Form::select('perfil', ['admin' => 'Administrador', 'padrao' => 'Padrão'], null, ['class' => 'form-control']) !!}
+
                             </div>
 
                             <div class="form-group col-6">
-                                {{ Form::label('password', 'Senha:') }}
-                                {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Senha']) }}
-                            </div> --}}
-
+                                {!! Form::label('password', 'Senha:') !!}
+                                {!! Form::password('senha', ['class' => 'form-control', 'placeholder' => 'Senha']) !!}
                             </div>
 
-
-
-
-
-                            <div class="row col-12">
-                                <div class="form-group col">
-                                    {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
-
-                                    <a class="btn btn-default float-right" href="{{ route('usuario') }}">Cancelar</a>
-                                </div>
-                            </div>
-
-                            {{ Form::close() }}
                         </div>
 
 
+
+
+
+                        <div class="row col-12">
+                            <div class="form-group col">
+                                {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
+
+                                <a class="btn btn-default float-right" href="{{ route('usuario') }}">Cancelar</a>
+                            </div>
+                        </div>
+
+                        {{ Form::close() }}
                     </div>
+
+
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
 
-    @section('css')
-        <link rel="stylesheet" href="/css/admin_custom.css">
-        <link rel="icon" href="img/sobraquanto.png">
-    @stop
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="icon" href="img/sobraquanto.png">
+@stop
