@@ -12,7 +12,6 @@
                     <div class="card-header mt">{{ __('Novo Usuario:') }}</div>
 
 
-                    {!! Form::open(['url' => '/usuario/create']) !!}
                     <div class="card-body col-12">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -34,51 +33,56 @@
 
 
 
+                        {!! Form::open(['url' => '/usuario/create']) !!}
                         <div class="row col-12">
                             <div class="form-group col-6">
-                                {{ Form::label('nome', 'Nome:') }}
-                                {{ Form::text('nome', $usuario->nome, ['class' => 'form-control', 'placeholder' => 'Nome']) }}
+                                {{-- {!! Form::label('nome', 'Nome:') !!}
+                                {{ Form::text('nome', ['class' => 'form-control', 'placeholder' => 'Nome']) }} --}}
+                                {!! Form::label('nome', 'Nome:') !!}
+                                {!! Form::text('nome', null, ['class' => 'form-control', 'placeholder' => 'Nome']) !!}
                             </div>
 
                             <div class="form-group col-6">
-                                {{ Form::label('email', 'Email:') }}
-                                {{ Form::email('email', $usario->email, ['class' => 'form-control', 'placeholder' => 'Email']) }}
+                                {!! Form::label('email', 'E-mail:') !!}
+                                {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Digite seu email']) !!}
+                                {{-- {!! Form::label('email', 'Email:') !!}
+                                {{ Form::email('email', ['class' => 'form-control', 'placeholder' => 'Email']) }}
                             </div>
-
                             <div class="form-group col-6">
                                 {{ Form::label('perfil', 'Selecione o perfil de usuário:') }}
-                                {{ Form::select('perfil', ['admin' => 'Administrador', 'padrao' => 'Padrão  '], null, [
-                                    'class' => 'form-control',
-                                ]) }}
+                                {{ Form::select('perfil', ['class' => 'form-control', 'admin' => 'Administrador', 'padrao' => 'Padrão']) }}
                             </div>
 
                             <div class="form-group col-6">
                                 {{ Form::label('password', 'Senha:') }}
                                 {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Senha']) }}
+                            </div> --}}
+
                             </div>
+
+
+
+
+
+                            <div class="row col-12">
+                                <div class="form-group col">
+                                    {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
+
+                                    <a class="btn btn-default float-right" href="{{ route('usuario') }}">Cancelar</a>
+                                </div>
+                            </div>
+
+                            {{ Form::close() }}
                         </div>
 
 
-
-
-
-                        <div class="row col-12">
-                            <div class="form-group col">
-                                {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
-
-                                <a class="btn btn-default float-right" href="{{ route('usuario') }}">Cancelar</a>
-                            </div>
-                        </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-    <link rel="icon" href="img/sobraquanto.png">
-@stop
+    @section('css')
+        <link rel="stylesheet" href="/css/admin_custom.css">
+        <link rel="icon" href="img/sobraquanto.png">
+    @stop
