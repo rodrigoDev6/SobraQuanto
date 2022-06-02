@@ -54,52 +54,51 @@
                 <div class="card-header" style="background-color: #485673">
                     <p class="h3" style="color: #f3f3f3">Caixa de Vendas</p>
                 </div>
-                <div class="card-body text-center">
-
-                    @if (\Session::has('message'))
-                        <div class="alert alert-success" role="alert">
-                            {!! \Session::get('message') !!}
-                        </div>
-                    @endif
-
+                <div class="card-body text-left">
 
                     {{-- produtos no carrinho --}}
                     @if ($cart)
 
                         @php($totalGeral = 0)
 
-
-
                         @foreach ($cart as $key => $cartItem)
                             @foreach ($cartItem as $key => $value)
-                                <div class="card-body p-4">
+                                <div class="card-body p-2">
                                     <div class="row d-flex justify-content-between align-items-center">
+                                        @php($totalGeral += $value['quantidade'] * $value['valor'])
 
                                         {{-- Coluna com nome do produto --}}
-                                        <div class="col-md-3 col-lg-3 col-xl-3">
-                                            <p class="lead fw-normal mb-2">{{ $value['nome'] }}</p>
+                                        <div class="col-md-3 col-lg-3 col-xl-2">
+                                            <p class="h5" style="font-weight: 700;">Produto</p>
+                                            <h5 class="lead fw-normal mb-2">{{ $value['nome'] }}</h5>
                                         </div>
                                         {{-- coluna com quantidade --}}
-                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <p class="lead fw-normal mb-2">{{ $value['quantidade'] }}</p>
+                                        <div class="col-md-3 col-lg-3 col-xl-2">
+                                            <p class="h5" style="font-weight: 700">Quantidade</p>
+                                            <h5 class="lead fw-normal mb-2">{{ $value['quantidade'] }}</h5>
+                                        </div>
+
+                                        {{-- coluna com valor unitário --}}
+                                        <div class="col-md-3 col-lg-3 col-xl-2">
+                                            <h5 style="font-weight: 700">Valor Unitário</h5>
+                                            <h5 class="lead fw-normal mb-2">R$ {{ $value['valor'] }}</h5>
                                         </div>
 
                                         {{-- coluna com valor total --}}
-                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                        <div class="col-md-3 col-lg-3 col-xl-2">
                                             {{-- multiplica o valor unitário com a quantidade --}}
-                                            <h5 class="mb-0">R$ {{ $value['valor'] }}</h5>
+                                            <h5 style="font-weight: 700;">Total</h5>
+                                            <h5 class="mb-0">R$ {{ $totalGeral }}</h5>
                                         </div>
 
                                         {{-- coluna para remover produto --}}
-                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-
+                                        <div class="col-md-1 col-lg-1 col-xl-1 text-center">
                                             {{ Form::open(['url' => 'removeProduto/' . $key]) }}
                                             {{ Form::hidden('_method', 'DELETE') }}
                                             {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
                                             {{ Form::close() }}
                                         </div>
 
-                                        @php($totalGeral += $value['quantidade'] * $value['valor'])
                                     </div>
                                 </div>
                             @endforeach
@@ -125,13 +124,6 @@
                 <h5 class="card-header bg-black">Caixa de Vendas</h5>
                 <div class="card-body text-center">
 
-                    @if (\Session::has('message'))
-                        <div class="alert alert-success" id="removeProduto">
-                            <ul>
-                                <li>{!! \Session::get('message') !!}</li>
-                            </ul>
-                        </div>
-                    @endif
                     <dl class="dl-horizontal" style="width: 80%; margin: 0 auto;">
 
                         {{-- @foreach ($produtos as $key => $cart) --}}
