@@ -62,11 +62,17 @@
                         @php($totalGeral = 0)
 
                         @foreach ($cart as $key => $cartItem)
-                            @foreach ($cartItem as $key => $value)
+                            @foreach ($cartItem as $key2 => $value)
                                 <div class="card-body p-2">
                                     <div class="row d-flex justify-content-between align-items-center">
                                         @php($totalGeral += $value['quantidade'] * $value['valor'])
 
+
+                                        {{-- Coluna com id do produto --}}
+                                        <div class="col-md-3 col-lg-3 col-xl-2">
+                                            <p class="h5" style="font-weight: 700;">ID</p>
+                                            <h5 class="lead fw-normal mb-2">{{ $value['id'] }}</h5>
+                                        </div>
                                         {{-- Coluna com nome do produto --}}
                                         <div class="col-md-3 col-lg-3 col-xl-2">
                                             <p class="h5" style="font-weight: 700;">Produto</p>
@@ -74,13 +80,13 @@
                                         </div>
                                         {{-- coluna com quantidade --}}
                                         <div class="col-md-3 col-lg-3 col-xl-2">
-                                            <p class="h5" style="font-weight: 700">Quantidade</p>
+                                            <p class="h5" style="font-weight: 700">Qtd</p>
                                             <h5 class="lead fw-normal mb-2">{{ $value['quantidade'] }}</h5>
                                         </div>
 
                                         {{-- coluna com valor unitário --}}
                                         <div class="col-md-3 col-lg-3 col-xl-2">
-                                            <h5 style="font-weight: 700">Valor Unitário</h5>
+                                            <h5 style="font-weight: 700">Valor Unit.</h5>
                                             <h5 class="lead fw-normal mb-2">R$ {{ $value['valor'] }}</h5>
                                         </div>
 
@@ -88,7 +94,8 @@
                                         <div class="col-md-3 col-lg-3 col-xl-2">
                                             {{-- multiplica o valor unitário com a quantidade --}}
                                             <h5 style="font-weight: 700;">Total</h5>
-                                            <h5 class="mb-0">R$ {{ $totalGeral }}</h5>
+                                            <h5 class="mb-0">R$ {{ $value['quantidade'] * $value['valor'] }}
+                                            </h5>
                                         </div>
 
                                         {{-- coluna para remover produto --}}
@@ -97,12 +104,35 @@
                                             {{ Form::hidden('_method', 'DELETE') }}
                                             {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
                                             {{ Form::close() }}
+                                            <br>
                                         </div>
 
                                     </div>
                                 </div>
                             @endforeach
                         @endforeach
+
+                        <hr>
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-md-3 col-lg-3 col-xl-2">
+                                <p class="h5" style="font-weight: 700;">Total Geral</p>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2">
+                                <h5 class="mb-0">R$ {{ $totalGeral }}</h5>
+                            </div>
+                        </div>
+
+                        {{-- container de botões de pagamento --}}
+
+                        <div class="card-footer text-center" style="background-color: #fff">
+                            <a href="{{ url('/finalizarVenda') }}" class="btn btn-success">
+                                Finalizar Venda
+                            </a>
+                            <br>
+                            <a href="{{ url('/') }}" class="btn btn-danger mt-2">
+                                Remover todos produtos
+                            </a>
+                        </div>
                     @else
                         <div>
                             <p class="h4" style="font-family: Open Sans; font-weight: 700">Seu caixa
@@ -158,7 +188,8 @@
                                                 {{ Form::open(['url' => 'removeProduto/' . $key]) }}
                                                 {{ Form::hidden('_method', 'DELETE') }}
                                                 {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
-                                                {{ Form::close() }}</td>
+                                                {{ Form::close() }}
+                                            </td>
                                         </tr>
                                         @php($totaGeral += $value2['quantidade'] * $value2['valor'])
                                     @endforeach
@@ -171,6 +202,11 @@
                                 Total = R$
                                 {{ $totaGeral }}
                             </span>
+
+                            <span> {{ Form::open(['url' => 'removeProduto/' . $key]) }}
+                                {{ Form::hidden('_method', 'DELETE') }}
+                                {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
+                                {{ Form::close() }}</span>
 
                             <br>
                             <button class="btn btn-success" type="submit">
