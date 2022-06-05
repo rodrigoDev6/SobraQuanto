@@ -3,25 +3,31 @@
 @section('title', 'Sobra Quanto')
 
 @section('content_header')
-    <h1>Painel de venda</h1>
-@stop
-
-@section('content')
-    <p>PDV onde as vendas do caixa serão realizadas. Tela 10/43</p>
     @if (\Session::has('message'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
             {!! \Session::get('message') !!}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
+        <script type="text/javascript">
+            window.setTimeout(function() {
+                $("#success-alert").fadeTo(1000, 0).slideUp(1000, function() {
+                    $(this).remove();
+                });
+            }, 2000);
+        </script>
     @endif
+@stop
+
+@section('content')
+
 
     {{-- container principal --}}
     <div class="row row-cols-1">
 
         {{-- container de produtos listados --}}
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 p-4 bg-light">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 p-4">
             @foreach ($produtos as $key => $produtoItem)
                 <div class="col-sm-6">
                     <div class="card">
@@ -100,10 +106,11 @@
 
                                         {{-- coluna para remover produto --}}
                                         <div class="col-md-1 col-lg-1 col-xl-1 text-center">
-                                            {{ Form::open(['url' => 'removeProduto/' . $key]) }}
+                                            {{ Form::open(['url' => 'removeProduto/' . $key, 'class' => 'excluir']) }}
                                             {{ Form::hidden('_method', 'DELETE') }}
                                             {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
                                             {{ Form::close() }}
+
                                             <br>
                                         </div>
 
@@ -152,7 +159,7 @@
             </div>
         </div>
 
-        {{-- container de carrinho de compras --}}
+        {{-- container de carrinho de compras-antigo --}}
         <div class="row row-cols-1 p-4 justify-content-start">
             <div class="card">
                 <h5 class="card-header bg-black">Caixa de Vendas</h5>
@@ -233,6 +240,9 @@
         </div>
 
 
+
+
+
     </div>
 
 
@@ -242,37 +252,6 @@
 @stop
 
 @section('script')
-
-    <script>
-        $(function() {
-            $('form[class="addProduto"]').submit(function(event) {
-                event.preventDefault();
-                setTimeout(function() {
-                    $('#mensagem').fadeOut(1000);
-                }, 2000);
-
-                $.ajax({
-                    type: "post",
-                    url: "{{ route('pdv.addProduto') }}",
-                    data: $(this).serialize(),
-                    dataType: "json",
-                    success: function(response) {
-
-                        $("#mensagem").empty();
-                        $('#mensagem').show();
-                        $('#mensagem').append(response.message);
-
-                    }
-                });
-            });
-        });
-
-        window.setTimeout(function() {
-            $(".alert").fadeTo(500, 0).slideUp(500, function() {
-                $(this).remove();
-            });
-        }, 2000);
-    </script>
 
 
 @endsection
