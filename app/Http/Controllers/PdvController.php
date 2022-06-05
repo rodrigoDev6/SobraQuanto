@@ -88,6 +88,11 @@ class PdvController extends Controller
 
     }
 
+    public function removeCart(Request $request){
+        $request->session()->forget('cart');
+        return redirect()->back()->with('message', 'Carrinho limpo com sucesso'); 
+    }
+
     public function carrinho(Request $request){
 
         $cart = (array) $request->session()->get('cart');

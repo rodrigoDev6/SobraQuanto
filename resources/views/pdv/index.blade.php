@@ -113,25 +113,29 @@
                         @endforeach
 
                         <hr>
-                        <div class="row d-flex justify-content-between align-items-center">
-                            <div class="col-md-3 col-lg-3 col-xl-2">
-                                <p class="h5" style="font-weight: 700;">Total Geral</p>
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-2">
-                                <h5 class="mb-0">R$ {{ $totalGeral }}</h5>
-                            </div>
-                        </div>
-
-                        {{-- container de botões de pagamento --}}
-
                         <div class="card-footer text-center" style="background-color: #fff">
+
+
+                            <div class="col mb-2">
+
+                                <span class="h5" style="font-weight: 700;">Total Geral</span>
+
+                                <span class="h5 mb-0">R$ {{ $totalGeral }}</span>
+                            </div>
+
+                            {{-- container de botões de pagamento --}}
+
                             <a href="{{ url('/finalizarVenda') }}" class="btn btn-success">
                                 Finalizar Venda
                             </a>
                             <br>
-                            <a href="{{ url('/') }}" class="btn btn-danger mt-2">
-                                Remover todos produtos
-                            </a>
+                            <div>
+                                {{ Form::open(['url' => 'removeCart']) }}
+                                {{ Form::hidden('_method', 'DELETE') }}
+                                {{ Form::submit('Remover todos produtos', ['class' => 'btn btn-danger mt-2']) }}
+                                {{ Form::close() }}
+                            </div>
+
                         </div>
                     @else
                         <div>
