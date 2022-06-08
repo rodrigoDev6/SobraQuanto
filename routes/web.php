@@ -37,6 +37,9 @@ Route::get('/carrinho', [PdvController::class, 'carrinho'])->name('pdv.carrinho'
 
 Route::get('/adicionarProduto/{id}', [PdvController::class, 'show'])->name('pdv.show');
 Route::post('/addProduto', [PdvController::class, 'addProduto'])->name('pdv.addProduto');
+
+Route::post('/fecharVenda', [PdvController::class, 'fecharVenda'])->name('pdv.fecharVenda');
+
 Route::delete('/removeProduto/{key}',[PdvController::class,'removeProduto'])->name('pdv.removeProduto');
 Route::delete('/removeCart',[PdvController::class,'removeCart'])->name('pdv.removeCart');
 

@@ -9,7 +9,7 @@ use App\Models\Cliente;
 class Venda extends Model
 {
     use HasFactory;
-    protected $table = 'venda';
+    protected $table = 'vendas';
 
     public function cliente()
     {

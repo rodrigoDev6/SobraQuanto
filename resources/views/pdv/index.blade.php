@@ -135,9 +135,14 @@
                             <a href="{{ url('/finalizarVenda') }}" class="btn btn-success">
                                 Finalizar Venda
                             </a>
+                            <div>
+                                {{ Form::open(['url' => '/fecharVenda', 'class' => 'fecharVenda']) }}
+                                {{ Form::submit('Fechar Venda', ['class' => 'btn btn-succes']) }}
+                                {{ Form::close() }}
+                            </div>
                             <br>
                             <div>
-                                {{ Form::open(['url' => 'removeCart']) }}
+                                {{ Form::open(['url' => '/removeCart']) }}
                                 {{ Form::hidden('_method', 'DELETE') }}
                                 {{ Form::submit('Remover todos produtos', ['class' => 'btn btn-danger mt-2']) }}
                                 {{ Form::close() }}
