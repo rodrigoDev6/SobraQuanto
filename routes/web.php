@@ -48,17 +48,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('teste', [SiteController::class, 'teste']);
 
 //--------------- USUARIOS ------------//
-Route::get('usuario', [UserController::class, 'index'])->name('usuario');
+Route::get('usuario', [UserController::class, 'index'])->name('usuario')->can('is_admin');
 
-Route::get('usuario/create', [UserController::class, 'create'])->name('usuario.create');
-Route::post('usuario/create', [UserController::class, 'store'])->name('usuario.store');
+Route::get('usuario/create', [UserController::class, 'create'])->name('usuario.create')->can('is_admin');
+Route::post('usuario/create', [UserController::class, 'store'])->name('usuario.store')->can('is_admin');
 
-Route::get('/usuario/{id}', [UserController::class, 'show'])->name('usuario.show');
+Route::get('/usuario/{id}', [UserController::class, 'show'])->name('usuario.show')->can('is_admin');
 
-Route::get('usuario/{id}/edit', [UserController::class, 'edit'])->name('usuario.edit');
-Route::put('usuario/{id}/update', [UserController::class, 'update'])->name('usuario.update');
+Route::get('usuario/{id}/edit', [UserController::class, 'edit'])->name('usuario.edit')->can('is_admin');
+Route::put('usuario/{id}/update', [UserController::class, 'update'])->name('usuario.update')->can('is_admin');
 
-Route::delete('usuario/{id}/destroy', [UserController::class, 'destroy'])->name('usuario.destroy');
+Route::delete('usuario/{id}/destroy', [UserController::class, 'destroy'])->name('usuario.destroy')->can('is_admin');
 
 
 //--------------- PERMISSOES ---------------//

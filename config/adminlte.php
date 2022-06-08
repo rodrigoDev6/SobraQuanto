@@ -241,6 +241,7 @@ return [
             'text'        => 'Usuários',
             'url'         => 'usuario',
             'icon'        => 'fas fa-user',
+            'can'         => 'is_admin',
         ],
         [
             'text'        => 'Clientes',
