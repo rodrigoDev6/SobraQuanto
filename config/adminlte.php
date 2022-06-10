@@ -234,7 +234,7 @@ return [
         // Sidebar items:
         [
             'text'        => 'Home',
-            'url'         => 'admin/pages',
+            'url'         => 'home',
             'icon'        => 'fas fa-home',
         ],
         [

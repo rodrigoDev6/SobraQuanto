@@ -60,7 +60,7 @@
                 <div class="card-header" style="background-color: #485673">
                     <p class="h3" style="color: #f3f3f3">Caixa de Vendas</p>
                 </div>
-                <div class="card-body text-left">
+                <div class="card-body text-center">
 
                     {{-- produtos no carrinho --}}
                     @if ($cart)
@@ -132,15 +132,13 @@
 
                             {{-- container de botões de pagamento --}}
 
-                            <a href="{{ url('/finalizarVenda') }}" class="btn btn-success">
-                                Finalizar Venda
-                            </a>
                             <div>
-                                {{ Form::open(['url' => '/fecharVenda', 'class' => 'fecharVenda']) }}
-                                {{ Form::submit('Fechar Venda', ['class' => 'btn btn-succes']) }}
+                                {{ Form::open(['url' => '/fecharVenda']) }}
+                                {{ Form::hidden('_method', 'POST') }}
+                                {{ Form::submit('Finalizar Venda', ['class' => 'btn btn-success']) }}
                                 {{ Form::close() }}
                             </div>
-                            <br>
+
                             <div>
                                 {{ Form::open(['url' => '/removeCart']) }}
                                 {{ Form::hidden('_method', 'DELETE') }}
@@ -150,10 +148,9 @@
 
                         </div>
                     @else
-                        <div>
-                            <p class="h4" style="font-family: Open Sans; font-weight: 700">Seu caixa
-                                está
-                                vazio!</p>
+                        <div class="text-align">
+                            <p class="h4" style="font-family: Open Sans; font-weight: 700">
+                                Seu caixa está vazio!</p>
                             <span
                                 style="font-family: 'Open Sans';font-style: normal;font-weight: 800; font-size: 14px; color: #485673;">Adicione
                                 itens</span>
