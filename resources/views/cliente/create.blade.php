@@ -1,4 +1,19 @@
 @extends('adminlte::page')
+@section('content_header')
+    @if (\Session::has('message'))
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+            {!! \Session::get('message') !!}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function($) {
+                console.log('hello')
+            });
+        </script>
+    @endif
+@stop
 
 @section('content')
     <div class="container">
@@ -28,19 +43,16 @@
                             </div>
                         @endif
 
-
-
-
-
                         <div class="row col-12">
                             <div class="form-group col">
                                 {{ Form::label('nome', 'Nome:') }}
                                 {{ Form::text('nome', '', ['class' => 'form-control', 'placeholder' => 'Nome Completo']) }}
                             </div>
 
+
                             <div class="form-group col">
                                 {{ Form::label('cpf_cnpj', 'CPF ou CNPJ:') }}
-                                {{ Form::text('cpf_cnpj', '', ['class' => 'form-control', 'placeholder' => 'Digite o CPF ou CNPJ']) }}
+                                {{ Form::text('cpf_cnpj', null, ['class' => 'form-control', 'placeholder' => 'Digite o CPF ou CNPJ']) }}
                             </div>
                         </div>
 
@@ -104,6 +116,7 @@
                                 <a class="btn btn-default float-right" href="{{ route('cliente') }}">Cancelar</a>
                             </div>
                         </div>
+                        {!! Form::close() !!}
 
 
 

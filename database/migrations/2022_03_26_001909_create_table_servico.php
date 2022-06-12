@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableCategoriaServico extends Migration
+class CreateTableServico extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateTableCategoriaServico extends Migration
      */
     public function up()
     {
-        Schema::create('categoria_servico', function (Blueprint $table) {
+        Schema::create('servico', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 200);
+            $table->string('nome', 100);
+            $table->decimal('valor', 8, 2)->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateTableCategoriaServico extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categoria_servico');
+        Schema::dropIfExists('servico');
     }
 }

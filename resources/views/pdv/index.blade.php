@@ -15,6 +15,9 @@
                 $("#success-alert").fadeTo(1000, 0).slideUp(1000, function() {
                     $(this).remove();
                 });
+
+                console.log('hello')
+
             }, 2000);
         </script>
     @endif
@@ -254,9 +257,9 @@
 @stop
 
 @section('script')
-
+    console.log('hello');
 
 @endsection
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="./css/admin_custom.css">
 @stop

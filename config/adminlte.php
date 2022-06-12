@@ -264,8 +264,8 @@ return [
             'icon'        => 'fas fa-clipboard-list',
         ],
         [
-            'text'        => 'Categoria de serviço',
-            'url'         => 'categoriaServico',
+            'text'        => 'Serviços',
+            'url'         => 'servico',
             'icon'        => 'fas fa-border-all',
         ],
         [

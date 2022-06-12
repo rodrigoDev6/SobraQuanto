@@ -3,7 +3,6 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CargosController;
 use App\Http\Controllers\CategoriaProdutoController;
-use App\Http\Controllers\CategoriaServicoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\financeiroController;
 use App\Http\Controllers\ordensServicoController;
@@ -11,6 +10,7 @@ use App\Http\Controllers\PdvController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\ServicoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -83,17 +83,17 @@ Route::put('/cliente/{id}', [ClienteController::class,'update'])->name('cliente.
 
 
 //--------------- SERVICOS ---------------//
-Route::get('categoriaServico', [CategoriaServicoController::class, 'index'])->name('categoriaServico');
+Route::get('servico', [ServicoController::class, 'index'])->name('servico');
 
-Route::get('/categoriaServico/create', [CategoriaServicoController::class,'create'])->name('categoriaServico.create');
-Route::post('/categoriaServico/create', [CategoriaServicoController::class,'store'])->name('categoriaServico.store');
+Route::get('/servico/create', [ServicoController::class, 'create'])->name('servico.create');
+Route::post('/servico/create', [ServicoController::class, 'store'])->name('servico.store');
 
-Route::get('/categoriaServico/{id}', [CategoriaServicoController::class,'show'])->name('categoriaServico.show');
+Route::get('/servico/{id}', [ServicoController::class,'show'])->name('servico.show');
 
-Route::get('/categoriaServico/{id}/edit', [CategoriaServicoController::class,'edit'])->name('categoriaServico.edit');
-Route::put('/categoriaServico/{id}', [CategoriaServicoController::class,'update'])->name('categoriaServico.update');
+Route::get('/servico/{id}/edit', [ServicoController::class,'edit'])->name('servico.edit');
+Route::put('/servico/{id}', [ServicoController::class,'update'])->name('servico.update');
 
-Route::delete('/categoriaServico/{id}', [CategoriaServicoController::class, 'destroy'])->name('categoriaServico.destroy');
+Route::delete('/servico/{id}', [ServicoController::class, 'destroy'])->name('servico.destroy');
 
 
 //--------------- Categoria Produtos ---------------//

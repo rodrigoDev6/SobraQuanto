@@ -7,7 +7,9 @@
 @stop
 
 @section('content')
-    <p>Tela de cadastro das ordens de serviço tela 21/43</p>
+    <p>Tela de cadastro das ordem de serviços tela 21/43</p>
+
+
 @stop
 
 @section('css')

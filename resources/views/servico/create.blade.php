@@ -4,13 +4,13 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="mb-3">Criar Categoria de serviço:</h1>
+                <h1 class="mb-3">Criar novo de serviço:</h1>
 
                 <div class="card card-primary ">
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
 
-                    {!! Form::open(['url' => '/categoriaServico/create']) !!}
+                    {!! Form::open(['url' => '/servico/create']) !!}
                     <div class="card-body col-12">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -37,21 +37,25 @@
                                 {{ Form::label('nome', 'Nome:') }}
                                 {{ Form::text('nome', '', ['class' => 'form-control']) }}
                             </div>
-
-                        <div class="row col-12">
                             <div class="form-group col">
-                                {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
-
-                                <a class="btn btn-default float-right" href="{{ route('categoriaServico') }}">Cancelar</a>
+                                {{ Form::label('valor', 'Valor:') }}
+                                {{ Form::number('valor', null, ['class' => 'form-control col-4']) }}
                             </div>
+
+                            <div class="row col-12">
+                                <div class="form-group col">
+                                    {{ Form::submit('Enviar', ['class' => 'btn btn-primary']) }}
+
+                                    <a class="btn btn-default float-right" href="{{ route('servico') }}">Cancelar</a>
+                                </div>
+                            </div>
+
+
+
                         </div>
-
-
-
                     </div>
+                    {{-- card card-primary --}}
                 </div>
-                {{-- card card-primary --}}
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

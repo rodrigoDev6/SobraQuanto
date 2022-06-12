@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\CategoriaServico;
+use App\Models\Servico;
 use Illuminate\Http\Request;
 
-class CategoriaServicoController extends Controller
+class ServicoController extends Controller
 {
     public function index(){
 
-        $categoriaServico = CategoriaServico::orderby('id', 'ASC')->get();
-        return view('categoriaServico.index',['categoriaServico'=>$categoriaServico]);
+        $servico = Servico::orderby('id', 'ASC')->get();
+        return view('servico.index',['servico'=>$servico]);
 
     }
     /**
@@ -20,7 +20,7 @@ class CategoriaServicoController extends Controller
 
     public function create()
     {
-        return view('categoriaServico.create');
+        return view('servico.create');
     }
 
     /**
@@ -43,45 +43,46 @@ class CategoriaServicoController extends Controller
 
         ], $messages);
         
-        $categoriaServico = new CategoriaServico;
-        $categoriaServico -> nome = $request -> nome;
+        $servico = new Servico;
+        $servico->nome = $request -> nome;
+        $servico->valor = $request -> valor;
 
-        $categoriaServico->save();
+        $servico->save();
         
     
-        return redirect('/categoriaServico')->with('status', 'Categoria criada com sucesso!!');
+        return redirect('/servico')->with('status', 'Serviço criada com sucesso!!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\CategoriaServico $categoriaServico
+     * @param \App\Models\Servico $servico
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $categoriaServico = CategoriaServico::findOrFail($id);
-        return view('categoriaServico.show',['categoriaServico' => $categoriaServico]);
+        $servico = Servico::findOrFail($id);
+        return view('servico.show',['servico' => $servico]);
         
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $categoriaServico
+     * @param  int  $servico
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $categoriaServico = CategoriaServico::findOrFail($id);
-        return view('categoriaServico.edit', ['categoriaServico' => $categoriaServico]);
+        $servico = Servico::findOrFail($id);
+        return view('servico.edit', ['servico' => $servico]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param \App\Models\CategoriaServico $categoriaServico
+     * @param \App\Models\Servico $servico
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -98,25 +99,25 @@ class CategoriaServicoController extends Controller
 
         ], $messages);
         
-        $categoriaServico = CategoriaServico::findOrFail($id);
-        $categoriaServico -> nome = $request -> nome;
-
-        $categoriaServico->save();
+        $servico = Servico::findOrFail($id);
+        $servico -> nome = $request -> nome;
+        $servico -> valor = $request -> valor;
+        $servico->save();
     
-        return redirect('/categoriaServico')->with('status', 'Categoria alterada com sucesso!!');
+        return redirect('/servico')->with('status', 'Serviço alterada com sucesso!!');
     }
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\CategoriaServico $categoriaServico
+     * @param \App\Models\Servico $servico
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $categoriaServico = CategoriaServico::findOrFail($id);
-        $categoriaServico -> delete();
+        $servico = Servico::findOrFail($id);
+        $servico -> delete();
 
-        return redirect('/categoriaServico')->with('status', 'Serviço excluido com sucesso!');
+        return redirect('/servico')->with('status', 'Serviço excluido com sucesso!');
     
     
 }

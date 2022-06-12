@@ -3,18 +3,19 @@
 @section('title', 'Sobra Quanto')
 
 @section('content_header')
-    <h1 class="text-center">Dados da Categoria de serviço:</h1>
+    <h1 class="text-center">Dados do serviço:</h1>
 @stop
 
 @section('content')
 
 
     <ul class="list-unstyled">
-        <li><b>ID:</b> {{ $categoriaServico->id }}</li>
-        <li><b>Nome:</b> {{ $categoriaServico->nome }}</li>
+        <li><b>ID:</b> {{ $servico->id }}</li>
+        <li><b>Nome:</b> {{ $servico->nome }}</li>
+        <li><b>Valor:</b> {{ $servico->valor }}</li>
     </ul>
 
-    <a href="{{ url('categoriaServico') }}" class="btn btn-primary">Voltar</a>
+    <a href="{{ url('servico') }}" class="btn btn-primary">Voltar</a>
 
 
 @stop
