@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
-use App\Models\Cliente;
 use App\Models\Produto;
 use App\Models\Venda;
 use App\Models\VendaProduto;
+
+use Illuminate\Pagination\Paginator;
 
 class PdvController extends Controller
 {
     public function index(Request $request){
         $produtos = Produto::orderby('id', 'ASC')->get();
+        $produtos = Produto::paginate(6);
+        Paginator::useBootstrap();
         $cart = (array) $request->session()->get('cart');
         //dd($cart);
         return view('pdv.index',['produtos' => $produtos, 'cart' => $cart]);
@@ -74,7 +78,7 @@ class PdvController extends Controller
             $produto['message'] = $request->quantidade.  ' Produto Adicionado ao Carrinho';   
             echo json_encode($produto);
  
-            return redirect('/pdv')->with('status', 'Produto adicionado ao carrinho com sucesso!');
+            return redirect('/pdv')->with('message', 'Produto adicionado ao carrinho com sucesso!');
 
     }
 
@@ -141,7 +145,7 @@ class PdvController extends Controller
 
 
         $request->session()->forget('cart');
-        return redirect('/pdv')->with('status', 'Venda realizada com sucesso!');
+        return redirect('/pdv')->with('message', 'Venda realizada com sucesso!');
 
     }
 

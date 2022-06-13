@@ -54,6 +54,10 @@
                     </div>
                 </div>
             @endforeach
+
+        </div>
+        <div class="row justify-content-center">
+            {{ $produtos->links() }}
         </div>
 
 

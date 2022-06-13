@@ -60,7 +60,7 @@
             </thead>
 
             <tbody>
-                @foreach ($clientes as $value)
+                @foreach ($cliente as $value)
                     <tr>
                         <td>{{ $value->id }}</td>
                         <td>{{ $value->nome }}</td>
@@ -85,7 +85,10 @@
         </table>
     </div>
 
-    {{ $clientes->links() }}
+    <div class="row justify-content-center">
+
+        {{ $cliente->links() }}
+    </div>
 
 
 

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Pagination\Paginator;
 
 use App\Models\Cliente;
 use App\Models\Estado;
 use Illuminate\Http\Request;
+
+use Illuminate\Pagination\Paginator;
 
 class ClienteController extends Controller
 {
@@ -17,12 +18,10 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //listando
-        $clientes = Cliente::orderby('id', 'ASC')->get();
-        $clientes = Cliente::paginate(5);
+        $cliente = Cliente::orderby('id', 'ASC')->get();
+        $cliente = Cliente::paginate(5);
         Paginator::useBootstrap();
-
-        return view('cliente.index',['clientes'=>$clientes]);
+        return view('cliente.index',['cliente'=>$cliente]);
     }
 
     /**
