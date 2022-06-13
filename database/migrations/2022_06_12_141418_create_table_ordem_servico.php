@@ -13,10 +13,15 @@ class CreateTableOrdemServico extends Migration
      */
     public function up()
     {
-        Schema::create('ordem_servico', function (Blueprint $table) {
+        Schema::create('ordem_de_servico', function (Blueprint $table) {
             $table->id();
             $table->integer('cliente_id');
-            $table->integer('servico_id');
+            $table->integer('status_id');
+            $table->string('forma_pagamento');
+            $table->date('data_abertura');
+            $table->date('data_fechamento')->nullable();
+            $table->string('observacao')->nullable();
+            $table->float('total', 10, 2);
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ class CreateTableOrdemServico extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ordem_servico');
+        Schema::dropIfExists('ordem_de_servico');
     }
 }

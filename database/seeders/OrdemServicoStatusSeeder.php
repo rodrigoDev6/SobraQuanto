@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\ServicoStatus;
+use App\Models\OrdemServicoStatus;
 
-class ServicoStatusSeeder extends Seeder
+class OrdemServicoStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,19 +14,19 @@ class ServicoStatusSeeder extends Seeder
      */
     public function run()
     {
-        ServicoStatus::create([
+        OrdemServicoStatus::create([
             'nome' => 'Orçamento',
         ]);
         
-        ServicoStatus::create([
+        OrdemServicoStatus::create([
             'nome' => 'Em anadamento',
         ]);
 
-        ServicoStatus::create([
+        OrdemServicoStatus::create([
             'nome' => 'Feita',
         ]);
 
-        ServicoStatus::create([
+        OrdemServicoStatus::create([
             'nome' => 'Interrompida',
         ]);
 

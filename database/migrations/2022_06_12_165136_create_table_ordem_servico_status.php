@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableStatusCliente extends Migration
+class CreateTableOrdemServicoStatus extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTableStatusCliente extends Migration
      */
     public function up()
     {
-        Schema::create('table_status_cliente', function (Blueprint $table) {
+        Schema::create('odem_servico_status', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateTableStatusCliente extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_status_cliente');
+        Schema::dropIfExists('ordem_servico_status');
     }
 }
