@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+
 use App\Models\Servico;
+use Illuminate\Http\Request;
 
 class ServicoController extends Controller
 {
@@ -30,6 +32,8 @@ class ServicoController extends Controller
      */
     public function store(Request $request)
     {
+        
+
         $messages = [
             'nome.required' => 'O campo :attribute é obrigatório!',
             'nome.min' => 'O :attribute precisa ter no mínimo :min.',
@@ -41,7 +45,7 @@ class ServicoController extends Controller
         
         $servico = new Servico;
         $servico->nome = $request -> nome;
-        $servico->valor = $request -> valor;
+        $servico->valor = $request -> valor or 0;
         $servico->save();
     
         return redirect('/servico')->with('status', 'Serviço criada com sucesso!!');

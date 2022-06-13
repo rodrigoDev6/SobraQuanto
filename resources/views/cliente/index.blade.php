@@ -7,6 +7,37 @@
 @stop
 
 @section('content')
+    @if (\Session::has('status'))
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+            {!! \Session::get('status') !!}
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <script type="text/javascript">
+            window.setTimeout(function() {
+                $("#success-alert").fadeTo(1000, 0).slideUp(1000, function() {
+                    $(this).remove();
+                });
+
+                console.log('hello')
+
+            }, 2000);
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
     <a href="{{ URL::to('cliente/create') }}">
         <button class="btn btn-outline-success mb-3">
             <i class="fas fa-plus"></i>
@@ -14,46 +45,48 @@
         </button>
     </a>
 
-    <table class="table no-margin">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>nome</th>
-                <th>CPF</th>
-                <th>Telefone</th>
-                <th><b>AÇÕES</b></th>
-                <th></th>
-            </tr>
-        </thead>
+    <div class="row row-cols-12 m-2">
 
-        <tbody>
-            @foreach ($clientes as $value)
+        <table class="table no-margin">
+            <thead>
                 <tr>
-                    <td>{{ $value->id }}</td>
-                    <td>{{ $value->nome }}</td>
-                    <td>{{ $value->cpf_cnpj }}</td>
-                    <td>{{ $value->telefoneCelular }}</td>
-                    <td>
-                        {{--  --}}
-                        <a href="{{ url('cliente/' . $value->id) }}" class="btn btn-primary">
-                            <i class="fas fa-eye"></i>
-                            Visualizar
-                        </a>
-                        {{--  --}}
-                        <a href="{{ url('cliente/' . $value->id . '/edit') }}" class="btn btn-info mx-5">
-                            <i class="fas fa-edit"></i>
-                            Editar
-
-                            {{-- Esse botão deveria ser para mudar status de inativo para ativo ou vice versa
-                            <a href="{{ url('cliente/' . $value->id) }}" class="btn btn-danger ">
-                                <i class="fas fa-trash"></i>
-                                Excluir
-                            </a> --}}
-                    </td>
+                    <th>id</th>
+                    <th>nome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th><b>AÇÕES</b></th>
+                    <th></th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody>
+                @foreach ($clientes as $value)
+                    <tr>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->nome }}</td>
+                        <td>{{ $value->cpf_cnpj }}</td>
+                        <td>{{ $value->telefoneCelular }}</td>
+                        <td>
+                            {{--  --}}
+                            <a href="{{ url('cliente/' . $value->id) }}" class="btn btn-primary">
+                                <i class="fas fa-eye"></i>
+                                Visualizar
+                            </a>
+                            {{--  --}}
+                            <a href="{{ url('cliente/' . $value->id . '/edit') }}" class="btn btn-info mx-5">
+                                <i class="fas fa-edit"></i>
+                                Editar
+
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    {{ $clientes->links() }}
+
 
 
 @stop

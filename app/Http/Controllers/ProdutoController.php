@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Pagination\Paginator;
+
 use App\Models\Produto;
 use App\Models\CategoriaProduto;
 use Illuminate\Http\Request;
@@ -15,8 +17,11 @@ class ProdutoController extends Controller
      */
     public function index(){
         $produtos = Produto::orderby('id', 'ASC')->get();
-        return view('produto.index',['produtos'=>$produtos]);
+        $produtos = Produto::paginate(5);
+        Paginator::useBootstrap();
 
+
+        return view('produto.index',['produtos'=>$produtos]);
     }
 
 

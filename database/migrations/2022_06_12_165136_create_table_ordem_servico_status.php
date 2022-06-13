@@ -13,7 +13,7 @@ class CreateTableOrdemServicoStatus extends Migration
      */
     public function up()
     {
-        Schema::create('odem_servico_status', function (Blueprint $table) {
+        Schema::create('ordem_servico_status', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
             $table->timestamps();

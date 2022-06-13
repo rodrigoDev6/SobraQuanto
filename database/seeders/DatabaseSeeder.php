@@ -25,10 +25,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             EstadoSeeder::class,
+            ClienteStatusSeeder::class,
+            ClienteSeeder::class,
             CategoriaProdutoSeeder::class,
             ProdutoSeeder::class,
-            ClienteSeeder::class,
-            ClienteStatusSeeder::class,
             ServicoSeeder::class,
             OrdemServicoStatusSeeder::class,
         ]);

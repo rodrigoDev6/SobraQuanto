@@ -9,16 +9,15 @@
         </div>
     @endif
 @stop
+@section('title', 'Sobra Quanto')
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="mb-3">Novo cliente:</h1>
 
-                <div class="card card-primary ">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
-
+                <div class="card card-primary mt-2">
+                    <div class="card-header  h2">{{ __('Novo Cliente:') }}</div>
 
                     {!! Form::open(['url' => '/cliente/create']) !!}
                     <div class="card-body col-12">
@@ -41,7 +40,7 @@
                         <div class="row col-12">
                             <div class="form-group col">
                                 {{ Form::label('nome', 'Nome:') }}
-                                {{ Form::text('nome', '', ['class' => 'form-control', 'placeholder' => 'Nome Completo']) }}
+                                {{ Form::text('nome', null, ['class' => 'form-control', 'placeholder' => 'Nome Completo']) }}
                             </div>
 
 
@@ -53,34 +52,36 @@
 
                         <div class="row col-12">
                             <div class="form-group col-6">
-                                {{ Form::label('celular', 'Telefone celular:') }}
+                                {{ Form::label('telefone_1', 'Telefone 1:') }}
                                 <div class="input-group">
 
-                                    {{ Form::text('celular', '', ['class' => 'form-control', 'placeholder' => '(21) 99999-9999']) }}
+                                    {{ Form::text('telefone_1', null, ['class' => 'form-control', 'placeholder' => '(21) 99999-9999']) }}
                                 </div>
                             </div>
+
                             <div class="form-group col-6">
-                                {{ Form::label('cep', 'CEP:') }}
+                                {{ Form::label('telefone_2', 'Telefone 2:') }}
                                 <div class="input-group">
-                                    {{ Form::text('telefoneCelular', '', ['class' => 'form-control', 'placeholder' => '12.345-678']) }}
+                                    {{ Form::text('telefone_2', null, ['class' => 'form-control', 'placeholder' => '(21) 99999-9999']) }}
                                 </div>
                             </div>
                         </div>
                         <div class="row col-12">
-                            <div class="form-group col-4">
-                                {{ Form::label('cidade', 'Cidade:') }}
-                                {{ Form::text('cidade', '', ['class' => 'form-control']) }}
+                            <div class="form-group col-6">
+                                {{ Form::label('estado', 'Estado:') }}
+                                {{ Form::select('estado_id', $estado, 1, ['class' => 'form-control']) }}
                             </div>
 
-                            <div class="form-group col-2">
-                                {{ Form::label('uf', 'UF:') }}
-                                {{ Form::text('uf', '', ['class' => 'form-control']) }}
-                            </div>
-
-                            <div class="form-group col">
+                            <div class="form-group col-3">
                                 {{ Form::label('bairro', 'Bairro:') }}
                                 {{ Form::text('bairro', '', ['class' => 'form-control']) }}
                             </div>
+
+                            <div class="form-group col-3">
+                                {{ Form::label('cep', 'CEP:') }}
+                                {{ Form::text('cep', null, ['class' => 'form-control']) }}
+                            </div>
+
                         </div>
 
                         <div class="row col-12">

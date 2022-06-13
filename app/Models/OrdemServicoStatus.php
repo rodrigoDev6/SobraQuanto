@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class OrdemServicoStatus extends Model
 {
     use HasFactory;
-    protected $table = 'servico_status';
+    protected $table = 'ordem_servico_status';
 }

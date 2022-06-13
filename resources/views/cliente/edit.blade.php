@@ -1,20 +1,27 @@
 @extends('adminlte::page')
-
+@section('content_header')
+    @if (\Session::has('message'))
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+            {!! \Session::get('message') !!}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+@stop
 @section('title', 'Sobra Quanto')
-
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="mb-3">Cliente selecionado:</h1>
 
-                <div class="card card-primary ">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card card-primary mt-2">
+                    <div class="card-header h2">{{ __('Cliente Selecionado') }}</div>
 
-                    {{-- procurando cliente --}}
                     {{ Form::model($cliente, ['route' => ['cliente.update', $cliente->id], 'method' => 'PUT']) }}
                     <div class="card-body col-12">
+
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -24,8 +31,6 @@
                                 </ul>
                             </div>
                         @endif
-
-
 
                         <div class="row col-12">
                             <div class="form-group col">
@@ -40,42 +45,35 @@
                         </div>
 
                         <div class="row col-12">
-                            <div class="form-group col">
-                                {{ Form::label('telefoneCelular', 'Telefone celular:') }}
+                            <div class="form-group col-6">
+                                {{ Form::label('telefone_1', 'Telefone 1:') }}
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                    </div>
 
-                                    {{ Form::text('telefoneCelular', $cliente->telefoneCelular, ['class' => 'form-control']) }}
+                                    {{ Form::text('telefone_1', $cliente->telefone_1, ['class' => 'form-control', 'placeholder' => '(21) 99999-9999']) }}
                                 </div>
                             </div>
 
-                            <div class="form-group col">
-                                {{ Form::label('telefoneFixo', 'Telefone fixo:') }}
+                            <div class="form-group col-6">
+                                {{ Form::label('telefone_2', 'Telefone 2:') }}
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                    </div>
-
-                                    {{ Form::text('telefoneFixo', $cliente->telefoneFixo, ['class' => 'form-control']) }}
+                                    {{ Form::text('telefone_2', $cliente->telefone_2, ['class' => 'form-control', 'placeholder' => '(21) 99999-9999']) }}
                                 </div>
                             </div>
                         </div>
                         <div class="row col-12">
-                            <div class="form-group col-4">
-                                {{ Form::label('cidade', 'Cidade:') }}
-                                {{ Form::text('cidade', $cliente->cidade, ['class' => 'form-control']) }}
+                            <div class="form-group col-6">
+                                {{ Form::label('estado', 'Estado:') }}
+                                {{ Form::select('estado_id', $estado, $cliente->estado_id, ['class' => 'form-control']) }}
                             </div>
 
-                            <div class="form-group col-2">
-                                {{ Form::label('uf', 'UF:') }}
-                                {{ Form::text('uf', $cliente->uf, ['class' => 'form-control']) }}
-                            </div>
-
-                            <div class="form-group col">
+                            <div class="form-group col-3">
                                 {{ Form::label('bairro', 'Bairro:') }}
                                 {{ Form::text('bairro', $cliente->bairro, ['class' => 'form-control']) }}
+                            </div>
+
+                            <div class="form-group col-3">
+                                {{ Form::label('cep', 'CEP:') }}
+                                {{ Form::text('cep', $cliente->cep, ['class' => 'form-control']) }}
                             </div>
                         </div>
 

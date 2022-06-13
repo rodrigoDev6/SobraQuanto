@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\OrdemDeServico;
 
 class OrdemDeServicoController extends Controller
 {
- 
+    public function index() {
+        $ordemDeServico = OrdemDeServico::orderBy('id', 'ASC')->get();
+        return view('ordemDeServico.index',['ordemDeServico' => $ordemDeServico]);
+    }
+
+
     public function fecharVenda(Request $request){
         
         $cart = (array) $request->session()->get('cart');
-        // dd($cart);
-
+        // dd($ordemDeServico);
 
         $servico = new OrdemServico;
         $servico->servico_id = $request->servico_id;          

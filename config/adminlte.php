@@ -260,7 +260,7 @@ return [
         ],
         [
             'text'        => 'Ordens de Serviços',
-            'url'         => 'ordensServico',
+            'url'         => 'ordemDeServico',
             'icon'        => 'fas fa-clipboard-list',
         ],
         [

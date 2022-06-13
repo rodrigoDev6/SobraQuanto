@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEstadoTable extends Migration
+class CreateTableEstado extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,8 @@ class CreateEstadoTable extends Migration
     {
         Schema::create('estado', function (Blueprint $table) {
             $table->id();
-            $table->string('uf',2);
             $table->string('nome',80);
+            $table->string('uf',2);
             $table->timestamps();
         });
     }

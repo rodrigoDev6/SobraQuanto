@@ -15,8 +15,24 @@ class EstadoSeeder extends Seeder
     public function run()
     {
         Estado::create([
-            'uf' => 'AC',
-            'nome' => 'Acre',
+            'uf' => 'RJ',
+            'nome' => 'Rio de Janeiro',
         ]);
+
+        Estado::create([
+            'uf' => 'SP',
+            'nome' => 'São Paulo',
+        ]);
+
+        Estado::create([
+            'uf' => 'MG',
+            'nome' => 'Minas Gerais',
+        ]);
+
+        Estado::create([
+            'uf' => 'ES',
+            'nome' => 'Espírito Santo',
+        ]);
+
     }
 }

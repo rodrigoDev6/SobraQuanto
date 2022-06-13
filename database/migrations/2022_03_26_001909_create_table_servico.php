@@ -16,7 +16,7 @@ class CreateTableServico extends Migration
         Schema::create('servico', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 100);
-            $table->decimal('valor', 8, 2)->nullable();
+            $table->decimal('valor', 8, 2)->nullable()->default(0);
             $table->timestamps();
         });
     }
