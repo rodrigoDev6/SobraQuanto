@@ -24,9 +24,10 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             EstadoSeeder::class,
             ClienteSeeder::class,
-            ServicoSeeder::class,
             CategoriaProdutoSeeder::class,
-            ProdutoSeeder::class
+            ProdutoSeeder::class,
+            ServicoSeeder::class,
+            ServicoStatus::class,
         ]);
     }
 }

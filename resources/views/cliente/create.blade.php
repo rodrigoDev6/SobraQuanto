@@ -7,11 +7,6 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <script type="text/javascript">
-            $(document).ready(function($) {
-                console.log('hello')
-            });
-        </script>
     @endif
 @stop
 

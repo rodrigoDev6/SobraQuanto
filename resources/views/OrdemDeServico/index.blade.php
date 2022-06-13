@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <p>Tela de cadastro das ordem de serviços tela 21/43</p>
+    <p>Tela para controllar ordem de serviços</p>
 
 
 @stop

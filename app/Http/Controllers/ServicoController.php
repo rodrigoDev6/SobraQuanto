@@ -1,16 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Servico;
+
 use Illuminate\Http\Request;
+use App\Models\Servico;
 
 class ServicoController extends Controller
 {
     public function index(){
-
         $servico = Servico::orderby('id', 'ASC')->get();
         return view('servico.index',['servico'=>$servico]);
-
     }
     /**
      * Show the form for creating a new resource.
@@ -33,22 +32,17 @@ class ServicoController extends Controller
     {
         $messages = [
             'nome.required' => 'O campo :attribute é obrigatório!',
-            
             'nome.min' => 'O :attribute precisa ter no mínimo :min.',
-            
         ];
 
         $validate = $request->validate([
             'nome' => 'required|min:4',
-
         ], $messages);
         
         $servico = new Servico;
         $servico->nome = $request -> nome;
         $servico->valor = $request -> valor;
-
         $servico->save();
-        
     
         return redirect('/servico')->with('status', 'Serviço criada com sucesso!!');
     }
@@ -63,7 +57,6 @@ class ServicoController extends Controller
     {
         $servico = Servico::findOrFail($id);
         return view('servico.show',['servico' => $servico]);
-        
     }
 
     /**
@@ -89,14 +82,11 @@ class ServicoController extends Controller
     {
         $messages = [
             'nome.required' => 'O campo :attribute é obrigatório!',
-            
             'nome.min' => 'O :attribute precisa ter no mínimo :min.',
-            
         ];
 
         $validate = $request->validate([
             'nome' => 'required|min:4',
-
         ], $messages);
         
         $servico = Servico::findOrFail($id);
@@ -118,8 +108,5 @@ class ServicoController extends Controller
         $servico -> delete();
 
         return redirect('/servico')->with('status', 'Serviço excluido com sucesso!');
-    
-    
-}
-
+    }
 }
