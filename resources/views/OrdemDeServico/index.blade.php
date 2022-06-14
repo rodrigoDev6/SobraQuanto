@@ -8,38 +8,47 @@
 @section('content')
 
 
-    <div class="row col-12">
+    <div class="row col-12 pt-4">
         <div class="form-group col-4">
-            {{ Form::label('status', 'Status:') }}
+            {{ Form::label('status', 'Status da ordem:') }}
             {{ Form::select(
                 'status',
                 [
-                    'A' => 'Aberto',
-                    'F' => 'Fechado',
+                    '0' => 'Todas',
+                    '1' => 'Orçamento',
+                    '2' => 'Em andamento',
+                    '3' => 'Finalizada',
+                    '4' => 'Cancelada',
                 ],
                 null,
                 ['class' => 'form-control'],
             ) }}
         </div>
         <div class="form-group col-4">
-            {{ Form::label('status', 'Status:') }}
+            {{ Form::label('ordem', 'Ordenar por:') }}
             {{ Form::select(
-                'status',
+                'ordem',
                 [
-                    'A' => 'Aberto',
-                    'F' => 'Fechado',
+                    'ASC' => 'ASC',
+                    'DESC' => 'DESC',
                 ],
                 null,
                 ['class' => 'form-control'],
             ) }}
         </div>
         <div class="form-group col-4">
-            {{ Form::label('status', 'Status:') }}
+            {{ Form::label('cleintes', 'Clientes:') }}
             {{ Form::select(
-                'status',
+                'clientes',
                 [
-                    'A' => 'Aberto',
-                    'F' => 'Fechado',
+                    'Todos' => 'Todos',
+                    '1' => 'RODRIGO',
+                    '2' => 'JOSE',
+                    '3' => 'MARIA',
+                    '4' => 'JOAO',
+                    '5' => 'PAULO',
+                    '6' => 'JOSE',
+                    '7' => 'MARIA',
                 ],
                 null,
                 ['class' => 'form-control'],
@@ -48,7 +57,7 @@
 
         <div class="form-group col-4">
             {{ Form::label('pesquisa', 'Pesquisa:') }}
-            {{ Form::text('pesquisa', null, ['class' => 'form-control', 'placeholder' => 'Pesquisa']) }}
+            {{ Form::text('pesquisa', null, ['class' => 'form-control', 'placeholder' => 'Digite palavras chaves']) }}
         </div>
 
         <div class="form-group col-4">
@@ -79,8 +88,8 @@
                 <tr>
                     <th>id</th>
                     <th>nome</th>
-                    <th>CPF</th>
-                    <th>Telefone</th>
+                    <th>Serviços</th>
+                    <th>Status</th>
                     <th><b>AÇÕES</b></th>
                     <th></th>
                 </tr>
