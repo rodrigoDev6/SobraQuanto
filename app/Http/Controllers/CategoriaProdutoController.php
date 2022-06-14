@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 use App\Models\CategoriaProduto;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class CategoriaProdutoController extends Controller
 {
     public function index(){
 
         $categoriaProduto = CategoriaProduto::orderby('id', 'ASC')->get();
+        $categoriaProduto = CategoriaProduto::paginate(5);
+        Paginator::useBootstrap();
         return view('categoriaProduto.index',['categoriaProduto'=>$categoriaProduto]);
 
     }

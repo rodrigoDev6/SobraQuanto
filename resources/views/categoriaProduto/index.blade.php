@@ -20,7 +20,7 @@
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th></th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -48,6 +48,8 @@
 
         </tbody>
     </table>
+
+    {{ $categoriaProduto->links() }}
 
     @foreach ($categoriaProduto as $value)
         <!-- Modal -->

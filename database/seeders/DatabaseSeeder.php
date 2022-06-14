@@ -11,7 +11,7 @@ use Database\Seeders\ServicoSeeder;
 use Database\Seeders\CategoriaProdutoSeeder;
 use Database\Seeders\ProdutoSeeder;
 use Database\Seeders\ClienteStatusSeeder;
-use Database\Seeders\OrdemServicoStatusSeeder;
+use Database\Seeders\OrdemDeServicoStatusSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             CategoriaProdutoSeeder::class,
             ProdutoSeeder::class,
             ServicoSeeder::class,
-            OrdemServicoStatusSeeder::class,
+            OrdemDeServicoStatusSeeder::class,
         ]);
     }
 }

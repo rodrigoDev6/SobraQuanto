@@ -130,5 +130,5 @@ Route::get('financeiro', [FinanceiroController::class, 'index'])->name('financei
 //--------------- SERVICOS ---------------//
 Route::get('ordemDeServico', [OrdemDeServicoController::class, 'index'])->name('ordemDeServico');
 
-
+Route::get('/ordemDeServico/create', [OrdemDeServicoController::class, 'create'])->name('ordemDeServico.create');
 
