@@ -83,14 +83,14 @@
 
     <div class="row row-cols-12 m-2">
 
-        <table class="table no-margin">
+        <table class="table no-margin" style="width:81%;">
             <thead>
                 <tr>
                     <th>id</th>
                     <th>nome</th>
                     <th>Serviços</th>
                     <th>Status</th>
-                    <th><b>AÇÕES</b></th>
+                    <th>AÇÕES</th>
                     <th></th>
                 </tr>
             </thead>
@@ -119,14 +119,6 @@
             </tbody>
         </table>
     </div>
-
-    <div class="row justify-content-center">
-
-        {{-- {{ $cliente->links() }} --}}
-    </div>
-
-
-
 
 @stop
 

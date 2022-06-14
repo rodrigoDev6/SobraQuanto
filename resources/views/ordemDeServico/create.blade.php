@@ -2,7 +2,6 @@
 
 @section('title', 'Sobra Quanto')
 
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -80,24 +79,24 @@
 
                             <div class="form-group"
                                 style="text-align: center;display: flex;flex-direction: column;justify-content: flex-end;">
-                                {{-- add plus --}}
                                 <button type="button" class="btn btn-primary" style="width: 20%;">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
                         </div>
 
+
                         <div class="form-group">
-                            <div class="card shadow-none">
+                            <div class="card shadow-none  text-center">
                                 <div class="card-body">
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Serviço</th>
-                                                <th scope="col">Valor</th>
-                                                <th scope="col">Quantidade</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col"></th>
+                                                <th class="h4" style="font-weight:700 ">Serviço</th>
+                                                <th class="h4" style="font-weight:700 ">Valor</th>
+                                                <th class="h4" style="font-weight:700 ">Quantidade</th>
+                                                <th class="h4" style="font-weight:700 ">Total</th>
+                                                <th class="h4" style="font-weight:700 "></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -163,9 +162,15 @@
                     </div>
                 </div>
             </div>
-        @endsection
+        </div>
+    </div>
 
-        @section('css')
-            <link rel="stylesheet" href="/css/admin_custom.css">
-            <link rel="icon" href="img/sobraquanto.png">
-        @stop
+    <script></script>
+
+
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="./css/app.css">
+    <link rel="icon" href="img/sobraquanto.png">
+@stop
