@@ -28,16 +28,16 @@
                             </div>
                         @endif
 
-                        {{ Form::open(['url' => '/addServico/create']) }}
+                        {{ Form::open(['url' => '/finalizarOrdem']) }}
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 p-2">
                             <div class="form-group col">
                                 {{ Form::label('cliente', 'Cliente:', ['class' => 'h5']) }}
-                                {{ Form::select('cliente', $cliente, '', ['class' => 'form-control', 'placeholder' => '-Escolha um cliente-']) }}
+                                {{ Form::select('cliente_id', $cliente, '', ['class' => 'form-control', 'placeholder' => '-Escolha um cliente-']) }}
                             </div>
 
                             <div class="form-group col">
                                 {{ Form::label('status', 'Status:', ['class' => 'h5']) }}
-                                {{ Form::select('status', $status, '', ['class' => 'form-control', 'placeholder' => '-Escolha um status-']) }}
+                                {{ Form::select('status_id', $status, '', ['class' => 'form-control', 'placeholder' => '-Escolha um status-']) }}
                             </div>
                             <div class="form-group col">
                                 {{ Form::label('data_abertura', 'Abertura:', ['class' => 'h5']) }}
@@ -55,12 +55,26 @@
                                 {{ Form::select('formaPagamento', ['pix' => 'PIX', 'credito' => 'CARTÃO DE CRÉDITO', 'dinheiro' => 'DINHEIRO'], '', ['class' => 'form-control']) }}
                             </div>
                         </div>
+
+                        <div class="form-group p-2">
+                            {{ Form::label('observacao', 'Observação:', ['class' => 'h5']) }}
+                            {{ Form::textarea('observacao', null, ['class' => 'form-control', 'rows' => '3']) }}
+                        </div>
+                        {{-- /observacao --}}
+
+                        <div class="form-group p-2">
+                            {{ Form::submit('Finalizar Ordem', ['class' => 'btn btn-primary']) }}
+                        </div>
+                        {{-- /buttons --}}
+
+                        {{ Form::close() }}
                         {{-- input de cliente, status e pagamento --}}
 
+                        {{ Form::open(['url' => '/addServico']) }}
                         <div class="row row-cols-4 p-2">
                             <div class="form-group col">
                                 {{ Form::label('servico', 'Serviço:', ['class' => 'h5']) }}
-                                {{ Form::select('servico', $servico, '', ['class' => 'form-control', 'placeholder' => '-Escolha um serviço-']) }}
+                                {{ Form::select('servico_id', $servico, '', ['class' => 'form-control', 'placeholder' => '-Escolha um serviço-']) }}
                             </div>
 
                             <div class="form-group col">
@@ -80,79 +94,79 @@
                                 </button>
                             </div>
                         </div>
+                        {{ Form::close() }}
                         {{-- /input de servico --}}
+
 
 
                         <div class="form-group">
                             <div class="card shadow-none  text-center">
                                 <div class="card-body">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th class="h4" style="font-weight:700 ">Serviço</th>
-                                                <th class="h4" style="font-weight:700 ">Valor</th>
-                                                <th class="h4" style="font-weight:700 ">Quantidade</th>
-                                                <th class="h4" style="font-weight:700 ">Total</th>
-                                                <th class="h4" style="font-weight:700 "></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Formatação</td>
-                                                <td>R$80</td>
-                                                <td>1</td>
-                                                <td>R$ 80</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Formatação</td>
-                                                <td>R$80</td>
-                                                <td>1</td>
-                                                <td>R$ 80</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Formatação</td>
-                                                <td>R$80</td>
-                                                <td>1</td>
-                                                <td>R$ 80</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+
+                                    @if ($cartServico)
+
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="h4" style="font-weight:700 ">Serviço</th>
+                                                    <th class="h4" style="font-weight:700 ">Valor</th>
+                                                    <th class="h4" style="font-weight:700 ">Quantidade</th>
+                                                    <th class="h4" style="font-weight:700 ">Total</th>
+                                                    <th class="h4" style="font-weight:700 "></th>
+                                                </tr>
+                                            </thead>
+
+                                            @php($totalGeral = 0)
+
+                                            <tbody>
+                                                @foreach ($cartServico as $key => $value)
+                                                    @foreach ($value as $key2 => $value2)
+                                                        <tr>
+                                                            <td>nome{{ $value2['id'] }}</td>
+                                                            <td>{{ $value2['valor'] }}</td>
+                                                            <td>{{ $value2['quantidade'] }}</td>
+                                                            <td>{{ $value2['quantidade'] * $value2['valor'] }}</td>
+                                                            <td>
+                                                                {{ Form::open(['url' => 'removeServico/' . $key]) }}
+                                                                {{ Form::hidden('_method', 'DELETE') }}
+                                                                {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
+                                                                {{ Form::close() }}
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-danger">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endforeach
+
+                                            </tbody>
+                                        </table>
 
                                 </div>
                             </div>
                             {{-- /tabela de servicos --}}
-
-
-                            <div class="form-group p-2">
-                                {{ Form::label('observacao', 'Observação:', ['class' => 'h5']) }}
-                                {{ Form::textarea('observacao', null, ['class' => 'form-control', 'rows' => '3']) }}
+                        @else
+                            <div>
+                                <p class="h4" style="font-family: Open Sans; font-weight: 700">Seu caixa
+                                    está
+                                    vazio!</p>
+                                <span
+                                    style="font-family: 'Open Sans';font-style: normal;font-weight: 800; font-size: 14px; color: #485673;">Adicione
+                                    itens</span>
                             </div>
-                            {{-- /observacao --}}
-
-                            <div class="form-group p-2">
-                                {{ Form::submit('Salvar', ['class' => 'btn btn-primary']) }}
-                                {{ Form::reset('Limpar', ['class' => 'btn btn-danger']) }}
-                                {{ Form::button('Cancelar', ['class' => 'btn btn-secondary', 'onclick' => 'history.go(-1)']) }}
-                            </div>
-                            {{-- /buttons --}}
-
-                            {{ Form::close() }}
+                            @endif
                         </div>
+
+
+                        {{ Form::open(['url' => 'addServico']) }}
+                        <div class="form-group p-2">
+                            {{ Form::reset('Limpar', ['class' => 'btn btn-danger']) }}
+                            {{ Form::button('Cancelar', ['class' => 'btn btn-secondary', 'onclick' => 'history.go(-1)']) }}
+                        </div>
+                        {{ Form::close() }}
+
                         {{-- card-primary-end --}}
                     </div>
                 </div>

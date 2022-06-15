@@ -28,7 +28,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Auth::routes();
+Auth::routes();  
 
 //--------------- PDV ---------------//
 Route::get('pdv', [PdvController::class, 'index'])->name('pdv.index');
@@ -46,11 +46,14 @@ Route::delete('/removeCart',[PdvController::class,'removeCart'])->name('pdv.remo
 Route::post('/concluirVenda', [PdvController::class, 'concluirPedido'])->name('pdv.concluirVenda');
 
 //--------------- ORDEM DE SERVICOS ---------------//
-Route::get('ordemDeServico', [OrdemDeServicoController::class, 'index'])->name('ordemDeServico');
+Route::get('/ordemDeServico', [OrdemDeServicoController::class, 'index'])->name('ordemDeServico');
 
 Route::get('/ordemDeServico/create', [OrdemDeServicoController::class, 'create'])->name('ordemDeServico.create');
-Route::get('/addServico/{id}', [OrdemDeServicoController::class, 'addServico'])->name('ordemDeServico.show');
+
 Route::post('/addServico', [OrdemDeServicoController::class, 'addServico'])->name('ordemDeServico.addServico');
+
+Route::delete('/removeServico/{key}',[OrdemDeServicoController::class,'removeServico'])->name('ordemDeServico.removeServico');
+
 
 
 

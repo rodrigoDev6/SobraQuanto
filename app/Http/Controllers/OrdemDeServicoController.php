@@ -14,16 +14,20 @@ class OrdemDeServicoController extends Controller
         $ordemDeServico = OrdemDeServico::orderBy('id', 'ASC')->get();
         return view('ordemDeServico.index',['ordemDeServico' => $ordemDeServico]);
     }
-
+ 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request) {
+
         $cliente = Cliente::orderBy('nome', 'ASC')->pluck('nome','id');
+        
         $servico = Servico::orderBy('nome', 'ASC')->pluck('nome','id');
+        
         $ordemDeServicoStatus = OrdemDeServicoStatus::orderBy('nome', 'ASC')->pluck('nome','id');
+        
         $cartServico = (array) $request->session()->get('cartServico');
         // dd($cartServico);
 
@@ -38,18 +42,20 @@ class OrdemDeServicoController extends Controller
     public function addServico(Request $request) {
         // echo getttype($cartServico), "\n";
 
+        
         $collection = collect(
             [
-            [
-                'id' => $request->servico_id,
-                'nome' => $request->nome,
-                'valor' => $request->valor,
-                'quantidade' => $request->quantidade,
-                'total' => $request->total,
-            ]
-            ]
-            );
-
+                [
+                    'id' => $request->servico_id,
+                    'nome' => $request->nome,
+                    'valor' => $request->valor,
+                    'quantidade' => $request->quantidade,
+                    'total' => $request->total,
+                    ]
+                    ]
+                );
+                
+            //dd($collection);
             //1 verifica se existe uma $cartServico senão cria um novo
             $cartServico = (array) $request->session()->get('cartServico');
 
@@ -84,8 +90,18 @@ class OrdemDeServicoController extends Controller
         echo json_encode($servico);
 
 
-            return redirect('/ordemDeServico')->with('message', 'Serviço adicionado ao carrinho com sucesso!');
+        return redirect('/ordemDeServico/create')->with('message', 'Serviço adicionado ao carrinho com sucesso!');
 
+
+    }
+
+    public function removeServico(Request $request, $key){
+
+        $cartServico = (array) $request->session()->get('cartServico');
+        unset($cartServico[$key]);
+        $request->session()->forget('cartServico');
+        $request->session()->put('cartServico', $cartServico);
+        return redirect()->back()->with('message', 'Produto removido com sucesso'); 
 
     }
 
