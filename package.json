@@ -21,6 +21,7 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
-        "inputmask": "^5.0.7"
+        "inputmask": "^5.0.7",
+        "vanilla-masker": "^1.2.0"
     }
 }

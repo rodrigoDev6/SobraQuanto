@@ -11,7 +11,6 @@
                     <div class="card-header h3 mt">{{ __('Nova Ordem de Servicço:') }}
                     </div>
 
-
                     <div class="card-body col-12">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -29,12 +28,8 @@
                             </div>
                         @endif
 
-
-
-
-
-                        {!! Form::open(['url' => '/ordemDeServico/create']) !!}
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 p-4">
+                        {{ Form::open(['url' => '/addServico/create']) }}
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 p-2">
                             <div class="form-group col">
                                 {{ Form::label('cliente', 'Cliente:', ['class' => 'h5']) }}
                                 {{ Form::select('cliente', $cliente, '', ['class' => 'form-control', 'placeholder' => '-Escolha um cliente-']) }}
@@ -60,8 +55,9 @@
                                 {{ Form::select('formaPagamento', ['pix' => 'PIX', 'credito' => 'CARTÃO DE CRÉDITO', 'dinheiro' => 'DINHEIRO'], '', ['class' => 'form-control']) }}
                             </div>
                         </div>
+                        {{-- input de cliente, status e pagamento --}}
 
-                        <div class="row row-cols-4 p-4">
+                        <div class="row row-cols-4 p-2">
                             <div class="form-group col">
                                 {{ Form::label('servico', 'Serviço:', ['class' => 'h5']) }}
                                 {{ Form::select('servico', $servico, '', ['class' => 'form-control', 'placeholder' => '-Escolha um serviço-']) }}
@@ -79,11 +75,12 @@
 
                             <div class="form-group"
                                 style="text-align: center;display: flex;flex-direction: column;justify-content: flex-end;">
-                                <button type="button" class="btn btn-primary" style="width: 20%;">
+                                <button type="submit" class="btn btn-primary" style="width: 20%;">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
                         </div>
+                        {{-- /input de servico --}}
 
 
                         <div class="form-group">
@@ -138,39 +135,35 @@
 
                                 </div>
                             </div>
+                            {{-- /tabela de servicos --}}
 
 
-                            <div class="form-group p-4">
+                            <div class="form-group p-2">
                                 {{ Form::label('observacao', 'Observação:', ['class' => 'h5']) }}
                                 {{ Form::textarea('observacao', null, ['class' => 'form-control', 'rows' => '3']) }}
                             </div>
+                            {{-- /observacao --}}
 
-                            <div class="form-group p-4">
+                            <div class="form-group p-2">
                                 {{ Form::submit('Salvar', ['class' => 'btn btn-primary']) }}
                                 {{ Form::reset('Limpar', ['class' => 'btn btn-danger']) }}
                                 {{ Form::button('Cancelar', ['class' => 'btn btn-secondary', 'onclick' => 'history.go(-1)']) }}
                             </div>
+                            {{-- /buttons --}}
 
                             {{ Form::close() }}
-
-
                         </div>
                         {{-- card-primary-end --}}
-
-
-
                     </div>
                 </div>
+                {{-- /card principal com div e botoes --}}
             </div>
         </div>
+        {{-- /linha principal dentro do container --}}
     </div>
-
-    <script></script>
-
-
+    {{-- /container --}}
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="./css/app.css">
     <link rel="icon" href="img/sobraquanto.png">
 @stop

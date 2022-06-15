@@ -45,6 +45,15 @@ Route::delete('/removeCart',[PdvController::class,'removeCart'])->name('pdv.remo
 
 Route::post('/concluirVenda', [PdvController::class, 'concluirPedido'])->name('pdv.concluirVenda');
 
+//--------------- ORDEM DE SERVICOS ---------------//
+Route::get('ordemDeServico', [OrdemDeServicoController::class, 'index'])->name('ordemDeServico');
+
+Route::get('/ordemDeServico/create', [OrdemDeServicoController::class, 'create'])->name('ordemDeServico.create');
+Route::get('/addServico/{id}', [OrdemDeServicoController::class, 'addServico'])->name('ordemDeServico.show');
+Route::post('/addServico', [OrdemDeServicoController::class, 'addServico'])->name('ordemDeServico.addServico');
+
+
+
 //--------------- HOME ------------//
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -124,11 +133,4 @@ Route::delete('/produto/{id}',[ProdutoController::class, 'destroy'])->name('prod
 
 //--------------- FINANCEIRO ---------------//
 Route::get('financeiro', [FinanceiroController::class, 'index'])->name('financeiro');
-
-
-
-//--------------- SERVICOS ---------------//
-Route::get('ordemDeServico', [OrdemDeServicoController::class, 'index'])->name('ordemDeServico');
-
-Route::get('/ordemDeServico/create', [OrdemDeServicoController::class, 'create'])->name('ordemDeServico.create');
 

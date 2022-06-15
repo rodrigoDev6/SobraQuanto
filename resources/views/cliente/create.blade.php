@@ -3,7 +3,6 @@
 @section('title', 'Sobra Quanto')
 
 @section('content_header')
-
     @if (\Session::has('message'))
         <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
             {!! \Session::get('message') !!}
@@ -12,8 +11,6 @@
             </button>
         </div>
     @endif
-
-
 @stop
 
 @section('content')
@@ -130,28 +127,7 @@
     </div>
 
 
-
-@endsection
-
-{{-- session for script --}}
-@section('js')
-    <script>
-        // mask input cpf_cnpj
-        $(document).ready(function() {
-            $('#cpf_cnpj').mask('000.000.000-00', {
-                reverse: true
-            });
-        });
-
-        // mask input telefone
-        $(document).ready(function() {
-            $('#telefone_1').mask('(00) 00000-0000');
-            $('#telefone_2').mask('(00) 00000-0000');
-        });
-    </script>
 @stop
 
-{{-- link css --}}
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop

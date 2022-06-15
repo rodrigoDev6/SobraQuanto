@@ -13,7 +13,7 @@ class CreateTableOrdemServico extends Migration
      */
     public function up()
     {
-        Schema::create('ordem_de_servico', function (Blueprint $table) {
+        Schema::create('ordem_servico', function (Blueprint $table) {
             $table->id();
             $table->integer('cliente_id');
             $table->integer('status_id');
@@ -33,6 +33,6 @@ class CreateTableOrdemServico extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ordem_de_servico');
+        Schema::dropIfExists('ordem_servico');
     }
 }

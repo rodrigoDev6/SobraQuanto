@@ -15,9 +15,7 @@
                 $("#success-alert").fadeTo(1000, 0).slideUp(1000, function() {
                     $(this).remove();
                 });
-
-                console.log('hello')
-
+                // console.log('hello')
             }, 2000);
         </script>
     @endif
