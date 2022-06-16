@@ -95,7 +95,51 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
     <link rel="icon" href="img/sobraquanto.png">
+<link rel="stylesheet" href="{{ asset('css/admin_custom.css')}}">
+<style>
 
+    /* Fundo da página*/
+    .content-wrapper {
+background-color: #0A3B60 !important;
+}
+
+
+    /* NavBar Superior*/
+
+.navbar-light {
+    background-color: #14213D !important;
+}
+    /*Menu Lateral*/
+
+[class*=sidebar-dark-] {
+    background-color: #14213D !important;
+}
+    /*Letras da página*/
+body {
+    color: #fff
+}
+/* Letras do menu esquerdo*/
+[class*=sidebar-dark-] .sidebar a {
+    color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.btn-outline-success{
+    color: #fff;
+    background-color: #28a745;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #14213D;
+    border-color: #14213D;
+}
+
+
+</style>
 @stop

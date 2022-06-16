@@ -1,3 +1,9 @@
 .pequeno {
   width: 20%;
 }
+
+.content-wrapper {
+
+  background-color: red !important;
+
+}
