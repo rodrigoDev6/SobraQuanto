@@ -76,7 +76,7 @@
                         <div class="row row-cols-4 p-2">
                             <div class="form-group col">
                                 {{ Form::label('servico', 'Serviço:', ['class' => 'h5']) }}
-                                {{ Form::select('servico_id', $servico, '', ['class' => 'form-control', 'placeholder' => '-Escolha um serviço-']) }}
+                                {{ Form::select('servico_id', $servico, '', ['class' => 'form-control', 'placeholder' => '-Escolha um serviço-', 'required']) }}
 
 
                             </div>
@@ -155,8 +155,7 @@
                             {{-- /tabela de servicos --}}
                         @else
                             <div>
-                                <p class="h4" style="font-family: Open Sans; font-weight: 700">Não há serviços nesta
-                                    ordem!!</p>
+                                <p class="h4" style="font-family: Open Sans; font-weight: 700">Não há serviços !!</p>
                                 <span
                                     style="font-family: 'Open Sans';font-style: normal;font-weight: 800; font-size: 14px; color: #485673;">Adicione
                                     Serviços</span>

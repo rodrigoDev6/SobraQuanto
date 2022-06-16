@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\OrdemDeServico;
 use App\Models\Cliente;
-use App\Models\OrdemDeServicoStatus;
-use App\Models\OrdemDeServicoServico;
 use App\Models\Servico;
+use App\Models\OrdemDeServicoStatus;
+use App\Models\OrdemDeServico;
+use App\Models\OrdemDeServicoServico;
 
 class OrdemDeServicoController extends Controller
 {

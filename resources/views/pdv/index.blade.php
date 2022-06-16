@@ -154,10 +154,10 @@
                         </div>
                     @else
                         <div class="text-align">
-                            <p class="h4" style="font-family: Open Sans; font-weight: 700">
+                            <p class="h4" style="font-family: Open Sans; font-weight: 700;color: #0a0a0a;">
                                 Seu caixa está vazio!</p>
-                            <span
-                                style="font-family: 'Open Sans';font-style: normal;font-weight: 800; font-size: 14px; color: #485673;">Adicione
+                            <span class="h6"
+                                style="font-family: 'Open Sans';font-style: normal;font-weight: bold; color: #485673;">Adicione
                                 itens</span>
                         </div>
                     @endif
@@ -171,10 +171,9 @@
 @stop
 
 @section('css')
-<<<<<<< Updated upstream
-<link rel="stylesheet" href="./css/admin_custom.css">
-=======
+
+    <link rel="stylesheet" href="./css/admin_custom.css">
     {{-- <link rel="stylesheet" href="./css/admin_custom.css"> --}}
 
->>>>>>> Stashed changes
+
 @stop
