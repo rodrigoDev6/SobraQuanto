@@ -2,8 +2,91 @@
   width: 20%;
 }
 
-.content-wrapper {
+    /* Fundo da página*/
+    .content-wrapper {
+      background-color: #0A3B60 !important;
+      }
+      
+      
+          /* NavBar Superior*/
+      
+      .navbar-light {
+          background-color: #14213D !important;
+      }
+          /*Menu Lateral*/
+      
+      [class*=sidebar-dark-] {
+          background-color: #14213D !important;
+      }
+          /*Letras da página*/
+      body {
+          color: #fff
+      }
+      /* Letras do menu esquerdo*/
+      [class*=sidebar-dark-] .sidebar a {
+          color: #fff;
+      }
+      
+      .navbar-light .navbar-nav .nav-link {
+          color: #fff;
+      }
+      
+      .btn-outline-success{
+          color: #fff;
+          background-color: #28a745;
+      }
+      
+      .page-item.active .page-link {
+          z-index: 3;
+          color: rgb(255, 255, 255);
+          background-color: #14213D;
+          border-color: #14213D;
+      }
+      
+      label {
+        color: black;
+      }
+      h5.card-title {
+        color: black !important;
+      }
 
-  background-color: red !important;
+      p.card-text  {
+        color: black !important;
+      }
 
-}
+      .estoque {
+        color: rgb(0, 0, 0);
+      }
+      .align-items-center {
+        color: black;
+      }
+      span.h5 {
+        color: black;
+      }
+      .table {
+        color: rgb(255, 255, 255) !important;
+      }
+      
+      .ordem {
+        color: #fff !important;
+      }
+
+      label.container-fluid {
+        color: #fff !important;
+      }
+
+      .thead-white {
+        color: rgb(255, 255, 255);
+      }
+
+    label {
+        color: rgb(0, 0, 0);
+    }
+
+    p.text-center {
+      color: black;
+    }
+
+    h5.modal-title {
+      color: black;
+    }

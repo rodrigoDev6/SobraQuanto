@@ -39,7 +39,7 @@
                             {{ Form::hidden('valor', $produtoItem->valor) }}
                             <h5 class="card-title">{{ $produtoItem->nome }}</h5>
                             <p class="card-text">{{ $produtoItem->valor }}</p>
-                            <span> Estoque: {{ $produtoItem->quantidade }}</span>
+                            <span class="estoque"> Estoque: {{ $produtoItem->quantidade }}</span>
                             {{ Form::number('quantidade', 1, ['min' => 1, 'class' => 'text-center form-control col-4']) }}
                             <hr>
                             <button type="submit" class="btn btn-primary">
@@ -263,5 +263,5 @@
 
 @endsection
 @section('css')
-    <link rel="stylesheet" href="./css/admin_custom.css">
+<link rel="stylesheet" href="./css/admin_custom.css">
 @stop

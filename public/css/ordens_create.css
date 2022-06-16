@@ -1,0 +1,30 @@
+.pequeno {
+    width: 20%;
+  }
+  
+    
+  /* Fundo da página*/
+  .content-wrapper {
+    background-color: #0A3B60 !important;
+    }
+    
+          /* NavBar Superior*/
+      
+          .navbar-light {
+            background-color: #14213D !important;
+        }
+
+              /*Menu Lateral*/
+      
+      [class*=sidebar-dark-] {
+        background-color: #14213D !important;
+    }
+
+    /* Letras do menu esquerdo*/
+    [class*=sidebar-dark-] .sidebar a {
+        color: #fff;
+    }
+    
+    .navbar-light .navbar-nav .nav-link {
+        color: #fff;
+    }
