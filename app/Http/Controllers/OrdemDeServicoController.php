@@ -47,7 +47,6 @@ class OrdemDeServicoController extends Controller
             [
                 [
                     'id' => $request->servico_id,
-                    'nome' => $request->nome,
                     'valor' => $request->valor,
                     'quantidade' => $request->quantidade,
                     'total' => $request->total,
@@ -91,18 +90,44 @@ class OrdemDeServicoController extends Controller
 
 
         return redirect('/ordemDeServico/create')->with('message', 'Serviço adicionado ao carrinho com sucesso!');
-
-
     }
 
     public function removeServico(Request $request, $key){
-
         $cartServico = (array) $request->session()->get('cartServico');
         unset($cartServico[$key]);
         $request->session()->forget('cartServico');
         $request->session()->put('cartServico', $cartServico);
         return redirect()->back()->with('message', 'Produto removido com sucesso'); 
+    }
 
+    public function removeCartServico(Request $request){
+        $request->session()->forget('cartServico');
+        return redirect()->back()->with('message', 'Todos os produtos foram removidos com sucesso'); 
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function finalizarOrdem(Request $request){
+        
+        $cartServico = (array) $request->session()->get('cartServico');
+        // dd($cartServico);
+
+        $ordemDeServico = new OrdemDeServico();
+        $ordemDeServico->cliente_id = $request->cliente_id;
+        $ordemDeServico->status_id = $request->status_id;
+        $ordemDeServico->forma_pagamento = $request->forma_pagamento;
+        $ordemDeServico->data_abertura = $request->data_abertura;
+        $ordemDeServico->data_fechamento = $request->data_fechamento;
+        $ordemDeServico->observacao = $request->observacao;
+
+        $ordemDeServico->save();
+        
+        
     }
 
 

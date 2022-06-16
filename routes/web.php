@@ -43,8 +43,6 @@ Route::post('/fecharVenda', [PdvController::class, 'fecharVenda'])->name('pdv.fe
 Route::delete('/removeProduto/{key}',[PdvController::class,'removeProduto'])->name('pdv.removeProduto');
 Route::delete('/removeCart',[PdvController::class,'removeCart'])->name('pdv.removeCart');
 
-Route::post('/concluirVenda', [PdvController::class, 'concluirPedido'])->name('pdv.concluirVenda');
-
 //--------------- ORDEM DE SERVICOS ---------------//
 Route::get('/ordemDeServico', [OrdemDeServicoController::class, 'index'])->name('ordemDeServico');
 
@@ -52,10 +50,10 @@ Route::get('/ordemDeServico/create', [OrdemDeServicoController::class, 'create']
 
 Route::post('/addServico', [OrdemDeServicoController::class, 'addServico'])->name('ordemDeServico.addServico');
 
+Route::post('/finalizarOrdem', [OrdemDeServicoController::class, 'finalizarOrdem'])->name('ordemDeServico.finalizarOrdem');
+
 Route::delete('/removeServico/{key}',[OrdemDeServicoController::class,'removeServico'])->name('ordemDeServico.removeServico');
-
-
-
+Route::delete('/removeCartServico',[OrdemDeServicoController::class,'removeCartServico'])->name('ordemDeServico.removeCartServico');
 
 //--------------- HOME ------------//
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

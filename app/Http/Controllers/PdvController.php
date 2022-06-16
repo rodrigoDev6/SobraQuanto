@@ -118,7 +118,7 @@ class PdvController extends Controller
     public function fecharVenda(Request $request){
         
         $cart = (array) $request->session()->get('cart');
-        // dd($cart);
+        dd($cart);
 
 
         $venda = new Venda;

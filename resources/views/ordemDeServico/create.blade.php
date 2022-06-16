@@ -64,6 +64,8 @@
 
                         <div class="form-group p-2">
                             {{ Form::submit('Finalizar Ordem', ['class' => 'btn btn-primary']) }}
+                            <a class="btn btn-secondary" href="{{ route('ordemDeServico') }}">Cancelar</a>
+
                         </div>
                         {{-- /buttons --}}
 
@@ -75,6 +77,8 @@
                             <div class="form-group col">
                                 {{ Form::label('servico', 'Serviço:', ['class' => 'h5']) }}
                                 {{ Form::select('servico_id', $servico, '', ['class' => 'form-control', 'placeholder' => '-Escolha um serviço-']) }}
+
+
                             </div>
 
                             <div class="form-group col">
@@ -108,11 +112,16 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th class="h4" style="font-weight:700 ">Serviço</th>
+                                                    <th class="h4" style="font-weight:700">ID</th>
                                                     <th class="h4" style="font-weight:700 ">Valor</th>
                                                     <th class="h4" style="font-weight:700 ">Quantidade</th>
                                                     <th class="h4" style="font-weight:700 ">Total</th>
-                                                    <th class="h4" style="font-weight:700 "></th>
+                                                    <th class="h4" style="font-weight:700 ">
+                                                        {{ Form::open(['url' => '/removeCartServico']) }}
+                                                        {{ Form::hidden('_method', 'DELETE') }}
+                                                        {{ Form::submit('Limpar', ['class' => 'btn btn-danger']) }}
+                                                        {{ Form::close() }}
+                                                    </th>
                                                 </tr>
                                             </thead>
 
@@ -122,20 +131,17 @@
                                                 @foreach ($cartServico as $key => $value)
                                                     @foreach ($value as $key2 => $value2)
                                                         <tr>
-                                                            <td>nome{{ $value2['id'] }}</td>
+                                                            <td>{{ $value2['id'] }}</td>
                                                             <td>{{ $value2['valor'] }}</td>
                                                             <td>{{ $value2['quantidade'] }}</td>
                                                             <td>{{ $value2['quantidade'] * $value2['valor'] }}</td>
                                                             <td>
                                                                 {{ Form::open(['url' => 'removeServico/' . $key]) }}
                                                                 {{ Form::hidden('_method', 'DELETE') }}
-                                                                {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
-                                                                {{ Form::close() }}
-                                                            </td>
-                                                            <td>
-                                                                <button type="button" class="btn btn-danger">
+                                                                <button type="submit" class="btn btn-danger">
                                                                     <i class="fas fa-trash"></i>
                                                                 </button>
+                                                                {{ Form::close() }}
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -149,31 +155,24 @@
                             {{-- /tabela de servicos --}}
                         @else
                             <div>
-                                <p class="h4" style="font-family: Open Sans; font-weight: 700">Seu caixa
-                                    está
-                                    vazio!</p>
+                                <p class="h4" style="font-family: Open Sans; font-weight: 700">Não há serviços nesta
+                                    ordem!!</p>
                                 <span
                                     style="font-family: 'Open Sans';font-style: normal;font-weight: 800; font-size: 14px; color: #485673;">Adicione
-                                    itens</span>
+                                    Serviços</span>
                             </div>
                             @endif
                         </div>
-
-
-                        {{ Form::open(['url' => 'addServico']) }}
-                        <div class="form-group p-2">
-                            {{ Form::reset('Limpar', ['class' => 'btn btn-danger']) }}
-                            {{ Form::button('Cancelar', ['class' => 'btn btn-secondary', 'onclick' => 'history.go(-1)']) }}
-                        </div>
-                        {{ Form::close() }}
-
-                        {{-- card-primary-end --}}
                     </div>
                 </div>
-                {{-- /card principal com div e botoes --}}
+
+                {{-- card-primary-end --}}
             </div>
         </div>
-        {{-- /linha principal dentro do container --}}
+        {{-- /card principal com div e botoes --}}
+    </div>
+    </div>
+    {{-- /linha principal dentro do container --}}
     </div>
     {{-- /container --}}
 @endsection
