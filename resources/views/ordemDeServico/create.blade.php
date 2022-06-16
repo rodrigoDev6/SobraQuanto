@@ -52,7 +52,7 @@
 
                             <div class="form-group col">
                                 {{ Form::label('formaPagamento', 'Pagamento:', ['class' => 'h5']) }}
-                                {{ Form::select('formaPagamento', ['pix' => 'PIX', 'credito' => 'CARTÃO DE CRÉDITO', 'dinheiro' => 'DINHEIRO'], '', ['class' => 'form-control']) }}
+                                {{ Form::select('forma_pagamento', ['pix' => 'PIX', 'credito' => 'CARTÃO DE CRÉDITO', 'dinheiro' => 'DINHEIRO'], '', ['class' => 'form-control']) }}
                             </div>
                         </div>
 
@@ -83,12 +83,12 @@
 
                             <div class="form-group col">
                                 {{ Form::label('valor', 'Valor unitário:', ['class' => 'h5']) }}
-                                {{ Form::text('valor', '', ['class' => 'form-control']) }}
+                                {{ Form::text('valor', '', ['class' => 'form-control', 'required']) }}
                             </div>
 
                             <div class="form-group col">
                                 {{ Form::label('quantidade', 'Quantidade:', ['class' => 'h5']) }}
-                                {{ Form::number('quantidade', '', ['class' => 'form-control']) }}
+                                {{ Form::number('quantidade', '', ['class' => 'form-control', 'required']) }}
                             </div>
 
                             <div class="form-group"

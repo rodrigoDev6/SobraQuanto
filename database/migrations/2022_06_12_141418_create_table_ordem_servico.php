@@ -21,7 +21,7 @@ class CreateTableOrdemServico extends Migration
             $table->date('data_abertura');
             $table->date('data_fechamento')->nullable();
             $table->string('observacao')->nullable();
-            $table->float('total', 10, 2);
+            $table->float('total', 10, 2)->nullable();
             $table->timestamps();
         });
     }

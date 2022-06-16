@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\OrdemDeServico;
 use App\Models\Servico;
 
-class VendaProduto extends Model
+class ordemDeServicoServico extends Model
 {
     use HasFactory;
     protected $table = 'ordem_servico_servico';

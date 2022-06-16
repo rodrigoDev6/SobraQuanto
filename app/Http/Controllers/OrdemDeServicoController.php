@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\OrdemDeServico;
 use App\Models\Cliente;
 use App\Models\OrdemDeServicoStatus;
+use App\Models\OrdemDeServicoServico;
 use App\Models\Servico;
 
 class OrdemDeServicoController extends Controller
@@ -124,8 +125,27 @@ class OrdemDeServicoController extends Controller
         $ordemDeServico->data_abertura = $request->data_abertura;
         $ordemDeServico->data_fechamento = $request->data_fechamento;
         $ordemDeServico->observacao = $request->observacao;
-
         $ordemDeServico->save();
+
+        $total = 0;
+
+        foreach($cartServico as $key => $value){
+            $servico = new ordemDeServicoServico();
+            $servico->ordem_servico_id = $ordemDeServico->id;
+            $servico->servico_id = $value[0]['id'];
+            $servico->quantidade = $value[0]['quantidade'];
+            $servico->valor = $value[0]['valor'];
+            $servico->save();
+
+            $total += $value[0]['total'] * $value[0]['quantidade'];
+        }
+
+        $ordemDeServico = OrdemDeServico::findOrFail($ordemDeServico->id);
+        $ordemDeServico->total = $total;
+        $ordemDeServico->save();
+
+        $request->session()->forget('cartServico');
+        return redirect()->route('ordemDeServico')->with('message', 'Ordem de Serviço finalizada com sucesso!');
         
         
     }
