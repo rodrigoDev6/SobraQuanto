@@ -12,11 +12,6 @@
                     </div>
 
                     <div class="card-body col-12">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
 
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -28,10 +23,11 @@
                             </div>
                         @endif
 
+
                         {{ Form::open(['url' => '/finalizarOrdem']) }}
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 p-2">
                             <div class="form-group col">
-                                {{ Form::label('cliente', 'Cliente:', ['class' => 'h5']) }}
+                                {{ Form::label('cliente', 'Cliente:', ['class' => 'h5', 'id' => 'cliente']) }}
                                 {{ Form::select('cliente_id', $cliente, '', ['class' => 'form-control', 'placeholder' => '-Escolha um cliente-']) }}
                             </div>
 
@@ -63,9 +59,10 @@
                         {{-- /observacao --}}
 
                         <div class="form-group p-2">
-                            {{ Form::submit('Finalizar Ordem', ['class' => 'btn btn-primary']) }}
+                            @if ($cartServico)
+                                {{ Form::submit('Finalizar Ordem', ['class' => 'btn btn-primary']) }}
+                            @endif
                             <a class="btn btn-secondary" href="{{ route('ordemDeServico') }}">Cancelar</a>
-
                         </div>
                         {{-- /buttons --}}
 
@@ -73,11 +70,12 @@
                         {{-- input de cliente, status e pagamento --}}
 
                         {{ Form::open(['url' => '/addServico']) }}
-                        <div class="row row-cols-4 p-2">
+                        {{-- row-cols-1 row-cols-sm-2 row-cols-md-5 --}}
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 p-2">
                             <div class="form-group col">
                                 {{ Form::label('servico', 'Serviço:', ['class' => 'h5']) }}
-                                {{ Form::select('servico_id', $servico, '', ['class' => 'form-control', 'placeholder' => '-Escolha um serviço-', 'required']) }}
-
+                                {{ Form::select('servico_id', $servico, '', ['class' => 'form-control servico', 'id' => 'servico', 'placeholder' => '-Escolha um serviço-', 'required']) }}
+                                <input type="hidden" id="servicoNome" name="servicoNome">
 
                             </div>
 
@@ -88,12 +86,12 @@
 
                             <div class="form-group col">
                                 {{ Form::label('quantidade', 'Quantidade:', ['class' => 'h5']) }}
-                                {{ Form::number('quantidade', '', ['class' => 'form-control', 'required']) }}
+                                {{ Form::number('quantidade', 1, ['min' => 1, 'class' => 'form-control', 'required']) }}
                             </div>
 
                             <div class="form-group"
                                 style="text-align: center;display: flex;flex-direction: column;justify-content: flex-end;">
-                                <button type="submit" class="btn btn-primary" style="width: 20%;">
+                                <button type="submit" class="btn btn-primary" id="addServico" style="width: 20%;">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -104,7 +102,7 @@
 
 
                         <div class="form-group">
-                            <div class="card shadow-none  text-center">
+                            <div class="card shadow-none text-center">
                                 <div class="card-body">
 
                                     @if ($cartServico)
@@ -112,7 +110,7 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th class="h4" style="font-weight:700">ID</th>
+                                                    <th class="h4" style="font-weight:700">Nome</th>
                                                     <th class="h4" style="font-weight:700 ">Valor</th>
                                                     <th class="h4" style="font-weight:700 ">Quantidade</th>
                                                     <th class="h4" style="font-weight:700 ">Total</th>
@@ -131,12 +129,12 @@
                                                 @foreach ($cartServico as $key => $value)
                                                     @foreach ($value as $key2 => $value2)
                                                         <tr>
-                                                            <td>{{ $value2['id'] }}</td>
+                                                            <td>{{ $value2['nome'] }}</td>
                                                             <td>{{ $value2['valor'] }}</td>
                                                             <td>{{ $value2['quantidade'] }}</td>
                                                             <td>{{ $value2['quantidade'] * $value2['valor'] }}</td>
                                                             <td>
-                                                                {{ Form::open(['url' => 'removeServico/' . $key]) }}
+                                                                {{ Form::open(['url' => 'removeServico/' . $key], ['onsubmit' => 'hello()']) }}
                                                                 {{ Form::hidden('_method', 'DELETE') }}
                                                                 <button type="submit" class="btn btn-danger">
                                                                     <i class="fas fa-trash"></i>
@@ -178,4 +176,12 @@
 
 @section('css')
     <link rel="icon" href="img/sobraquanto.png">
+@stop
+@section('js')
+    <script>
+        $('.servico').on('change', function() {
+            let texto = $('#servico :selected').text();
+            $('#servicoNome').val(texto);
+        });
+    </script>
 @stop

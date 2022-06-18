@@ -29,21 +29,17 @@
                     <td>{{ $value->nome }}</td>
                     <td>R$ {{ $value->valor }}</td>
                     <td>
-                        {{--  --}}
                         <a href="{{ url('servico/' . $value->id) }}" class="btn btn-primary">
                             <i class="fas fa-eye"></i>
                             Visualizar
                         </a>
-                        {{--  --}}
                         <a href="{{ url('servico/' . $value->id . '/edit') }}" class="btn btn-info mx-5">
                             <i class="fas fa-edit"></i>
                             Editar
                         </a>
-
-                        <a class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete{{ $value->id }}"
-                            href="">Excluir</a>
-
-
+                        <a class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete{{ $value->id }}">
+                            <i class="fas fa-trash"></i>
+                        </a>
                         <!-- Modal -->
                         <div class="modal fade" id="ModalDelete{{ $value->id }}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -51,8 +47,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Confirmar</h5>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-label="Close">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
@@ -60,7 +55,8 @@
                                         <p class="text-center">Confirma a exclusão do registro?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Fechar</button>
                                         {{ Form::open(['url' => 'servico/' . $value->id, 'onsubmit' => 'return ConfirmDelete()']) }}
                                         {{ Form::hidden('_method', 'DELETE') }}
                                         {{ Form::submit('Excluir Permanentetemente', ['class' => 'btn btn-danger']) }}

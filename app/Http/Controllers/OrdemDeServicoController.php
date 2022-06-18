@@ -48,6 +48,7 @@ class OrdemDeServicoController extends Controller
             [
                 [
                     'id' => $request->servico_id,
+                    'nome' => $request->input('servicoNome'),
                     'valor' => $request->valor,
                     'quantidade' => $request->quantidade,
                     'total' => $request->total,
@@ -55,7 +56,7 @@ class OrdemDeServicoController extends Controller
                     ]
                 );
                 
-            //dd($collection);
+            // dd($collection);
             //1 verifica se existe uma $cartServico senão cria um novo
             $cartServico = (array) $request->session()->get('cartServico');
 
@@ -137,7 +138,7 @@ class OrdemDeServicoController extends Controller
             $servico->valor = $value[0]['valor'];
             $servico->save();
 
-            $total += $value[0]['total'] * $value[0]['quantidade'];
+            $total += $value[0]['valor'] * $value[0]['quantidade'];
         }
 
         $ordemDeServico = OrdemDeServico::findOrFail($ordemDeServico->id);

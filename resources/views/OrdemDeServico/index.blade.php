@@ -97,7 +97,15 @@
             <tbody class="text-center">
                 @foreach ($ordemDeServico as $value)
                     <tr>
-                        <td class="h5">{{ $value->id }}</td>
+                        <td class="h5">
+                            @if ($value->id > 99)
+                                {{ $value->id }}
+                            @elseif ($value->id < 10)
+                                00{{ $value->id }}
+                            @elseif($value->id > 9)
+                                0{{ $value->id }}
+                            @endif
+                        </td>
                         <td class="h5 text-capitalize">{{ $value->cliente->nome }}</td>
                         <td class="h5 text-uppercase">
                             @if ($value->status_id == 1)
@@ -114,14 +122,14 @@
                             {{ $value->forma_pagamento }}
                         </td>
                         <td class="h5">
-                            <a href="{{ URL::to('ordemDeServico/' . $value->id . '/edit') }}">
+                            <a href="{{ URL::to('ordemDeServico/' . $value->id) }}">
                                 <button class="btn btn-outline-primary">
-                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-eye"></i>
                                 </button>
                             </a>
-                            <a href="{{ URL::to('ordemDeServico/' . $value->id) }}">
-                                <button class="btn btn-outline-success">
-                                    <i class="fas fa-eye"></i>
+                            <a href="{{ URL::to('ordemDeServico/' . $value->id . '/edit') }}">
+                                <button class="btn btn-outline-info">
+                                    <i class="fas fa-edit"></i>
                                 </button>
                             </a>
                             <a href="{{ URL::to('ordemDeServico/' . $value->id . '/delete') }}">
