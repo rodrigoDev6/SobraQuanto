@@ -9,7 +9,7 @@
             <div class="col-md-8">
 
                 <div class="card card-primary mt-5">
-                    <div class="card-header mt">{{ __('Novo Produto:') }}</div>
+                    <div class="card-header h3 mt">{{ __('Novo Produto:') }}</div>
 
 
                     {!! Form::open(['url' => '/produto/create']) !!}

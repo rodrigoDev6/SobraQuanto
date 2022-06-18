@@ -9,7 +9,7 @@
             <div class="col-md-8">
 
                 <div class="card card-primary ">
-                    <div class="card-header">{{ __('Editar Usuário') }}</div>
+                    <div class="card-header h3 mt">{{ __('Editar Usuário') }}</div>
 
                     {{-- procurando usuario --}}
                     {{ Form::model($usuario, ['route' => ['usuario.update', $usuario->id], 'method' => 'PUT']) }}

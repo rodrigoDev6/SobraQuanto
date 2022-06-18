@@ -9,7 +9,7 @@
             <div class="col-md-8">
 
                 <div class="card card-primary mt-5">
-                    <div class="card-header">{{ __('Produto Selecionado:') }}</div>
+                    <div class="card-header h3 mt">{{ __('Produto Selecionado:') }}</div>
 
                     @if ($errors->any())
                         <div class="alert alert-danger">

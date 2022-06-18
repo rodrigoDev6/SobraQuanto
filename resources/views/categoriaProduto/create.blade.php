@@ -6,10 +6,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="mb-3">Criar Categoria de Produto:</h1>
+                <h1 class="mb-3"> </h1>
 
                 <div class="card card-primary ">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header h3 mt">{{ __('Criar Categoria de Produto:') }}</div>
 
 
                     {!! Form::open(['url' => '/categoriaProduto/create']) !!}

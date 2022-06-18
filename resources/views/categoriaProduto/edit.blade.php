@@ -6,13 +6,13 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="mb-3">Categoria Selecionada:</h1>
+                <h1 class="mb-3"> </h1>
 
 
                 {{-- procurando categoria de produto --}}
                 {{ Form::model($CategoriaProduto, ['route' => ['categoriaProduto.update', $CategoriaProduto->id], 'method' => 'PUT']) }}
                 <div class="card card-primary ">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header h3 mt">{{ __('Categoria Selecionada:') }}</div>
 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
