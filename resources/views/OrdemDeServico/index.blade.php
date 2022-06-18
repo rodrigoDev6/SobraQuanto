@@ -69,57 +69,74 @@
             {{ Form::label('data_final', 'Data Final:') }}
             {{ Form::date('data_final', null, ['class' => 'form-control']) }}
         </div>
-    </div>
-    <div class="row justify-content-end mr-4">
+        <div class="form-group col-4">
 
-        <a href="{{ URL::to('ordemDeServico/create') }}">
-            <button class="btn btn-outline-success mb-3">
-                <i class="fas fa-plus"></i>
-                Nova Ordem de Serviço
-            </button>
-        </a>
+            <a href="{{ URL::to('ordemDeServico/create') }}">
+                <button class="btn btn-outline-success mb-3">
+                    <i class="fas fa-plus"></i>
+                    Nova Ordem de Serviço
+                </button>
+            </a>
+        </div>
     </div>
 
 
     <div class="row row-cols-12 m-2">
 
-        <table class="table no-margin" style="width:81%;">
-            <thead>
+        <table class="table table-bordered table-hover dataTable dtr-inline">
+            <thead class="text-center text-uppercase">
                 <tr>
-                    <th>id</th>
-                    <th>nome</th>
-                    <th>Serviços</th>
+                    <th>Nº Ordem</th>
+                    <th>Cliente</th>
                     <th>Status</th>
+                    <th>Pagamento</th>
                     <th>AÇÕES</th>
-                    <th></th>
                 </tr>
             </thead>
 
-            <tbody>
-
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        {{--  --}}
-                        <a href="#" class="btn btn-primary">
-                            <i class="fas fa-eye"></i>
-                            Visualizar
-                        </a>
-                        {{--  --}}
-                        <a href="#" class="btn btn-info mx-5">
-                            <i class="fas fa-edit"></i>
-                            Editar
-                        </a>
-                    </td>
-                </tr>
-
+            <tbody class="text-center">
+                @foreach ($ordemDeServico as $value)
+                    <tr>
+                        <td class="h5">{{ $value->id }}</td>
+                        <td class="h5 text-capitalize">{{ $value->cliente->nome }}</td>
+                        <td class="h5 text-uppercase">
+                            @if ($value->status_id == 1)
+                                <span class="badge badge-warning">Orçamento</span>
+                            @elseif ($value->status_id == 2)
+                                <span class="badge badge-info">Em andamento</span>
+                            @elseif ($value->status_id == 3)
+                                <span class="badge badge-success">Feita</span>
+                            @elseif ($value->status_id == 4)
+                                <span class="badge badge-danger">Interrompida</span>
+                            @endif
+                        </td>
+                        <td class="h5 text-uppercase">
+                            {{ $value->forma_pagamento }}
+                        </td>
+                        <td class="h5">
+                            <a href="{{ URL::to('ordemDeServico/' . $value->id . '/edit') }}">
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </a>
+                            <a href="{{ URL::to('ordemDeServico/' . $value->id) }}">
+                                <button class="btn btn-outline-success">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </a>
+                            <a href="{{ URL::to('ordemDeServico/' . $value->id . '/delete') }}">
+                                <button class="btn btn-outline-danger">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
-        </table>
-    </div>
 
+        </table>
+
+    </div>
 @stop
 
 @section('css')

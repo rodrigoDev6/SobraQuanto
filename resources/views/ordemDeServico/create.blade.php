@@ -52,7 +52,7 @@
 
                             <div class="form-group col">
                                 {{ Form::label('formaPagamento', 'Pagamento:', ['class' => 'h5']) }}
-                                {{ Form::select('forma_pagamento', ['pix' => 'PIX', 'credito' => 'CARTÃO DE CRÉDITO', 'dinheiro' => 'DINHEIRO'], '', ['class' => 'form-control']) }}
+                                {{ Form::select('forma_pagamento', ['pix' => 'PIX', 'cartão' => 'CARTÃO DE CRÉDITO', 'dinheiro' => 'DINHEIRO'], '', ['class' => 'form-control']) }}
                             </div>
                         </div>
 

@@ -19,7 +19,7 @@ class OrdemDeServicoStatusSeeder extends Seeder
         ]);
         
         OrdemDeServicoStatus::create([
-            'nome' => 'Em anadamento',
+            'nome' => 'Em andamento',
         ]);
 
         OrdemDeServicoStatus::create([
