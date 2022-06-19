@@ -29,7 +29,7 @@
                         <div class="row col-12">
                             <div class="form-group col-6">
                                 {{ Form::label('nome', 'Nome:') }}
-                                {{ Form::text('nome', $usuario->nome, ['class' => 'form-control']) }}
+                                {{ Form::text('nome', $usuario->name, ['class' => 'form-control']) }}
                             </div>
 
                             <div class="form-group col-6">

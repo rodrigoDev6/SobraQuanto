@@ -24,7 +24,7 @@
                     <th>Categoria</th>
                     <th>Valor</th>
                     <th>Quantidade</th>
-                    <th></th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
