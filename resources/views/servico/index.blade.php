@@ -20,6 +20,7 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Valor</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>

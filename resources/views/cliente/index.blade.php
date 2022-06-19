@@ -50,11 +50,11 @@
         <table class="table no-margin">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>nome</th>
+                    <th>ID</th>
+                    <th>Nome</th>
                     <th>CPF</th>
                     <th>Telefone</th>
-                    <th><b>AÇÕES</b></th>
+                    <th><b>Ações</b></th>
                     <th></th>
                 </tr>
             </thead>
@@ -65,7 +65,7 @@
                         <td>{{ $value->id }}</td>
                         <td>{{ $value->nome }}</td>
                         <td>{{ $value->cpf_cnpj }}</td>
-                        <td>{{ $value->telefoneCelular }}</td>
+                        <td>{{ $value->telefone_1 }}</td>
                         <td>
                             {{--  --}}
                             <a href="{{ url('cliente/' . $value->id) }}" class="btn btn-primary">
