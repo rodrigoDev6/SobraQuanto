@@ -18,7 +18,6 @@ class OrdemDeServico extends Model
         return $this->hasOne(Cliente::class, 'id', 'cliente_id');
     }
 
-
     public function OrdemDeServicoStatus(){
         return $this->hasOne(OrdemDeServicoStatus::class, 'id', 'servico_status_id');
     }

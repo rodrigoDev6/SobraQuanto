@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+
 use App\Models\Cliente;
 use App\Models\Servico;
 use App\Models\OrdemDeServicoStatus;
@@ -13,6 +15,9 @@ class OrdemDeServicoController extends Controller
 {
     public function index() {
         $ordemDeServico = OrdemDeServico::orderBy('id', 'ASC')->get();
+        $ordemDeServico = OrdemDeServico::paginate(6);
+        Paginator::useBootstrap();
+        
         return view('ordemDeServico.index',['ordemDeServico' => $ordemDeServico]);
     }
  
@@ -24,15 +29,24 @@ class OrdemDeServicoController extends Controller
     public function create(Request $request) {
 
         $cliente = Cliente::orderBy('nome', 'ASC')->pluck('nome','id');
-        
         $servico = Servico::orderBy('nome', 'ASC')->pluck('nome','id');
-        
         $ordemDeServicoStatus = OrdemDeServicoStatus::orderBy('nome', 'ASC')->pluck('nome','id');
-        
         $cartServico = (array) $request->session()->get('cartServico');
         // dd($cartServico);
 
         return view('ordemDeServico.create', ['cliente' => $cliente, 'servico' => $servico, 'status' => $ordemDeServicoStatus, 'cartServico' => $cartServico]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request, $id){
+        $ordemDeServico = OrdemDeServico::find($id);
+        
+        return view('ordemDeServico.show', ['ordemDeServico' => $ordemDeServico]);
     }
 
     /**
@@ -108,6 +122,45 @@ class OrdemDeServicoController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param \App\Models\ordemDeServico $ordemDeServico
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id){
+        // ordem de servico principal
+        $ordemDeServico = OrdemDeServico::findOrFail($id);
+
+        $clienteLista = Cliente::orderBy('nome', 'ASC')->pluck('nome','id');
+        $cliente = Cliente::findOrFail($id);
+
+
+        $ordemDeServicoStatus = OrdemDeServicoStatus::orderBy('nome', 'ASC')->pluck('nome','id');
+        $statusId = OrdemDeServicoStatus::findOrFail($id);
+
+        return view('ordemDeServico.edit', 
+        [
+        'ordemDeServico' => $ordemDeServico,
+        'cliente' => $cliente, 'clienteLista' => $clienteLista,
+        'ordemDeServicoStatus' => $ordemDeServicoStatus, 'statusId' => $statusId
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\ordemDeServico $ordemDeServico
+     * @return \Illuminate\Http\Response
+     */
+
+    public function update(Request $request, $id){
+        $ordemDeServico = OrdemDeServico::findOrFail($id);
+        $ordemDeServico->update($request->all());
+        return redirect()->route('ordemDeServico.index')->with('message', 'Ordem de Serviço atualizada com sucesso!');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -150,8 +203,5 @@ class OrdemDeServicoController extends Controller
         
         
     }
-
-
-
 
 }

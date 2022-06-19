@@ -90,6 +90,7 @@
                     <th>Cliente</th>
                     <th>Status</th>
                     <th>Pagamento</th>
+                    <th>Total</th>
                     <th>AÇÕES</th>
                 </tr>
             </thead>
@@ -121,6 +122,9 @@
                         <td class="h5 text-uppercase">
                             {{ $value->forma_pagamento }}
                         </td>
+                        <td>
+                            R$ {{ $value->total }}
+                        </td>
                         <td class="h5">
                             <a href="{{ URL::to('ordemDeServico/' . $value->id) }}">
                                 <button class="btn btn-outline-primary">
@@ -141,10 +145,12 @@
                     </tr>
                 @endforeach
             </tbody>
-
         </table>
-
     </div>
+    <div class="row justify-content-center">
+        {{ $ordemDeServico->links() }}
+    </div>
+
 @stop
 
 @section('css')
