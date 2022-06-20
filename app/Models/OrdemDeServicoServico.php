@@ -27,5 +27,10 @@ class ordemDeServicoServico extends Model
     {
         return $this->hasOne(Servico::class, 'id', 'servico_id');
     }
+
+    public function getServicoNomeAttribute()
+    {
+        return $this->servico->nome;
+    }
     
 }

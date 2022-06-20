@@ -126,20 +126,15 @@
                             R$ {{ $value->total }}
                         </td>
                         <td class="h5">
-                            <a href="{{ URL::to('ordemDeServico/' . $value->id) }}">
-                                <button class="btn btn-outline-primary">
-                                    <i class="fas fa-solid fa-print"></i>
-                                </button>
-                            </a>
-                            <a href="{{ URL::to('ordemDeServico/' . $value->id . '/edit') }}">
+                            <a target="_blank" href="{{ URL::to('ordemDeServico/' . $value->id . '/edit') }}">
                                 <button class="btn btn-outline-info">
                                     <i class="fas fa-edit"></i>
                                 </button>
                             </a>
                             {{-- pdf --}}
                             <a href="{{ URL::to('ordemDeServico/pdf/' . $value->id) }}">
-                                <button class="btn btn-outline-danger">
-                                    <i class="fas fa-file-pdf"></i>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-solid fa-print"></i>
                                 </button>
                             </a>
 

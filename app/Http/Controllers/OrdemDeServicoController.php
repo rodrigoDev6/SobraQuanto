@@ -50,6 +50,32 @@ class OrdemDeServicoController extends Controller
         //dd($ordemDeServico);
         return view('ordemDeServico.show', ['ordemDeServico' => $ordemDeServico]);
     }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param \App\Models\ordemDeServico $ordemDeServico
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id){
+        // ordem de servico principal
+        $ordemDeServico = OrdemDeServico::findOrFail($id);
+        $ordemDeServicoSevico = OrdemDeServicoServico::where('ordem_servico_id', $ordemDeServico->id)->get();
+
+        $servicos = Servico::orderBy('nome', 'ASC')->pluck('nome','id');
+        $cliente = Cliente::findOrFail($ordemDeServico->cliente_id);
+        // dd($cliente);
+
+        $ordemDeServicoStatus = OrdemDeServicoStatus::orderBy('nome', 'ASC')->pluck('nome','id');
+        $status = OrdemDeServicoStatus::findOrFail($ordemDeServico->status_id);
+
+        return view('ordemDeServico.edit', 
+        [
+        'ordemDeServico' => $ordemDeServico,
+        'cliente' => $cliente, 'ordemDeServicoStatus' => $ordemDeServicoStatus, 'status' => $status,
+        'servicos' => $servicos, 'ordemDeServicoSevico' => $ordemDeServicoSevico
+        ]);
+    }
 
     /**
      * Export content to PDF with View
@@ -60,7 +86,11 @@ class OrdemDeServicoController extends Controller
     public function downloadPdf($id)
     {
         $ordemDeServico = OrdemDeServico::where('id', $id)->first();
-        $data = [$ordemDeServico];
+        $ordemDeServicoServico = OrdemDeServicoServico::where('ordem_servico_id', $ordemDeServico->id)->get();
+        $cliente = Cliente::findOrFail($ordemDeServico->cliente_id);
+
+        $data = [$ordemDeServico, $ordemDeServicoServico, $cliente];
+
 
         view()->share('data', $data);
         $pdf = PDF::loadView('ordemDeServico.pdf', $data);
@@ -170,31 +200,6 @@ class OrdemDeServicoController extends Controller
         return redirect()->back()->with('message', 'Todos os produtos foram removidos com sucesso'); 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\ordemDeServico $ordemDeServico
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id){
-        // ordem de servico principal
-        $ordemDeServico = OrdemDeServico::findOrFail($id);
-        $ordemDeServicoSevico = OrdemDeServicoServico::where('ordem_servico_id', $ordemDeServico->id)->get();
-
-        $servicos = Servico::orderBy('nome', 'ASC')->pluck('nome','id');
-        $cliente = Cliente::findOrFail($ordemDeServico->cliente_id);
-        // dd($cliente);
-
-        $ordemDeServicoStatus = OrdemDeServicoStatus::orderBy('nome', 'ASC')->pluck('nome','id');
-        $status = OrdemDeServicoStatus::findOrFail($ordemDeServico->status_id);
-
-        return view('ordemDeServico.edit', 
-        [
-        'ordemDeServico' => $ordemDeServico,
-        'cliente' => $cliente, 'ordemDeServicoStatus' => $ordemDeServicoStatus, 'status' => $status,
-        'servicos' => $servicos, 'ordemDeServicoSevico' => $ordemDeServicoSevico
-        ]);
-    }
 
     /**
      * Update the specified resource in storage.
