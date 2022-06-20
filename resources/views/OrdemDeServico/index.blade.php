@@ -38,21 +38,7 @@
         </div>
         <div class="form-group col-4">
             {{ Form::label('cleintes', 'Clientes:') }}
-            {{ Form::select(
-                'clientes',
-                [
-                    'Todos' => 'Todos',
-                    '1' => 'RODRIGO',
-                    '2' => 'JOSE',
-                    '3' => 'MARIA',
-                    '4' => 'JOAO',
-                    '5' => 'PAULO',
-                    '6' => 'JOSE',
-                    '7' => 'MARIA',
-                ],
-                null,
-                ['class' => 'form-control'],
-            ) }}
+            {{ Form::select('cliente_id', $clientes, '', ['class' => 'form-control', 'placeholder' => '-Escolha um cliente-', 'required']) }}
         </div>
 
         <div class="form-group col-4">
@@ -126,13 +112,13 @@
                             R$ {{ $value->total }}
                         </td>
                         <td class="h5">
-                            <a target="_blank" href="{{ URL::to('ordemDeServico/' . $value->id . '/edit') }}">
+                            <a href="{{ URL::to('ordemDeServico/' . $value->id . '/edit') }}">
                                 <button class="btn btn-outline-info">
                                     <i class="fas fa-edit"></i>
                                 </button>
                             </a>
                             {{-- pdf --}}
-                            <a href="{{ URL::to('ordemDeServico/pdf/' . $value->id) }}">
+                            <a target="_blank" href="{{ URL::to('ordemDeServico/pdf/' . $value->id) }}">
                                 <button class="btn btn-outline-primary">
                                     <i class="fas fa-solid fa-print"></i>
                                 </button>
@@ -156,5 +142,5 @@
 @stop
 
 @section('css')
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+    <link rel="stylesheet" href="{{ asset('/css/ordens.css') }}">
 @stop

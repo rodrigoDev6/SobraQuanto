@@ -8,7 +8,7 @@
             <div class="col-md-12">
 
                 <div class="card card-primary mt-5">
-                    <div class="card-header h3 mt">{{ __('Nova Ordem de Servicço:') }}
+                    <div class="card-header h3 mt">{{ __('Nova Ordem de Serviço:') }}
                     </div>
 
                     <div class="card-body col-12">
@@ -176,6 +176,7 @@
 
 @section('css')
     <link rel="icon" href="img/sobraquanto.png">
+    <link rel="stylesheet" href="{{ asset('/css/ordens_create.css') }}">
 @stop
 
 @section('js')

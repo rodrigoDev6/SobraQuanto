@@ -18,9 +18,10 @@ class OrdemDeServicoController extends Controller
     public function index() {
         $ordemDeServico = OrdemDeServico::orderBy('id', 'ASC')->get();
         $ordemDeServico = OrdemDeServico::paginate(6);
+        $clientes = Cliente::orderBy('nome', 'ASC')->pluck('nome','id');
         Paginator::useBootstrap();
         
-        return view('ordemDeServico.index',['ordemDeServico' => $ordemDeServico]);
+        return view('ordemDeServico.index',['ordemDeServico' => $ordemDeServico, 'clientes' => $clientes]);
     }
  
     /**

@@ -8,7 +8,7 @@
             <div class="col-md-12">
 
                 <div class="card card-primary mt-5">
-                    <div class="card-header h3 mt">{{ __('Ordem de Servicço Selecionada:') }}
+                    <div class="card-header h3 mt">{{ __('Ordem de Serviço Selecionada:') }}
                     </div>
 
                     <div class="card-body col-12">
@@ -30,7 +30,7 @@
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 p-2">
                                 <div class="form-group col">
                                     {{ Form::label('cliente', 'Cliente:', ['class' => 'h5', 'id' => 'cliente']) }}
-                                    {{ Form::text('cliente', $cliente->nome, ['class' => 'form-control']) }}
+                                    {{ Form::text('cliente', $cliente->nome, ['class' => 'form-control', 'readonly' => 'true']) }}
                                 </div>
 
                                 <div class="form-group col">
@@ -166,6 +166,7 @@
 
 @section('css')
     <link rel="icon" href="img/sobraquanto.png">
+    <link rel="stylesheet" href="{{ asset('/css/ordens_create.css') }}">
 @stop
 @section('js')
     <script>
