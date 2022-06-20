@@ -50,7 +50,7 @@ class ProdutoSeeder extends Seeder
         ]);
 
         Produto::create([
-            'nome' => 'Carregador 3.1 Inova',
+            'nome' => 'Carregador 1.1 Inova',
             'categoria_id' => 5,
             'valor' => 10,
             'quantidade' => 8

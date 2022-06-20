@@ -79,6 +79,13 @@
 
                         <div class="row col-12">
                             <div class="form-group col">
+                                {{ Form::label('logradouro', 'Endereço:') }}
+                                {{ Form::text('logradouro', $cliente->logradouro, ['class' => 'form-control']) }}
+                            </div>
+                        </div>
+
+                        <div class="row col-12">
+                            <div class="form-group col">
                                 {{ Form::label('complemento', 'Complemento:') }}
                                 {{ Form::text('complemento', $cliente->complemento, ['class' => 'form-control']) }}
                             </div>

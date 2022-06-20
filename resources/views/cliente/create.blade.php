@@ -83,22 +83,13 @@
                                 {{ Form::label('cep', 'CEP:') }}
                                 {{ Form::text('cep', null, ['class' => 'form-control']) }}
                             </div>
-
-
-
                         </div>
 
                         <div class="row col-12">
                             <div class="form-group col">
-                                {{ Form::label('endereco', 'Endereço:') }}
-                                {{ Form::text('endereco', '', ['class' => 'form-control']) }}
+                                {{ Form::label('logradouro', 'Endereço:') }}
+                                {{ Form::text('logradouro', '', ['class' => 'form-control']) }}
                             </div>
-
-                            <div class="form-group col">
-                                {{ Form::label('numero', 'Número:') }}
-                                {{ Form::number('numero', '', ['class' => 'form-control']) }}
-                            </div>
-
                         </div>
 
                         <div class="row col-12">

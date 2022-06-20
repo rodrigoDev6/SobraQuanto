@@ -28,7 +28,7 @@
     <div class="row row-cols-1">
 
         {{-- container de produtos listados --}}
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 p-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 p-4">
             @foreach ($produtos as $key => $produtoItem)
                 <div class="col-sm-6">
                     <div class="card">

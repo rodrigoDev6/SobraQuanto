@@ -18,4 +18,10 @@ class Cliente extends Model
     public function estado(){
         return $this->hasOnes(Estado::class, 'id', 'estado_id');
     }
+
+
+    public function getServicoEstadoAttribute()
+    {
+        return $this->estado->nome;
+    }
 }

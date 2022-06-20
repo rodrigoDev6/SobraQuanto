@@ -18,58 +18,64 @@ class ClienteSeeder extends Seeder
             'nome' => 'Rodrigo de Lima Alves',
             'cpf_cnpj' => '12345678909',
             'telefone_1' => '21975021234',
+            'cep' => '98888888',
             'estado_id' => 1,
             'logradouro' => 'Rua B',
             'bairro' => 'Itanhangá',
-            'complemento' => 'Rua da chacara',
+            'complemento' => 'Apto. 101',
         ]);
 
         Cliente::create([
             'nome' => 'Luiz Ricardo',
             'cpf_cnpj' => '12345678908',
             'telefone_1' => '21975021234',
+            'cep' => '27363900',
             'estado_id' => 1,
             'logradouro' => 'Rua B',
             'bairro' => 'Itanhangá',
-            'complemento' => 'Rua da chacara',
+            'complemento' => 'Apto. 108',
         ]);
         
         Cliente::create([
             'nome' => 'Maria das Flores',
             'cpf_cnpj' => '12345678907',
             'telefone_1' => '21975021234',
+            'cep' => '22303900',
             'estado_id' => 1,
             'logradouro' => 'Rua B',
             'bairro' => 'Itanhangá',
-            'complemento' => 'Rua da chacara',
+            'complemento' => 'Apto. 109',
         ]);
 
         Cliente::create([
             'nome' => 'João Silva',
             'cpf_cnpj' => '12345678906',
             'telefone_1' => '21975021234',
+            'cep' => '22303900',
             'estado_id' => 1,
-            'logradouro' => 'Rua B',
+            'logradouro' => 'Rua C',
             'bairro' => 'Itanhangá',
-            'complemento' => 'Rua da chacara',
+            'complemento' => 'Casa 1',
         ]);
 
         Cliente::create([
             'nome' => 'Joana Lima',
             'cpf_cnpj' => '12345678905',
             'telefone_1' => '21975021234',
+            'cep' => '22303920',
             'estado_id' => 1,
-            'logradouro' => 'Rua da chacara',
+            'logradouro' => 'Rua da amendoeira',
             'bairro' => 'Itanhangá',
-            'complemento' => 'AP 404',
+            'complemento' => 'Apartamento 101',
         ]);
         
         Cliente::create([
             'nome' => 'José da Silva',
             'cpf_cnpj' => '12345678904',
             'telefone_1' => '21975021234',
+            'cep' => '22303900',
             'estado_id' => 1,
-            'logradouro' => 'Rua B',
+            'logradouro' => 'Jardim dos Anjos',
             'bairro' => 'Itanhangá',
             'complemento' => 'Casa 32',
         ]);
@@ -78,20 +84,22 @@ class ClienteSeeder extends Seeder
             'nome' => 'Maria das Dores',
             'cpf_cnpj' => '12345678903',
             'telefone_1' => '21975021234',
+            'cep' => '22303900',
             'estado_id' => 1,
-            'logradouro' => 'Rua B',
+            'logradouro' => 'Jardim Carlos Gomes',
             'bairro' => 'Muzema',
-            'complemento' => 'Rua Nova',
+            'complemento' => 'Prédio A - apartamento 101',
         ]);
 
         Cliente::create([
             'nome' => 'José da Costa',
             'cpf_cnpj' => '12345678902',
             'telefone_1' => '21975021234',
+            'cep' => '22303900',
             'estado_id' => 1,
-            'logradouro' => 'Rua B',
+            'logradouro' => 'Rua dos Bobos',
             'bairro' => 'Muzema',
-            'complemento' => 'Rua 2',
+            'complemento' => 'Apartamento 101',
         ]);
 
     }

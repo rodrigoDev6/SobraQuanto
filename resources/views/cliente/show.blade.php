@@ -13,15 +13,20 @@
         <li><b>ID:</b> {{ $cliente->id }}</li>
         <li><b>Nome:</b> {{ $cliente->nome }}</li>
         <li class="list-inline-item">
-            <span style="margin-right: 1.4rem"><b>Celular: </b> {{ $cliente->telefoneCelular }}</span>
-            <span><b>Telefone:</b> {{ $cliente->telefoneFixo }}</span>
+            @if (isset($cliente->telefone_1))
+                <span class="mr-2">Telefone 1:</span> {{ $cliente->telefone_1 }}
+            @endif
         </li>
-        <li><b>Cidade:</b> {{ $cliente->cidade }}</li>
-        <li><b>UF:</b> {{ $cliente->uf }} </li>
+        <li class="list-inline-item">
+            @if (isset($cliente->telefone_2))
+                <span>Telefone 2:</span> {{ $cliente->telefone_2 }}
+            @endif
+        </li>
+        {{-- <li><b>Cidade:</b> {{ $cliente->cidade }}</li> --}}
+        {{-- <li><b>UF:</b> {{ $cliente->uf }} </li> --}}
         <li><b>Bairro:</b> {{ $cliente->bairro }}</li>
         <li>
-            <span><b>Endereço:</b> {{ $cliente->endereco }}</span>
-            <span style="margin-left: 1.4rem"><b>Número:</b> {{ $cliente->numero }}</span>
+            <span><b>Endereço:</b> {{ $cliente->logradouro }}</span>
         </li>
         <li><b>Complemento:</b> {{ $cliente->complemento }}</li>
         <br>
