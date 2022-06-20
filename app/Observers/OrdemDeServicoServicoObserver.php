@@ -15,10 +15,9 @@ class OrdemDeServicoServicoObserver
      */
     public function created(OrdemDeServicoServico $ordemDeServicoServico)
     {
-        $ordemDeServico = OrdemDeServico::findOrFail($ordemDeServico->ordem_servico_id);
-        console.log($ordemDeServico->id);
-
-        $ordemDeServico->updated([
+        $ordemDeServico = OrdemDeServico::findOrFail($ordemDeServicoServico->ordem_servico_id);
+        
+        $ordemDeServico->update([
             'total' => $ordemDeServico->total + $ordemDeServicoServico->valor
         ]);
 
@@ -45,7 +44,10 @@ class OrdemDeServicoServicoObserver
      */
     public function deleted(OrdemDeServicoServico $ordemDeServicoServico)
     {
-        //
+        $ordemDeServico = OrdemDeServico::findOrFail($ordemDeServicoServico->ordem_servico_id);
+        $ordemDeServico->update([
+            'total' => $ordemDeServico->total - $ordemDeServicoServico->valor
+        ]);
     }
 
     /**
