@@ -137,7 +137,7 @@
                                 </button>
                             </a>
                             {{-- pdf --}}
-                            <a href="{{ route('download-pdf') }}">
+                            <a href="{{ URL::to('ordemDeServico/pdf/' . $value->id) }}">
                                 <button class="btn btn-outline-danger">
                                     <i class="fas fa-file-pdf"></i>
                                 </button>

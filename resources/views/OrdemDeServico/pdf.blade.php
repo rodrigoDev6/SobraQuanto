@@ -16,7 +16,7 @@
 
 <body>
     <div class="container py-5">
-        <h5 class=" font-weight-bold">DOMPDF Tutorial</h5>
+        <h5 class=" font-weight-bold">Ordem de Serviço</h5>
         <table class="table table-bordered mt-5">
             <thead>
                 <tr>
@@ -26,9 +26,11 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($ordemDeServico as $value)
+                {{-- ordem de servico --}}
+                @foreach ($data as $value)
                     <tr>
                         <td>{{ $value->id }}</td>
+
                     </tr>
                 @endforeach
             </tbody>

@@ -57,7 +57,7 @@ Route::delete('/removeCartServico',[OrdemDeServicoController::class,'removeCartS
 
 Route::get('/ordemDeServico/{id}', [OrdemDeServicoController::class, 'show'])->name('ordemDeServico.show');
 //rota gerar pdf
-Route::get('ordemDeServico/{id}/download-pdf', [OrdemDeServicoController::class, 'downloadPdf'])->name('ordemDeServico.pdf');
+Route::get('ordemDeServico/pdf/{id}', [OrdemDeServicoController::class, 'downloadPdf'])->name('ordemDeServico.pdf');
 
 Route::get('/ordemDeServico/{id}/edit', [OrdemDeServicoController::class, 'edit'])->name('ordemDeServico.edit');
 Route::put('/ordemDeServico/{id}/update', [OrdemDeServicoController::class, 'update'])->name('ordemDeServico.update');

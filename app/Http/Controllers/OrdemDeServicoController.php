@@ -46,7 +46,7 @@ class OrdemDeServicoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $id){
-        $ordemDeServico = OrdemDeServico::all()->find($id);
+        // $ordemDeServico = OrdemDeServico::all()->find($id);
         //dd($ordemDeServico);
         return view('ordemDeServico.show', ['ordemDeServico' => $ordemDeServico]);
     }
@@ -59,13 +59,13 @@ class OrdemDeServicoController extends Controller
      */
     public function downloadPdf($id)
     {
-        $ordemDeServico = OrdemDeServico::all()->find($id);
-       // dd($ordemDeServico);
-        view()->share('ordemDeServico.pdf',$ordemDeServico);
+        $ordemDeServico = OrdemDeServico::where('id', $id)->first();
+        $data = [$ordemDeServico];
 
-        $pdf = PDF::loadView('ordemDeServico.pdf', ['ordemDeServico' => $ordemDeServico]);
+        view()->share('data', $data);
+        $pdf = PDF::loadView('ordemDeServico.pdf', $data);
 
-        return $pdf->download('ordemDeServico.pdf');
+        return $pdf->stream('ordemDeServico.pdf');
     }
 
 
