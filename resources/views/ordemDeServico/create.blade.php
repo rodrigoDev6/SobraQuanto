@@ -177,6 +177,7 @@
 @section('css')
     <link rel="icon" href="img/sobraquanto.png">
 @stop
+
 @section('js')
     <script>
         $('.servico').on('change', function() {

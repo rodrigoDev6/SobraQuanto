@@ -20,9 +20,6 @@ class OrdemDeServicoServicoObserver
         $ordemDeServico->update([
             'total' => $ordemDeServico->total + $ordemDeServicoServico->valor
         ]);
-
-
-        
     }
 
     /**

@@ -101,32 +101,27 @@
                         {{-- tabela de servicos --}}
                         @if ($ordemDeServicoSevico)
 
-                            <table class="table">
-                                <thead>
+                            <table class="table table-bordered table-hover dataTable dtr-inline">
+                                <thead class="text-center">
                                     <tr>
                                         <th class="h4" style="font-weight:700">Nome</th>
                                         <th class="h4" style="font-weight:700 ">Valor</th>
                                         <th class="h4" style="font-weight:700 ">Quantidade</th>
                                         <th class="h4" style="font-weight:700 ">Total</th>
-                                        <th class="h4" style="font-weight:700 ">
-                                            {{ Form::open(['url' => '/removeCartServico']) }}
-                                            {{ Form::hidden('_method', 'DELETE') }}
-                                            {{ Form::submit('Limpar', ['class' => 'btn btn-danger']) }}
-                                            {{ Form::close() }}
-                                        </th>
+                                        <th class="h4" style="font-weight:700 ">Excluir</th>
                                     </tr>
                                 </thead>
 
                                 @php($totalGeral = 0)
 
-                                <tbody>
+                                <tbody class="text-center">
                                     @foreach ($ordemDeServicoSevico as $key => $value)
                                         <tr>
-                                            <td>{{ $value->servico->nome }}</td>
-                                            <td>{{ $value->valor }}</td>
-                                            <td>{{ $value->quantidade }}</td>
-                                            <td>{{ $value->valor * $value->quantidade }}</td>
-                                            <td>
+                                            <td class="align-middle">{{ $value->servico->nome }}</td>
+                                            <td class="align-middle">R$ {{ $value->valor }}</td>
+                                            <td class="align-middle">{{ $value->quantidade }}</td>
+                                            <td class="align-middle">R$ {{ $value->valor * $value->quantidade }}</td>
+                                            <td class="align-middle">
                                                 {{ Form::open(['url' => 'removeServicoServico/' . $value->id]) }}
                                                 {{ Form::hidden('_method', 'DELETE') }}
                                                 <button type="submit" class="btn btn-danger">

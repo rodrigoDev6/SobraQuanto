@@ -128,7 +128,7 @@
                         <td class="h5">
                             <a href="{{ URL::to('ordemDeServico/' . $value->id) }}">
                                 <button class="btn btn-outline-primary">
-                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-solid fa-print"></i>
                                 </button>
                             </a>
                             <a href="{{ URL::to('ordemDeServico/' . $value->id . '/edit') }}">
@@ -136,11 +136,11 @@
                                     <i class="fas fa-edit"></i>
                                 </button>
                             </a>
-                            <a href="{{ URL::to('ordemDeServico/' . $value->id . '/delete') }}">
+                            {{-- <a href="{{ URL::to('ordemDeServico/' . $value->id . '/delete') }}">
                                 <button class="btn btn-outline-danger">
                                     <i class="fas fa-trash"></i>
                                 </button>
-                            </a>
+                            </a> --}}
                         </td>
                     </tr>
                 @endforeach
@@ -154,5 +154,5 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop

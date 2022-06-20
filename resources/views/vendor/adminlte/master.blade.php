@@ -106,9 +106,9 @@
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
 
-    <script type="module">
+    {{-- <script type="module">
         import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo'
-    </script>
+    </script> --}}
 </body>
 
 </html>
