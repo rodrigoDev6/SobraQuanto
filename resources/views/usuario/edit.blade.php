@@ -8,8 +8,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <div class="card card-primary ">
-                    <div class="card-header h3 mt">{{ __('Editar Usuário') }}</div>
+                <div class="card card-primary mt-5">
+                    <div class="card-header h3">{{ __('Editar Usuário') }}</div>
 
                     {{-- procurando usuario --}}
                     {{ Form::model($usuario, ['route' => ['usuario.update', $usuario->id], 'method' => 'PUT']) }}
@@ -28,8 +28,8 @@
 
                         <div class="row col-12">
                             <div class="form-group col-6">
-                                {{ Form::label('nome', 'Nome:') }}
-                                {{ Form::text('nome', $usuario->name, ['class' => 'form-control']) }}
+                                {{ Form::label('name', 'Nome:') }}
+                                {{ Form::text('name', $usuario->name, ['class' => 'form-control']) }}
                             </div>
 
                             <div class="form-group col-6">
@@ -44,7 +44,7 @@
 
                             <div class="form-group col-6">
                                 {{ Form::label('password', 'Senha:') }}
-                                {{ Form::password('senha', ['class' => 'form-control', 'placeholder' => 'Senha']) }}
+                                {{ Form::password('password', ['class' => 'form-control', 'placeholder' => '********']) }}
                             </div>
                         </div>
 
@@ -71,7 +71,6 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
     <link rel="icon" href="img/sobraquanto.png">
-
 @stop

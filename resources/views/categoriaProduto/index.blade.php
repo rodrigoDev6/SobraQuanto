@@ -7,49 +7,54 @@
 @stop
 
 @section('content')
-    <a href="{{ URL::to('categoriaProduto/create') }}">
-        <button class="btn btn-outline-success mb-3">
-            <i class="fas fa-plus"></i>
-            Adicionar categoria de produto
-        </button>
-    </a>
+    <div class="row row-cols-12 m-2">
+        <a href="{{ URL::to('categoriaProduto/create') }}">
+            <button class="btn btn-outline-success mb-3">
+                <i class="fas fa-plus"></i>
+                Adicionar categoria de produto
+            </button>
+        </a>
 
 
-    <table class="table no-margin">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($categoriaProduto as $value)
+        <table class="table no-margin">
+            <thead>
                 <tr>
-                    <td>{{ $value->id }}</td>
-                    <td>{{ $value->nome }}</td>
-                    <td>
-                        {{--  --}}
-                        <a href="{{ url('categoriaProduto/' . $value->id) }}" class="btn btn-primary">
-                            <i class="fas fa-eye"></i>
-                            Visualizar
-                        </a>
-                        {{--  --}}
-                        <a href="{{ url('categoriaProduto/' . $value->id . '/edit') }}" class="btn btn-info mx-5">
-                            <i class="fas fa-edit"></i>
-                            Editar
-                        </a>
-                        <a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" href="">Excluir</a>
-
-
-                    </td>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Ações</th>
                 </tr>
-            @endforeach
+            </thead>
+            <tbody>
+                @foreach ($categoriaProduto as $value)
+                    <tr>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->nome }}</td>
+                        <td>
+                            {{--  --}}
+                            <a href="{{ url('categoriaProduto/' . $value->id) }}" class="btn btn-primary">
+                                <i class="fas fa-eye"></i>
+                                Visualizar
+                            </a>
+                            {{--  --}}
+                            <a href="{{ url('categoriaProduto/' . $value->id . '/edit') }}" class="btn btn-info mx-5">
+                                <i class="fas fa-edit"></i>
+                                Editar
+                            </a>
+                            <a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                                href="">Excluir</a>
 
-        </tbody>
-    </table>
 
-    {{ $categoriaProduto->links() }}
+                        </td>
+                    </tr>
+                @endforeach
+
+            </tbody>
+        </table>
+    </div>
+    <div class="row justify-content-center">
+        {{ $categoriaProduto->links() }}
+    </div>
+
 
     @foreach ($categoriaProduto as $value)
         <!-- Modal -->
@@ -82,6 +87,5 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="./css/admin_custom.css">
-
+    <link rel="stylesheet" href="{{ asset('/css/admin_custom.css') }}">
 @stop

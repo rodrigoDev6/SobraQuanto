@@ -4,10 +4,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="mb-3"> </h1>
-
-                <div class="card card-primary ">
-                    <div class="card-header h3 mt">{{ __('Criar novo de serviço:') }}</div>
+                <div class="card card-primary mt-5">
+                    <div class="card-header h3">{{ __('Criar novo de serviço:') }}</div>
 
 
                     {!! Form::open(['url' => '/servico/create']) !!}
@@ -58,8 +56,9 @@
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
 
-    @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+@section('css')
+    <link rel="stylesheet" href="{{ asset('/css/admin_custom.css') }}">
 @stop

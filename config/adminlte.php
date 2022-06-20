@@ -254,11 +254,6 @@ return [
             'icon'        => 'fas fa-dollar-sign',
         ],
         [
-            'text'        => 'Financeiro',
-            'url'         => 'financeiro',
-            'icon'        => 'fas fa-chart-line',
-        ],
-        [
             'text'        => 'Ordens de Serviços',
             'url'         => 'ordemDeServico',
             'icon'        => 'fas fa-clipboard-list',
@@ -278,16 +273,7 @@ return [
             'url'         => 'categoriaProduto',
             'icon'        => 'fas fa-border-all',
         ],
-        [
-            'text'        => 'Cargos',
-            'url'         => 'cargos',
-            'icon'        => 'fas fa-address-card',
-        ],
-        [
-            'text'        => 'Permissões',
-            'url'         => 'permissoes',
-            'icon'        => 'fas fa-address-card',
-        ]
+        
     ],
 
 

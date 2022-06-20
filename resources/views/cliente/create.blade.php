@@ -125,9 +125,9 @@
             </div>
         </div>
     </div>
-    <link rel="stylesheet" href="{{ asset('css/admin_custom.css')}}">
 
 @stop
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
 @stop

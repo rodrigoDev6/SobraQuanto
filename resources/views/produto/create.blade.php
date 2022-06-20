@@ -7,9 +7,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
                 <div class="card card-primary mt-5">
-                    <div class="card-header h3 mt">{{ __('Novo Produto:') }}</div>
+                    <div class="card-header h3">{{ __('Novo Produto:') }}</div>
 
 
                     {!! Form::open(['url' => '/produto/create']) !!}
@@ -77,6 +76,6 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('/css/admin_custom.css') }}">
     <link rel="icon" href="img/sobraquanto.png">
 @stop

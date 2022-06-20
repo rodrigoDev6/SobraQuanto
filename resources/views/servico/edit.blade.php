@@ -6,13 +6,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="mb-3"> </h1>
-
 
                 {{-- procurando categoria de servico --}}
                 {{ Form::model($servico, ['route' => ['servico.update', $servico->id], 'method' => 'PUT']) }}
-                <div class="card card-primary ">
-                    <div class="card-header h3 mt">{{ __('Serviço Selecionado:') }}</div>
+                <div class="card card-primary mt-5">
+                    <div class="card-header h3">{{ __('Serviço Selecionado:') }}</div>
 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -60,7 +58,7 @@
 @section('css')
 
 
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('/css/admin_custom.css') }}">
     <link rel="icon" href="img/sobraquanto.png">
 
 @stop

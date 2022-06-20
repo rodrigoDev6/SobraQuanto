@@ -20,7 +20,6 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
     <link rel="icon" href="img/sobraquanto.png">
-
+    <link rel="stylesheet" href="{{ asset('/css/admin_custom.css') }}">
 @stop

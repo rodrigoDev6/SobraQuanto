@@ -6,10 +6,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 class="mb-3"> </h1>
-
-                <div class="card card-primary ">
-                    <div class="card-header h3 mt">{{ __('Criar Categoria de Produto:') }}</div>
+                <div class="card card-primary mt-5">
+                    <div class="card-header h3">{{ __('Criar Categoria de Produto:') }}</div>
 
 
                     {!! Form::open(['url' => '/categoriaProduto/create']) !!}
@@ -59,5 +57,5 @@
     </div>
 @endsection
 @section('css')
-    <link rel="stylesheet" href="./css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('/css/admin_custom.css') }}">
 @stop

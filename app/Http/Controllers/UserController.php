@@ -96,25 +96,25 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $messages = [
-            'nome.required' => 'O campo nome é obrigatório!',
+            'name.required' => 'O campo nome é obrigatório!',
             'email.required' => 'O campo email é obrigatório!',
             'perfil.required' => 'O campo perfil obrigatório!',
-            'senha.required' => 'O campo senha é obrigatório!'
+            'password.required' => 'O campo senha é obrigatório!'
         ];
 
         $validate = $request->validate([
-            'nome' => 'required|min:5' ,
+            'name' => 'required|min:5' ,
             'email' => 'required|min:9',
             'perfil' => 'required|min:4',
-            'senha' => 'required|min:6'
+            'password' => 'required|min:6'
 
         ], $messages);
         
         $usuario = User::findOrFail($request->id);
-        $usuario -> nome = $request -> nome;
+        $usuario -> name = $request -> name;
         $usuario -> email = $request -> email;
         $usuario -> perfil = $request -> perfil;
-        $usuario -> senha = $request -> senha;
+        $usuario -> password = $request -> password;
 
         $usuario->save();
     

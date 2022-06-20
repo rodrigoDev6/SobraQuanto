@@ -109,7 +109,8 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
+
     <link rel="icon" href="img/sobraquanto.png">
 
 @stop

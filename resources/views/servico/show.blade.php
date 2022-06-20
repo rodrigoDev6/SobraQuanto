@@ -12,7 +12,7 @@
     <ul class="list-unstyled">
         <li><b>ID:</b> {{ $servico->id }}</li>
         <li><b>Nome:</b> {{ $servico->nome }}</li>
-        <li><b>Valor:</b> {{ $servico->valor }}</li>
+        <li><b>Valor:</b>R$ {{ $servico->valor }}</li>
     </ul>
 
     <a href="{{ url('servico') }}" class="btn btn-primary">Voltar</a>
@@ -21,7 +21,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('/css/admin_custom.css') }}">
     <link rel="icon" href="img/sobraquanto.png">
 
 @stop
