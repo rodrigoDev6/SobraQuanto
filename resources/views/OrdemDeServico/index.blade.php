@@ -136,6 +136,13 @@
                                     <i class="fas fa-edit"></i>
                                 </button>
                             </a>
+                            {{-- pdf --}}
+                            <a href="{{ route('download-pdf') }}">
+                                <button class="btn btn-outline-danger">
+                                    <i class="fas fa-file-pdf"></i>
+                                </button>
+                            </a>
+
                             {{-- <a href="{{ URL::to('ordemDeServico/' . $value->id . '/delete') }}">
                                 <button class="btn btn-outline-danger">
                                     <i class="fas fa-trash"></i>

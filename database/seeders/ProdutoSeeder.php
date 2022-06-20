@@ -36,16 +36,23 @@ class ProdutoSeeder extends Seeder
         ]);
 
         Produto::create([
-            'nome' => 'Cabo VGA',
+            'nome' => 'Cabo Iphone',
             'categoria_id' => 4,
-            'valor' => 18.00,
+            'valor' => 15.00,
             'quantidade' => 4
         ]);
 
         Produto::create([
-            'nome' => 'Carregador Inova',
+            'nome' => 'Carregador 3.1 Inova',
             'categoria_id' => 5,
-            'valor' => 25,
+            'valor' => 20,
+            'quantidade' => 10
+        ]);
+
+        Produto::create([
+            'nome' => 'Carregador 3.1 Inova',
+            'categoria_id' => 5,
+            'valor' => 10,
             'quantidade' => 8
         ]);
 
@@ -54,6 +61,20 @@ class ProdutoSeeder extends Seeder
             'categoria_id' => 6,
             'valor' => 30,
             'quantidade' => 10
+        ]);
+
+        Produto::create([
+            'nome' => 'Pendrive 32GB',
+            'categoria_id' => 6,
+            'valor' => 40,
+            'quantidade' => 10
+        ]);
+
+        Produto::create([
+            'nome' => 'Mouse Sem Fio',
+            'categoria_id' => 7,
+            'valor' => 25,
+            'quantidade' => 5
         ]);
     }
 }

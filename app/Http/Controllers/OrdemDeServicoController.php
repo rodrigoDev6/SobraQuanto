@@ -11,6 +11,8 @@ use App\Models\OrdemDeServicoStatus;
 use App\Models\OrdemDeServico;
 use App\Models\OrdemDeServicoServico;
 
+use PDF;
+
 class OrdemDeServicoController extends Controller
 {
     public function index() {
@@ -44,14 +46,32 @@ class OrdemDeServicoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $id){
-        $ordemDeServico = OrdemDeServico::find($id);
-        
+        $ordemDeServico = OrdemDeServico::all()->find($id);
+        //dd($ordemDeServico);
         return view('ordemDeServico.show', ['ordemDeServico' => $ordemDeServico]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Export content to PDF with View
      *
+     * @param \App\Models\OrdemDeServicoServico $ordemDeServicoServico
+     * @return void
+     */
+    public function downloadPdf($id)
+    {
+        $ordemDeServico = OrdemDeServico::all()->find($id);
+       // dd($ordemDeServico);
+        view()->share('ordemDeServico.pdf',$ordemDeServico);
+
+        $pdf = PDF::loadView('ordemDeServico.pdf', ['ordemDeServico' => $ordemDeServico]);
+
+        return $pdf->download('ordemDeServico.pdf');
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *  
      * @return \Illuminate\Http\Response
      */
     public function addServico(Request $request) {

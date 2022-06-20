@@ -28,7 +28,7 @@
     <div class="row row-cols-1">
 
         {{-- container de produtos listados --}}
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 p-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 p-4">
             @foreach ($produtos as $key => $produtoItem)
                 <div class="col-sm-6">
                     <div class="card">
@@ -74,18 +74,16 @@
 
                         @foreach ($cart as $key => $cartItem)
                             @foreach ($cartItem as $key2 => $value)
-                                <div class="card-body p-2">
+                                <div class="card-body">
                                     <div class="row d-flex justify-content-between align-items-center">
                                         @php($totalGeral += $value['quantidade'] * $value['valor'])
-
-
                                         {{-- Coluna com id do produto --}}
                                         <div class="col-md-3 col-lg-3 col-xl-2">
                                             <p class="h5" style="font-weight: 700;">ID</p>
                                             <h5 class="lead fw-normal mb-2">{{ $value['id'] }}</h5>
                                         </div>
-                                        {{-- Coluna com nome do produto --}}
                                         <div class="col-md-3 col-lg-3 col-xl-2">
+                                            {{-- Coluna com nome do produto --}}
                                             <p class="h5" style="font-weight: 700;">Produto</p>
                                             <h5 class="lead fw-normal mb-2">{{ $value['nome'] }}</h5>
                                         </div>
@@ -110,15 +108,17 @@
                                         </div>
 
                                         {{-- coluna para remover produto --}}
-                                        <div class="col-md-1 col-lg-1 col-xl-1 text-center">
-                                            {{ Form::open(['url' => 'removeProduto/' . $key, 'class' => 'excluir']) }}
-                                            {{ Form::hidden('_method', 'DELETE') }}
-                                            {{ Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
-                                            {{ Form::close() }}
+                                        <div class="col-md-1 col-lg-1 col-xl-1">
+                                            <div class="align-middle">
 
-                                            <br>
+                                                {{ Form::open(['url' => 'removeProduto/' . $key, 'class' => 'excluir']) }}
+                                                {{ Form::hidden('_method', 'DELETE') }}
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                                {{ Form::close() }}
+                                            </div>
                                         </div>
-
                                     </div>
                                 </div>
                             @endforeach
