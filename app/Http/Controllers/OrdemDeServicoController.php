@@ -108,6 +108,35 @@ class OrdemDeServicoController extends Controller
         return redirect('/ordemDeServico/create')->with('message', 'Serviço adicionado ao carrinho com sucesso!');
     }
 
+    public function novoServico(Request $request, $id){
+        $ordemDeServico = OrdemDeServico::findOrFail($id);
+
+        $servico = new OrdemDeServicoServico;
+        $servico->ordem_servico_id = $ordemDeServico->id;
+        $servico->servico_id = $request->servico_id;
+        $servico->quantidade = $request->quantidade;
+        $servico->valor = $request->valor;
+        $servico->save();
+
+        return redirect()->route('ordemDeServico.edit', $id);
+    }
+
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Models\OrdemDeServicoServico $ordemDeServicoServico
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyServicoServico($id)
+    {
+        $servico = OrdemDeServicoServico::findOrFail($id);
+        // dd($servico);
+        $servico->delete();
+
+        return redirect()->back();
+    }
+
+    
     public function removeServico(Request $request, $key){
         $cartServico = (array) $request->session()->get('cartServico');
         unset($cartServico[$key]);
@@ -130,19 +159,20 @@ class OrdemDeServicoController extends Controller
     public function edit($id){
         // ordem de servico principal
         $ordemDeServico = OrdemDeServico::findOrFail($id);
+        $ordemDeServicoSevico = OrdemDeServicoServico::where('ordem_servico_id', $ordemDeServico->id)->get();
 
-        $clienteLista = Cliente::orderBy('nome', 'ASC')->pluck('nome','id');
-        $cliente = Cliente::findOrFail($id);
-
+        $servicos = Servico::orderBy('nome', 'ASC')->pluck('nome','id');
+        $cliente = Cliente::findOrFail($ordemDeServico->cliente_id);
+        // dd($cliente);
 
         $ordemDeServicoStatus = OrdemDeServicoStatus::orderBy('nome', 'ASC')->pluck('nome','id');
-        $statusId = OrdemDeServicoStatus::findOrFail($id);
+        $status = OrdemDeServicoStatus::findOrFail($ordemDeServico->status_id);
 
         return view('ordemDeServico.edit', 
         [
         'ordemDeServico' => $ordemDeServico,
-        'cliente' => $cliente, 'clienteLista' => $clienteLista,
-        'ordemDeServicoStatus' => $ordemDeServicoStatus, 'statusId' => $statusId
+        'cliente' => $cliente, 'ordemDeServicoStatus' => $ordemDeServicoStatus, 'status' => $status,
+        'servicos' => $servicos, 'ordemDeServicoSevico' => $ordemDeServicoSevico
         ]);
     }
 
@@ -157,7 +187,8 @@ class OrdemDeServicoController extends Controller
     public function update(Request $request, $id){
         $ordemDeServico = OrdemDeServico::findOrFail($id);
         $ordemDeServico->update($request->all());
-        return redirect()->route('ordemDeServico.index')->with('message', 'Ordem de Serviço atualizada com sucesso!');
+
+        return redirect()->route('ordemDeServico')->with('message', 'Ordem de Serviço atualizada com sucesso!');
     }
 
     /**

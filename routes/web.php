@@ -60,6 +60,9 @@ Route::get('/ordemDeServico/{id}', [OrdemDeServicoController::class, 'show'])->n
 Route::get('/ordemDeServico/{id}/edit', [OrdemDeServicoController::class, 'edit'])->name('ordemDeServico.edit');
 Route::put('/ordemDeServico/{id}/update', [OrdemDeServicoController::class, 'update'])->name('ordemDeServico.update');
 
+Route::post('/ordemDeServico/{id}/novoServico', [OrdemDeServicoController::class, 'novoServico'])->name('ordemDeServico.novoServico');
+Route::delete('/removeServicoServico/{id}',[OrdemDeServicoController::class,'destroyServicoServico'])->name('ordemDeServico.removeServicoServico');
+
 //--------------- HOME ------------//
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

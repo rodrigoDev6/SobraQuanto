@@ -28,12 +28,12 @@
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 p-2">
                             <div class="form-group col">
                                 {{ Form::label('cliente', 'Cliente:', ['class' => 'h5', 'id' => 'cliente']) }}
-                                {{ Form::select('cliente_id', $cliente, '', ['class' => 'form-control', 'placeholder' => '-Escolha um cliente-']) }}
+                                {{ Form::select('cliente_id', $cliente, '', ['class' => 'form-control', 'placeholder' => '-Escolha um cliente-', 'required']) }}
                             </div>
 
                             <div class="form-group col">
                                 {{ Form::label('status', 'Status:', ['class' => 'h5']) }}
-                                {{ Form::select('status_id', $status, '', ['class' => 'form-control', 'placeholder' => '-Escolha um status-']) }}
+                                {{ Form::select('status_id', $status, '', ['class' => 'form-control', 'placeholder' => '-Escolha um status-', 'required']) }}
                             </div>
                             <div class="form-group col">
                                 {{ Form::label('data_abertura', 'Abertura:', ['class' => 'h5']) }}
@@ -48,7 +48,7 @@
 
                             <div class="form-group col">
                                 {{ Form::label('formaPagamento', 'Pagamento:', ['class' => 'h5']) }}
-                                {{ Form::select('forma_pagamento', ['pix' => 'PIX', 'cartão' => 'CARTÃO DE CRÉDITO', 'dinheiro' => 'DINHEIRO'], '', ['class' => 'form-control']) }}
+                                {{ Form::select('forma_pagamento', ['pix' => 'PIX', 'cartão' => 'CARTÃO DE CRÉDITO', 'dinheiro' => 'DINHEIRO'], '', ['class' => 'form-control', 'required']) }}
                             </div>
                         </div>
 

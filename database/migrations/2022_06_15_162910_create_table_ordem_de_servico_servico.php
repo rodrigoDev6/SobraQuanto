@@ -20,6 +20,7 @@ class CreateTableOrdemDeServicoServico extends Migration
             $table->integer('quantidade');
             $table->decimal('valor', 10, 2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

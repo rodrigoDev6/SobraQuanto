@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Observers\OrdemDeServicoServicoObserver;
 use App\Models\User;
+use App\Models\OrdemDeServicoServico;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,5 +35,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('is_padrao', function (User $user) {
             return $user->perfil === 'padrao';
         });
+
+        OrdemDeServicoServico::observe(OrdemDeServicoServicoObserver::class);
     }
 }
