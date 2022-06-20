@@ -1,6 +1,9 @@
 .pequeno {
     width: 20%;
   }
+        body {
+            color: #fff
+        }
   
       /* Fundo da página*/
       .content-wrapper {
@@ -19,9 +22,6 @@
             background-color: #14213D !important;
         }
             /*Letras da página*/
-        body {
-            color: #fff
-        }
         /* Letras do menu esquerdo*/
         [class*=sidebar-dark-] .sidebar a {
             color: #fff;
@@ -80,9 +80,27 @@
         }
   
       label {
-          color: rgb(255, 255, 255);
+          color: rgb(0, 0, 0);
+      }
+  
+      p.text-center {
+        color: black;
+      }
+  
+      h5.modal-title {
+        color: black;
       }
 
+      .card-title{
+        color: black !important;
+      }
+      th {
+        color: black !important;
+      }
+
+      td {
+        color: black !important;
+      }
       .navbar-light .navbar-nav .nav-link {
         color: #fff !important;
       }

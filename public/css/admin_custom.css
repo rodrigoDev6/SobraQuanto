@@ -90,3 +90,7 @@
     h5.modal-title {
       color: black;
     }
+
+    .navbar-light .navbar-nav .nav-link {
+      color: #fff !important;
+    }
