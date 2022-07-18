@@ -48,11 +48,11 @@
                         </a>
 
                         {{-- Btn excluir --}}
-                        <a class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete" href="">
+                        {{-- <a class="btn btn-danger" data-toggle="modal" data-target="#ModalDelete" href="">
                             <i class="fas fa-trash">
                             </i>
                             Excluir
-                        </a>
+                        </a> --}}
                     </td>
 
                 </tr>

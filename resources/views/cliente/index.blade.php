@@ -64,8 +64,10 @@
                     <tr>
                         <td>{{ $value->id }}</td>
                         <td>{{ $value->nome }}</td>
-                        <td>{{ $value->cpf_cnpj }}</td>
-                        <td>{{ $value->telefone_1 }}</td>
+                        <td>
+                            {{$value->cpf_cnpj}}
+                        </td>
+                            <td>{{ $value->telefone_1 }}</td>
                         <td>
                             {{--  --}}
                             <a href="{{ url('cliente/' . $value->id) }}" class="btn btn-primary">

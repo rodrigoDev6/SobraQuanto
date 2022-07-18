@@ -52,10 +52,10 @@ class UserController extends Controller
 
         $user = new User;
 
-        $user -> nome = $request->nome;
+        $user -> name = $request->nome;
         $user -> email = $request->email;
         $user -> perfil = $request->perfil;
-        $user -> senha = $request->senha;
+        $user -> password = $request->senha;
         $user -> save();
 
         return redirect('/usuario')->with('status', 'Usuário criado com sucesso!!');

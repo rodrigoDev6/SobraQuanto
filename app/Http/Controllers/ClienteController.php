@@ -45,21 +45,19 @@ class ClienteController extends Controller
     {
         $messages = [
             'nome.required' => 'O campo Nome é obrigatório!',
-            'cpf_cnpj.required' => 'O campo CPF ou CNPJ é obrigatório!',
             'telefone_1.required' => 'O campo Telefone 1 é obrigatório!',
-            
-            'nome.min' => 'O Nome precisa ter no mínimo :min caracteres.',
+
             'cpf_cnpj.min' => 'O CPF precisa ter 11 números e caso seja CNPJ 14 números.',
             'telefone_1.min' => 'O :attribute precisa ter no mínimo :min. Números.',
+            
         ];
 
         $validate = $request->validate([
-            'nome' => 'required|min:5',
-            'cpf_cnpj' => 'required|min:11' ,
+            'nome' => 'required',
+            'cpf_cnpj' => 'min:11',
             'telefone_1' => 'required|min:9',
             'estado_id' => 'required',
             'bairro' => 'required|min:4',
-            'complemento' => 'required|min:5'
         ], $messages);
         
         $cliente = new Cliente;
@@ -124,7 +122,7 @@ class ClienteController extends Controller
 
         $validate = $request->validate([
             'nome' => 'required|min:5',
-            'cpf_cnpj' => 'required|min:11' ,
+            'cpf_cnpj' => 'min:11' ,
             'telefone_1' => 'required|min:9',
             'estado_id' => 'required',
             'bairro' => 'required|min:4',

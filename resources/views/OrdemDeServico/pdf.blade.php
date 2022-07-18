@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <title>Sobra Quanto</title>
@@ -8,72 +8,128 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-        table {
-            font-size: 12px;
+        * {
+            font-family: Verdana, Arial, sans-serif;
         }
-    </style>
+
+        .flex-container {
+            display: inline-flex;
+            width: 100%;
+        }
+
+        
+
+        table{
+            font-size: x-small;
+        }
+        tfoot tr td{
+            font-weight: bold;
+            font-size: x-small;
+        }
+
+        .gray {
+            background-color: lightgray
+        }
+
+        front-page {
+        page: front-page;
+        }
+
+        front-page-title {
+          display:block;
+          text-align:center;
+          margin-top:3in;
+          font-size:2em;
+          font-family:arial, helvetica, sans-serif;
+          font-weight:bold;
+        }
+        </style>
 </head>
 
 <body>
-    <div class="container py-5">
-        <div class="row">
-
-            <h3 class="text-center font-weight-bold">Registro de Ordem de Serviço</h3>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="table table-bordered table-hover dataTable dtr-inline">
-                        <thead>
-                            <tr>
-                                <th class="text-left">Nº Ordem</th>
-                                <th class="text-left">Abertura</th>
-                                <th class="text-left">Fechamento</th>
-                                <th class="text-left">Cliente</th>
-                                <th class="text-left">Valor total</th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-left">{{ $data[0]['id'] }}</td>
-                                <td class="text-left">{{ date('d/m/Y', strtotime($data[0]['data_abertura'])) }}</td>
-                                <td class="text-left">{{ date('d/m/Y', strtotime($data[0]['data_fechamento'])) }}</td>
-                                <td class="text-left">{{ $data[2]['nome'] }}</td>
-                                <td class="text-left">R$ {{ $data[0]['total'] }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+  @php($hoje = date('d/m/Y H:i'))
+  <div class="col-12">
+    <p>
+    <img src="{{ URL::asset('vendor/adminlte/dist/img/logo.jpg') }}" alt="bar code" height="50px" width="50px" />
+      Jubao Informática - Ordem de Serviço
+  </p>
+    <small class="float-right">Emitada em: {{ $hoje }}</small>
         </div>
-        {{-- fim-topo --}}
 
-        <h4 class="text-center font-weight-bold mt-4">Serviços Realizados</h4>
-        <div class="row">
-            <div class="col-md-8">
-                <table class="table table-bordered table-hover dataTable dtr-inline">
-                    <thead>
-                        <tr>
-                            <th class="text-left">Serviço</th>
-                            <th class="text-left">Quantidade</th>
-                            <th class="text-left">Valor unitário</th>
-                            <th class="text-left">Valor Total</th>
-                        </tr>
-                    </thead>
+    <table width="100%">
 
-                    <tbody>
-                        @foreach ($data[1] as $key => $item)
-                            <tr>
-                                <td class="text-left">{{ $item['servico_nome'] }}</td>
-                                <td class="text-left">{{ $item['quantidade'] }}</td>
-                                <td class="text-left">R$ {{ $item['valor'] }}</td>
-                                <td class="text-left">R$ {{ $item['valor'] * $item['quantidade'] }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-            </div>
+        <tr>
+            <td><strong>De:</strong> Rafael - Rio de janeiro</td>
+            {{-- <td><strong>Para:</strong>  - Rio de janeiro</td> --}}
+        </tr>
+    
+    </table>
+
+      <br/>
+      <hr>
+      <br/>
+
+        <div class="flex-container">
+
+        <div class="col-sm-4">
+            <b>Número da Ordem de Serviço: {{ $data[0]['id'] }}</b><br>
+            <br>
+            <b>Cliente:</b> {{$data[2]['nome'] }}<br>
+            <b>Abertura: {{ date('d/m/Y', strtotime($data[0]['data_abertura'])) }}
+            <b>Fechamento: {{ date('d/m/Y', strtotime($data[0]['data_fechamento'])) }} </b>
+                  
         </div>
-    </div>
+        
+        </div>
+
+        <br />
+        <br />
+    
+      <table width="100%" height="50%">
+        <thead style="background-color: lightgray;">
+          <tr>
+            <th>#</th>
+            <th>Serviço</th>
+            <th>Quantidade</th>
+            <th>Valor unitário R$</th>
+            <th>Total R$</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($data[1] as $key => $item)
+              <tr>
+                <th scope="row"></th>
+                <td>{{ $item['servico_nome'] }} </td>
+                <td align="text-left">{{ $item['quantidade'] }} </td>
+                <td align="text-left">{{ $item['valor'] }}</td>
+                <td align="text-left">{{ $item['valor'] * $item['quantidade'] }}</td>
+              </tr>
+            @endforeach
+        </tbody>
+    
+        <tfoot>
+            <tr>
+                <td colspan="3"></td>
+                <td align="right"> </td>
+            </tr>
+            <tr>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td colspan="3"></td>
+                <td align="right">Total R$</td>
+                <td align="left" class="gray" style="padding-left: 8px"> {{ $data[0]['total']}}  </td>
+            </tr>
+        </tfoot>
+      </table>
+       
+       
+
+
+</div>
+
+</section>
+
 </body>
 
 </html>

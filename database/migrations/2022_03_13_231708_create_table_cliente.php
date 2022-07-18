@@ -17,7 +17,7 @@ class CreateTableCliente extends Migration
             $table->id();
             $table->integer('status_id')->nullable();
             $table->string('nome', 200);
-            $table->char('cpf_cnpj', 14)->unique();
+            $table->char('cpf_cnpj', 14)->nullable();
             $table->char('telefone_1', 11);
             $table->char('telefone_2', 11)->nullable();
             $table->char('cep', 8)->nullable();

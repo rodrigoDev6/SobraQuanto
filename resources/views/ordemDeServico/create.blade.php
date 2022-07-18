@@ -24,50 +24,7 @@
                         @endif
 
 
-                        {{ Form::open(['url' => '/finalizarOrdem']) }}
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 p-2">
-                            <div class="form-group col">
-                                {{ Form::label('cliente', 'Cliente:', ['class' => 'h5', 'id' => 'cliente']) }}
-                                {{ Form::select('cliente_id', $cliente, '', ['class' => 'form-control', 'placeholder' => '-Escolha um cliente-', 'required']) }}
-                            </div>
-
-                            <div class="form-group col">
-                                {{ Form::label('status', 'Status:', ['class' => 'h5']) }}
-                                {{ Form::select('status_id', $status, '', ['class' => 'form-control', 'placeholder' => '-Escolha um status-', 'required']) }}
-                            </div>
-                            <div class="form-group col">
-                                {{ Form::label('data_abertura', 'Abertura:', ['class' => 'h5']) }}
-                                {{ Form::date('data_abertura', new \DateTime(), ['class' => 'form-control']) }}
-                            </div>
-
-                            <div class="form-group col">
-                                {{ Form::label('data_fechamento', 'Vencimento:', ['class' => 'h5']) }}
-                                {{ Form::date('data_fechamento', null, ['class' => 'form-control']) }}
-                            </div>
-
-
-                            <div class="form-group col">
-                                {{ Form::label('formaPagamento', 'Pagamento:', ['class' => 'h5']) }}
-                                {{ Form::select('forma_pagamento', ['pix' => 'PIX', 'cartão' => 'CARTÃO DE CRÉDITO', 'dinheiro' => 'DINHEIRO'], '', ['class' => 'form-control', 'required']) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group p-2">
-                            {{ Form::label('observacao', 'Observação:', ['class' => 'h5']) }}
-                            {{ Form::textarea('observacao', null, ['class' => 'form-control', 'rows' => '3']) }}
-                        </div>
-                        {{-- /observacao --}}
-
-                        <div class="form-group p-2">
-                            @if ($cartServico)
-                                {{ Form::submit('Finalizar Ordem', ['class' => 'btn btn-primary']) }}
-                            @endif
-                            <a class="btn btn-secondary" href="{{ route('ordemDeServico') }}">Cancelar</a>
-                        </div>
-                        {{-- /buttons --}}
-
-                        {{ Form::close() }}
-                        {{-- input de cliente, status e pagamento --}}
+                        
 
                         {{ Form::open(['url' => '/addServico']) }}
                         {{-- row-cols-1 row-cols-sm-2 row-cols-md-5 --}}
@@ -160,9 +117,53 @@
                             </div>
                             @endif
                         </div>
+
+                {{ Form::open(['url' => '/finalizarOrdem']) }}
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 p-2">
+                            <div class="form-group col">
+                                {{ Form::label('cliente', 'Cliente:', ['class' => 'h5', 'id' => 'cliente']) }}
+                                {{ Form::select('cliente_id', $cliente, '', ['class' => 'form-control', 'placeholder' => '-Escolha um cliente-', 'required']) }}
+                            </div>
+
+                            <div class="form-group col">
+                                {{ Form::label('status', 'Status:', ['class' => 'h5']) }}
+                                {{ Form::select('status_id', $status, '', ['class' => 'form-control', 'placeholder' => '-Escolha um status-', 'required']) }}
+                            </div>
+                            <div class="form-group col">
+                                {{ Form::label('data_abertura', 'Abertura:', ['class' => 'h5']) }}
+                                {{ Form::date('data_abertura', new \DateTime(), ['class' => 'form-control']) }}
+                            </div>
+
+                            <div class="form-group col">
+                                {{ Form::label('data_fechamento', 'Vencimento:', ['class' => 'h5']) }}
+                                {{ Form::date('data_fechamento', null, ['class' => 'form-control']) }}
+                            </div>
+
+
+                            <div class="form-group col">
+                                {{ Form::label('formaPagamento', 'Pagamento:', ['class' => 'h5']) }}
+                                {{ Form::select('forma_pagamento', ['pix' => 'PIX', 'cartão' => 'CARTÃO DE CRÉDITO', 'dinheiro' => 'DINHEIRO'], '', ['class' => 'form-control', 'required']) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group p-2">
+                            {{ Form::label('observacao', 'Observação:', ['class' => 'h5']) }}
+                            {{ Form::textarea('observacao', null, ['class' => 'form-control', 'rows' => '3']) }}
+                        </div>
+                        {{-- /observacao --}}
+
+                        <div class="form-group p-2">
+                            @if ($cartServico)
+                                {{ Form::submit('Finalizar Ordem', ['class' => 'btn btn-primary']) }}
+                            @endif
+                            <a class="btn btn-secondary" href="{{ route('ordemDeServico') }}">Cancelar</a>
+                        </div>
+                        {{-- /buttons --}}
+
+                        {{ Form::close() }}
+                        {{-- input de cliente, status e pagamento --}}
                     </div>
                 </div>
-
                 {{-- card-primary-end --}}
             </div>
         </div>
